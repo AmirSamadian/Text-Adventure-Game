@@ -20,7 +20,7 @@ public class Game {
 	private World world;
 	/** The room the player character is currently in. */
 	private Room currentRoom;
-
+	//new variables
 	int turn = 0;
 	int score = 0;
 	/**
