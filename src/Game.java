@@ -9,6 +9,7 @@
  * commands that the parser returns.
  *
  * @author Maria Jump
+ * @author Amir Samadian
  * @version 2015.02.01
  *
  * Used with permission from Dr. Maria Jump at Northeastern University
