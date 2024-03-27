@@ -1,0 +1,68 @@
+///////////////////////////////////////////////////////////////////////////////
+// Original commands from the game (alphabetical)
+
+GO Scenario #1: No direction specified
+   GIVEN : "go" is entered 
+    WHEN : 
+    THEN : appropriate message is displayed
+
+GO Scenario #2: No exit exists
+   GIVEN : "go direction" is entered 
+    WHEN : there is no exit in the given direction
+    THEN : appropriate message is displayed (no door)
+
+GO Scenario #3: Exit exists
+   GIVEN : "go direction" is entered
+    WHEN : there is an exit in the given direction
+    THEN : player's current room is changed to the room in the given direction
+     and : the current room's points are added to the player's score
+     and : player's current location is displayed
+
+HELP Scenario #1:
+   GIVEN : "help" is entered
+    WHEN : 
+    THEN : available commands are displayed
+
+SCORE Scenario #1:
+   GIVEN : "score" is entered
+    WHEN : 
+    THEN : player's current score is displayed
+
+TURNS Scenario #1:
+   GIVEN : "turns" is entered
+    WHEN : 
+    THEN : current number of turns is displayed to the screen
+
+QUIT Scenario #1:
+   GIVEN : "quit" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (thanks for playing)
+     and : program quits
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Commands added in Stage 2 (alphabetical)
+
+BACK Scenario #1: no previous room
+   GIVEN : "back" is entered
+    WHEN : there is no previous room
+    THEN : appropriate message is displayed (cannot go back)
+
+BACK Scenario #2: there is a previous room
+   GIVEN : "back" is entered
+    WHEN : there is a previous room
+    THEN : player's current location is changed to the previous location
+     and : player's current location is displayed 
+
+LOOK Scenario #1:
+   GIVEN : "look" is entered
+    WHEN : 
+    THEN : player's current location is displayed
+
+STATUS Scenario #1:
+   GIVEN : "status" is entered
+    WHEN : 
+    THEN : current number of turns is displayed 
+     and : player's current score is displayed
+     and : player's current location is displayed
