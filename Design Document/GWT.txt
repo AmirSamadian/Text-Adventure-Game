@@ -66,3 +66,311 @@ STATUS Scenario #1:
     THEN : current number of turns is displayed 
      and : player's current score is displayed
      and : player's current location is displayed
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Commands added in Stage 3 (alphabetical)
+
+DROP Scenario #1: No item specified
+   GIVEN : "drop" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (which item?)
+
+DROP Scenario #2: Player does not have the specified item
+   GIVEN : "drop item" is entered
+    WHEN : player does not have the specified item
+    THEN : appropriate message is displayed (you don't have it)
+
+DROP Scenario #3: Player has the specified item
+   GIVEN : "drop item" is entered
+    WHEN : player has the specified item
+    THEN : "item" is removed from the player's inventory
+     and : "item" is added to the current room
+     and : appropriate message is displayed (you dropped the item)
+
+
+
+EXAMINE Scenario #1: No item specified
+   GIVEN : "examine" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (which item?)
+
+EXAMINE Scenario #2: Specified item does not exist
+   GIVEN : "examine item" is entered
+    WHEN : specified item is not in the room
+     and : specified item is not in player's inventory
+    THEN : appropriate message is displayed (no such item)
+
+EXAMINE Scenario #3: Specified item does exist
+   GIVEN : "examine item" is entered
+    WHEN : specified item is in the room or in the player's inventory
+    THEN : complete description of the item is displayed including the item's name, description and (optionally) the weight.
+
+
+
+INVENTORY Scenario #1:
+   GIVEN : "inventory" is entered
+    WHEN : 
+    THEN : a list of the items in the players inventory is displayed
+
+
+
+TAKE Scenario #1: no item specified
+   GIVEN : "take" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (take what?)
+
+TAKE Scenario #2: specified item does not exist
+   GIVEN : "take item" is entered
+    WHEN : specified item is not in the current room
+    THEN : appropriate message is displayed (no such item)
+    
+TAKE Scenario #3: specified item is too heavy to lift
+   GIVEN : "take item" is entered
+    WHEN : specified item is in the current room
+     and : specified item by itself exceeds maximum carrying weight
+    THEN : appropriate message is displayed (too heavy to lift)
+
+TAKE Scenario #4: specified item makes inventory too heavy
+   GIVEN : "take item" is entered
+    WHEN : specified item is in the current room
+     and : adding specified item to inventory weight exceeds maximum carrying weight
+    THEN : appropriate message is displayed (carrying too much)
+
+TAKE Scenario #5: specified item is taken
+   GIVEN : "take item" is entered
+    WHEN : specified item is in the current room
+     and : adding specified item to inventory weight does not exceed maximum carrying weight
+    THEN : item is removed from the current room
+     and : item is added to the player's inventory
+     and : appropriate message is displayed (you took the item)
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Commands added in Stage 4 (alphabetical)
+
+GO Scenario #4: Door is locked
+   GIVEN : "go direction" is entered
+    WHEN : there is an exit in the given direction
+     and : that exit is locked
+    THEN : appropriate message is displayed (door is locked)
+
+Lock north
+Unlock north 
+
+
+LOCK Scenario #1: No direction specified
+   GIVEN : "lock" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (lock what?)
+
+LOCK Scenario #2: No Door
+   GIVEN : "lock direction" is entered
+    WHEN : there is no door in that direction
+    THEN : appropriate message is displayed (no door)
+
+LOCK Scenario #3: Door is locked
+   GIVEN : "lock direction" is entered
+    WHEN : door in "direction" is locked
+    THEN : appropriate message is displayed (door is already locked)
+
+LOCK Scenario #4: Door cannot be locked
+   GIVEN : "lock direction" is entered
+    WHEN : door in "direction" has no associated key
+    THEN : appropriate message is displayed (door cannot be locked)
+
+LOCK Scenario #5: Door can be locked
+   GIVEN : "lock direction" is entered
+    WHEN : door in "direction" is unlocked
+     and : door in "direction" can be locked
+    THEN : user is prompted for key
+
+LOCK Scenario #6: Player does not have the key
+   GIVEN : "lock direction" had been entered
+     and : user has been prompted for specific key
+    WHEN : player does not have specific key in inventory
+    THEN : appropriate message is displayed (you do not have it)
+
+LOCK Scenario #7: Incorrect key specified
+   GIVEN : "lock direction" had been entered
+     and : user has been prompted for specific key
+    WHEN : player's inventory has the specific key
+     and : specified key is not the correct key
+    THEN : appropriate message is displayed (wrong key)
+ 
+LOCK Scenario #8: Correct key specified
+   GIVEN : "lock direction" had been entered
+     and : user has been prompted for specific key
+    WHEN : player's inventory has the specific key
+     and : specified key is the correct key
+    THEN : door in "direction" is locked
+     and : appropriate message is displayed (you locked it)
+ 
+
+pack key
+What container should we pack this in?
+
+PACK Scenario #1: No item specified
+   GIVEN : "pack" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (pack what?)
+
+PACK Scenario #2: Item is not available
+   GIVEN : "pack item" is entered
+    WHEN : item is NOT in the current room
+     and : item is NOT in the players inventory
+    THEN : appropriate message is displayed (you don't have it)
+
+PACK Scenario #3: Item is too heavy
+   GIVEN : "pack item" is entered
+    WHEN : item is in the current room
+     and : item is heavier than player's carrying capacity
+    THEN : appropriate message is displayed (too heavy)
+
+PACK Scenario #4: Item is available
+   GIVEN : "pack item" is entered
+    WHEN : item is in the current room
+      or : item is in the player's inventory
+     and : there are no weight problems
+    THEN : user is prompted for the container to put it in
+
+PACK Scenario #5: Container is not available
+   GIVEN : "pack item" had been entered
+     and : user has been prompted for the container
+    WHEN : container is NOT in the current room
+     and : container is NOT in the player's inventory
+    THEN : appropriate message is displayed (you don't see the container)
+
+PACK Scenario #6: Container is NOT a container 
+   GIVEN : "pack item" had been entered
+     and : user has been prompted for the container
+    WHEN : container is in the current room
+      or : container is in the player's inventory
+     and : container is not really a container
+    THEN : appropriate message is displayed (that's not a container)
+
+PACK Scenario #7: Container is a container, but item too heavy
+   GIVEN : "pack item" had been entered
+     and : user has been prompted for the container
+    WHEN : item is in the current room
+     and : container is in the player's inventory
+     and : item would put player over their inventory weight limit
+    THEN : appropriate message is displayed (carrying too much)
+
+PACK Scenario #8: Packing is possible
+   GIVEN : "pack item" had been entered
+     and : user has been prompted for the container
+    WHEN : container is in the current room
+      or : container is in the player's inventory
+     and : container is really a container
+     and : there are no weight problems
+    THEN : item is removed from the current room
+      or : item is removed from the player's inventory
+     and : item is added to the container
+     and : appropriate message is displayed (you packed it)
+
+
+
+
+
+UNLOCK Scenario #1: No direction specified
+   GIVEN : "unlock" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (unlock what?)
+
+UNLOCK Scenario #2: No door in that direction
+   GIVEN : "unlock direction" is entered
+    WHEN : there is no door in the "direction"
+    THEN : appropriate message is displayed (there is no door)
+
+UNLOCK Scenario #3: Direction is specified and is not locked
+   GIVEN : "unlock direction" is entered
+    WHEN : there is a door in the "direction"
+     and : door in "direction" is NOT locked
+    THEN : appropriate message is displayed (door is not locked)
+
+UNLOCK Scenario #4: Direction is specified and is locked
+   GIVEN : "unlock direction" is entered
+    WHEN : there is a door in the "direction"
+     and : door in "direction" is locked
+    THEN : user is prompted for key
+
+UNLOCK Scenario #5: Player missing specified key
+   GIVEN : "unlock direction" had been entered
+     and : user has been prompted for specific key
+    WHEN : player's inventory does NOT have the specific key
+    THEN : appropriate message is displayed (you don't have it)
+
+UNLOCK Scenario #6: Incorrect key
+   GIVEN : "unlock direction" had been entered
+     and : user has been prompted for specific key
+    WHEN : player's inventory has the specific key
+     and : specified key is incorrect item
+    THEN : appropriate message is displayed (that doesn't fit)
+
+UNLOCK Scenario #7: Correct key
+   GIVEN : "unlock direction" had been entered
+     and : user has been prompted for specific key
+    WHEN : player's inventory has the specific key
+     and : specified key is the correct object
+    THEN : door in "direction" is unlocked
+     and : appropriate message is displayed (you unlocked it)
+ 
+
+
+
+
+UNPACK Scenario #1: No container specified
+   GIVEN : "unpack" is entered
+    WHEN : 
+    THEN : appropriate message is displayed (unpack what?)
+
+UNPACK Scenario #2: Specified container is not in the current room
+   GIVEN : "unpack container" is entered
+    WHEN : specified container is NOT in the current room
+     and : specified container is NOT in the players inventory
+    THEN : appropriate message is displayed (you don't see it)
+
+UNPACK Scenario #3: Specified item is not a container
+   GIVEN : "unpack container" is entered
+    WHEN : specified container is in the current room
+      or : specified container is in the player's inventory
+     and : specified container is NOT a container
+    THEN : appropriate message is displayed (that's not a container)
+
+UNPACK Scenario #4: Container is OK
+   GIVEN : "unpack container" is entered
+    WHEN : specified container is in the current room
+      or : specified container is in the player's inventory
+     and : specified container is a container
+    THEN : user is prompted for an item to unpack
+
+UNPACK Scenario #5: Item is NOT in container
+   GIVEN : "unpack container" had been entered
+     and : user has been prompted for the item to unpack
+    WHEN : item to unpack is NOT in the container
+    THEN : appropriate message is displayed (you don't find it)
+
+UNPACK Scenario #6: Item is in container but too heavy
+   GIVEN : "unpack container" had been entered
+     and : user has been prompted for the item to unpack
+    WHEN : item to unpack is in the container
+     and : container was in the current room
+     and : item would make the player exceed his weight limit
+    THEN : appropriate message is displayed (you are already carrying too much)
+
+UNPACK Scenario #7: Item can be unpacked
+   GIVEN : "unpack container" had been entered
+     and : user has been prompted for the item to unpack
+    WHEN : item to unpack is in the container
+     and : there is no weight problem
+    THEN : item to unpack is removed from the container
+     and : item to unpack is added to the player's inventory
+     and : appropriate message is displayed (you unpack it)
+
+
+
