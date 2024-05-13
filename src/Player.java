@@ -10,3 +10,4 @@ public class Player {
 	private Room currentRoom;
 
 }
+//Amir is stupid
