@@ -18,18 +18,19 @@
 public class Game {
 	/** The world where the game takes place. */
 	private World world;
-	//creating an instance that is my character's name
+	/** ryderFalcone is the name of the Game's player. */
 	private Player ryderFalcone;
-	//new variables
-	int turn = 0;
-	int score = 0;
+	/** Variable turn keeps track of the number of turns made in the game. */
+	private int turn = 0;
+	/** Variable score keeps track of the total scare. Tally of all the points gained throughout the game */
+	private int score = 0;
 	/**
 	 * Create the game and initialize its internal map.
 	 */
 	public Game() {
 		world = new World();
 		// set the starting room
-		ryderFalcone = new Player(world.getRoom("outside"));
+		ryderFalcone = new Player(world.getRoom("Ryder Falcone’s Mansion’s - Living Room & Kitchen"));
 	}
 
 	/**
@@ -97,6 +98,8 @@ public class Game {
 				goRoom(command);
 			} else if (commandWord.equals("quit")) {
 				wantToQuit = quit(command);
+			} else if (commandWord.equals("look")) {
+					look();
 			} else {
 				Writer.println(commandWord + " is not implemented yet!");
 			}
@@ -147,6 +150,17 @@ public class Game {
 		}
 	}
 
+	
+	/**
+	 * Prints out the location information.
+	 */
+	private void look() {
+		printLocationInformation();
+	}
+	
+	
+	
+	
 	/**
 	 * Print out the closing message for the player.
 	 */

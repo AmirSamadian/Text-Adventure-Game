@@ -9,4 +9,27 @@ public class Player {
 	 */
 	private Room currentRoom;
 
+	/**
+	 * @param currentRoom
+	 * This is the constructor of the Player class
+	 */
+	public Player(Room currentRoom) {
+		this.currentRoom = currentRoom;
+	}
+	
+	/**
+	 * @return the currentRoom
+	 */
+	public Room getCurrentRoom() {
+		return currentRoom;
+	}
+
+	/**
+	 * @param currentRoom the currentRoom to set
+	 */
+	public void setCurrentRoom(Room currentRoom) {
+		this.currentRoom = currentRoom;
+	}
+	
+
 }

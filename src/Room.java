@@ -20,7 +20,10 @@ public class Room {
 	private String name;
 	/** The description of this room. */
 	private String description;
-
+	/** This stores the number of points someone gets for entering this room */
+	private int points;
+	
+	
 	/** This room's north exit, null if none exits. */
 	public Door northExit;
 	/** This room's south exit, null if none exits. */
@@ -43,10 +46,13 @@ public class Room {
 	 * @param name  The room's name.
 	 * @param description
 	 *            The room's description.
+	 *            
+	 * @param points : The amount of points a player gets for entering each room is set by the constructor
 	 */
-	public Room(String name, String description) {
+	public Room(String name, String description, int points) {
 		this.name = name;
 		this.description = description;
+		this.points = points;
 		counter++;
 	}
 
@@ -74,5 +80,28 @@ public class Room {
 	 */
 	public static int getCounter() {
 		return counter;
+		
+	}
+
+	/**
+	 * @return the points you get for entering a room
+	 * @return the temp variable which 
+	 * Getter for points variable
+	 */
+	public int getPoints() {
+		if (points > 0) {
+			int temp = points;
+			points = 0;
+			return temp;
+		}
+		return points;
+	}
+
+	/**
+	 * @param points the points to set
+	 * Setter for points variable
+	 */
+	public void setPoints(int points) {
+		this.points = points;
 	}
 }
