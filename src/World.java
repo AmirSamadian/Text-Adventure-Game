@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class World {
 	/** The rooms in the world. */
 	private HashMap<String, Room> rooms;
-
+ 
 	/**
 	 * Constructor for the world.
 	 */
@@ -51,58 +51,20 @@ public class World {
 		rooms.put(theRoom.getName().toLowerCase(), theRoom);
 	}
 
-	/**
-	 * Helper method for creating doors between rooms.
-	 *
-	 * @param from
-	 *            The room where the door originates.
-	 * @param north
-	 *            The room to the north of the originating room.
-	 */
-	private void createNorthDoor(Room from, Room north) {
-		Door northDoor = new Door(north);
-		from.northExit = northDoor;
-	}
 
 	/**
-	 * Helper method for creating doors between rooms.
-	 *
-	 * @param from
-	 *            The room where the door originates.
-	 * @param east
-	 *            The room to the east of the originating room.
-	 */
-	private void createEastDoor(Room from, Room east) {
-		Door eastDoor = new Door(east);
-		from.eastExit = eastDoor;
+	* Helper method for creating doors between rooms.
+	*
+	* @param from The room where the door originates.
+	* @param direction The direction of the door in the from room.
+	* @param to The room where the door goes.
+	*/
+	private void createDoor(Room from, String direction, Room to) {
+		Door door = new Door(to);
+		from.setExit(direction, door);
 	}
-
-	/**
-	 * Helper method for creating doors between rooms.
-	 *
-	 * @param from
-	 *            The room where the door originates.
-	 * @param south
-	 *            The room to the south of the originating room.
-	 */
-	private void createSouthDoor(Room from, Room south) {
-		Door southDoor = new Door(south);
-		from.southExit = southDoor;
-	}
-
-	/**
-	 * Helper method for creating doors between rooms.
-	 *
-	 * @param from
-	 *            The room where the door originates.
-	 * @param west
-	 *            The room to the west of the originating room.
-	 */
-	private void createWestDoor(Room from, Room west) {
-		Door westDoor = new Door(west);
-		from.westExit = westDoor;
-	}
-
+	
+	
 	/**
 	 * This method creates all of the individual places in this world and all
 	 * the doors connecting them.
@@ -323,28 +285,11 @@ public class World {
 		this.addRoom(room29);
 		
 		// Creating all the doors between the rooms.
-//		this.createSouthDoor(essef, outside);
-//		this.createNorthDoor(outside, essef);
-//
-//		this.createEastDoor(campusCenter, outside);
-//		this.createWestDoor(outside, campusCenter);
-//
-//		this.createEastDoor(outside, holyCross);
-//		this.createWestDoor(holyCross, outside);
-//
-//		this.createSouthDoor(outside, admin);
-//		this.createNorthDoor(admin, outside);
-//
-//		this.createEastDoor(admin, lab);
-//		this.createWestDoor(lab, admin);
-//
-//		this.createSouthDoor(admin, janoskiOffice);
-//		this.createNorthDoor(janoskiOffice, admin);
-//
-//		this.createWestDoor(admin, slivaOffice);
-//		this.createEastDoor(slivaOffice, admin);
-//
-//		this.createSouthDoor(lab, classroom);
-//		this.createNorthDoor(classroom, lab);
+		this.createDoor()
+		
+		
+		
+		
+		
 	}
 }

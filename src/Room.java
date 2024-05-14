@@ -1,3 +1,4 @@
+import java.util.HashMap;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -24,14 +25,8 @@ public class Room {
 	private int points;
 	
 	
-	/** This room's north exit, null if none exits. */
-	public Door northExit;
-	/** This room's south exit, null if none exits. */
-	public Door southExit;
-	/** This room's east exit, null if none exits. */
-	public Door eastExit;
-	/** This room's west exit, null if none exits. */
-	public Door westExit;
+	/** This HashMap maps a string to a door that will be an exit of a room. */
+	protected HashMap<String,Door> exits;
 
 	/**
 	 * Static initializer.
@@ -84,9 +79,10 @@ public class Room {
 	}
 
 	/**
+	 * getter for the points variable. Also makes sure that you only get points the first time you enter a room. If second time, gives 0.
+	 * 
 	 * @return the points you get for entering a room
 	 * @return the temp variable which 
-	 * Getter for points variable
 	 */
 	public int getPoints() {
 		if (points > 0) {
@@ -98,10 +94,71 @@ public class Room {
 	}
 
 	/**
+	 * Setter for points variable. 
+	 * 
 	 * @param points the points to set
-	 * Setter for points variable
 	 */
 	public void setPoints(int points) {
 		this.points = points;
 	}
+	
+	
+	/**
+	* Defines an exit from this room.
+	*
+	* @param direction The direction of the exit.
+	* @param neighbor The door in the given direction.
+	*/
+	public void setExit(String direction, Door neighbor) {
+		exits.put(direction, neighbor);
+	}
+	
+	/**
+	* Gets a door in a specified direction if it exists.
+	*
+	* @return The door in the specified direction or null if it does not exist.
+	*/
+	public Door getExit(String direction) {
+		return exits.get(direction);
+	}
+	
+	
+	/**
+	* Returns a string description of a Room's exits.
+	* For example,
+	* Exits: 
+	* Choice A: Zoo
+	* Choice B: Sewer 
+	* Choice C: Casino
+	*
+	* @return A string showing the possible exits of a room.
+	*/
+	public String getExitString() {
+		String exitMessage = "Where to go?  \r\n";
+		for (String currentDirection : exits.keySet()) {
+			exitMessage += currentDirection + " \r\n";
+		}
+		
+		return exitMessage;
+	}
+	
+	
+	/**
+	* Returns a string description including all the details of a Room.
+	* For example,
+	* Outside:
+	* You are outside in the center of the King's College campus.
+	* Exits: north east south west
+	*
+	* @return A string representing all the details of a Room.
+	*/
+	public String toString() {
+		
+		String message = name + ": " + "\r\n"
+				+ description + "\r\n" + getExitString();
+		
+		return message;
+		
+	}
+	
 }

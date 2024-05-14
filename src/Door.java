@@ -28,7 +28,7 @@ public class Door {
 		this.destination = destination;
 		this.locked = false;
 	}
-
+ 
 	/**
 	 * A getter for the room this door leads to.
 	 * @return The room this door leads to

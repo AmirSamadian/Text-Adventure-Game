@@ -55,24 +55,11 @@ public class Game {
 	}
 	
 	/**
-	 * Prints out the current location and exits.
+	 * Prints out the current location's full description and exits.
 	 */
 	private void printLocationInformation() {
-		Writer.println(ryderFalcone.getCurrentRoom().getName() + ":");
-		Writer.println("You are " + ryderFalcone.getCurrentRoom().getDescription());
-		Writer.print("Exits: ");
-		if (ryderFalcone.getCurrentRoom().northExit != null) {
-			Writer.print("north ");
-		}
-		if (ryderFalcone.getCurrentRoom().eastExit != null) {
-			Writer.print("east ");
-		}
-		if (ryderFalcone.getCurrentRoom().southExit != null) {
-			Writer.print("south ");
-		}
-		if (ryderFalcone.getCurrentRoom().westExit != null) {
-			Writer.print("west ");
-		}
+		
+		Writer.println(ryderFalcone.getCurrentRoom().toString());
 		Writer.println();
 		
 	}
@@ -89,23 +76,32 @@ public class Game {
 	private boolean processCommand(Command command) {
 		boolean wantToQuit = false;
 
-		if (command.isUnknown()) {
-			Writer.println("I don't know what you mean...");
-		} else {
-
-			String commandWord = command.getCommandWord();
-			if (commandWord.equals("help")) {
-				printHelp();
-			} else if (commandWord.equals("go")) {
-				goRoom(command);
-			} else if (commandWord.equals("quit")) {
+		
+		switch (command.getCommandWord()) {
+		
+			case QUIT:
 				wantToQuit = quit(command);
-			} else if (commandWord.equals("look")) {
-					look();
-			} else {
-				Writer.println(commandWord + " is not implemented yet!");
-			}
+			case HELP:
+				printHelp();
+				break;
+			case GO:
+				goRoom(command);
+				break;
+			case LOOK:
+				look();
+				break;
+			case STATUS:
+				status();
+				break;
+			case BACK:
+				Writer.println(CommandEnum.BACK.getText() + " is not implemented yet!");
+				break;
+		
+			default:
+				return wantToQuit;
+				
 		}
+		
 		return wantToQuit;
 	}
 
@@ -160,7 +156,13 @@ public class Game {
 		printLocationInformation();
 	}
 	
-	
+	private void status() {
+		Writer.println("Here is your current status: ");
+		Writer.println("  - Current Score: " + score);
+		Writer.println("  - Turns used so far: " + turn);
+		Writer.println("  - Description of your current location: " + ryderFalcone.getCurrentRoom().getDescription());
+		
+	}
 	
 	
 	/**

@@ -69,7 +69,7 @@ public class Reader {
         }
         return result;
     }
-
+ 
     /**
      * Return the response to a question in all lower case.
      *
