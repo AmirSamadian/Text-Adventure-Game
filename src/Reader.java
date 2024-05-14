@@ -27,7 +27,7 @@ public class Reader {
 	/**
 	 * Create a parser to read from the terminal window.
 	 */
-	static {
+	static { 
 		reader = new Scanner(System.in);
 	}
 

@@ -20,13 +20,11 @@ public class CommandWords {
 	 * Static block to put commandEnums and their names into the valid commands hashmap
 	 */
 	static {
-		validCommands.put(CommandEnum.QUIT.getText(), CommandEnum.QUIT);
-		validCommands.put(CommandEnum.HELP.getText(), CommandEnum.HELP);
-		validCommands.put(CommandEnum.GO.getText(), CommandEnum.GO);
-		validCommands.put(CommandEnum.STATUS.getText(), CommandEnum.STATUS);
-		validCommands.put(CommandEnum.BACK.getText(), CommandEnum.BACK);
-		validCommands.put(CommandEnum.LOOK.getText(), CommandEnum.LOOK);
-	}
+		CommandEnum[] list = CommandEnum.values();
+		for (CommandEnum command : list) {
+			validCommands.put(command.getText(), command);
+		}
+	} 
 
 	/** 
 	 * Check whether a given String is a valid command word.

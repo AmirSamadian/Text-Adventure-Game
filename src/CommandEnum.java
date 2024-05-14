@@ -1,6 +1,5 @@
 
 public enum CommandEnum {
-	NULL("null"),
 	QUIT("quit"),
 	HELP("help"),
 	GO("go"),

@@ -107,38 +107,38 @@ public class World {
 		Room room5 = new Room("Audi R8", "“Oh sweet! My assistant prepped the Audi beforehand. There is protective gear placed on the backseat.”"
 				+ "", 0);
 		
-		Room room6Body1 = new Room("Clock Tower", "in Dr Sliva's office.", 100);
+		CorrectRoom room6Body1 = new CorrectRoom("Clock Tower", "in Dr Sliva's office.", 100);
 		
-		Room room7Wrong1a = new Room("Deli", "“How ya doin! What can I get ya?” – Antonio\r\n"
+		WrongRoom room7Wrong1a = new WrongRoom("Deli", "“How ya doin! What can I get ya?” – Antonio\r\n"
 				+ "“A dead body?” – Falcone\r\n"
 				+ "“Man get the hell outta here!” – Antonio\r\n"
-				+ "", -10);
+				+ "", -10, 0);
 		
-		Room room8Wrong1b = new Room("Aaron's Tattoo Shop", "“What you wanna get big guy?” – Aaron\r\n"
+		WrongRoom room8Wrong1b = new WrongRoom("Aaron's Tattoo Shop", "“What you wanna get big guy?” – Aaron\r\n"
 				+ "“Do you happen to notice any suspicious activity recently?” – Falcone\r\n"
 				+ "“Nah” – Aaron\r\n"
 				+ "“I’m gonna investigate the shop sir” – Falcone\r\n"
 				+ "“You’re all good, nothing here” - Falcone\r\n"
-				+ ".", -10);
+				+ ".", -10, 0);
 		
-		Room room9Body2 = new Room("Mulberry Apartment Rooftop", "In the slums lies a 20 floor, damaged apartment complex "
+		CorrectRoom room9Body2 = new CorrectRoom("Mulberry Apartment Rooftop", "In the slums lies a 20 floor, damaged apartment complex "
 				+ "with a large LED sign that says Mulberry. \r\n"
 				+ "“Based on the clue, I assume the body is on the roof, so I’ll begin examining from top down.”\r\n"
 				+ "", 100);
 
 				
-		Room room10Wrong2a = new Room("Night Club", "“This is the busiest I’ve ever seen this place. "
+		WrongRoom room10Wrong2a = new WrongRoom("Night Club", "“This is the busiest I’ve ever seen this place. "
 				+ "I highly doubt that none of these people noticed anything in such a small area."
-				+ " Let’s not waste any time.” – Falcone", -10);
+				+ " Let’s not waste any time.” – Falcone", -10, 0);
 		
-		Room room11Wrong2b = new Room("Frat Party", "“Suhhh duuude?” – Brad\r\n"
+		WrongRoom room11Wrong2b = new WrongRoom("Delta Phi Frat House", "“Suhhh duuude?” – Brad\r\n"
 				+ "“I need to investigate the house for a dead body” – Falcone\r\n"
 				+ "“You bring any drinks? Where your girls at?” – Brad\r\n"
 				+ "“no” – Falcone\r\n"
 				+ "“Get lost crodie” - Brad\r\n"
-				+ "", -10);
+				+ "", -10, 0);
 		
-		Room room12Body3 = new Room("Casino", "You must do a search of the casino but must first inform the owner that he’s required by "
+		CorrectRoom room12Body3 = new CorrectRoom("Casino", "You must do a search of the casino but must first inform the owner that he’s required by "
 				+ "the police department to clear the building for this search. After going to the officer guarding the door and informing "
 				+ "him about the search, he calls the owner of the casino and approves the search. Everyone has fled the building and it’s "
 				+ "time to search.  \r\n"
@@ -148,28 +148,28 @@ public class World {
 				+ " As usual, the body is morphing and has green bubbles dripping green liquid. This made a puddle under the woman.\r\n"
 				+ "", 100);
 		
-		Room room13Wrong3a = new Room("Sewer Ab3432", "After looking up the city’s sewer map, you went to this location and entered the sewer. "
+		WrongRoom room13Wrong3a = new WrongRoom("Sewer Ab3432", "After looking up the city’s sewer map, you went to this location and entered the sewer. "
 				+ "It is a long 1-mile tunnel of sewage. \r\n"
 				+ "“This place definitely matches the vibe of the last two bodies. Guess I better get searching”\r\n"
 				+ "After searching through the whole tunnel… you found… nothing\r\n"
 				+ "\r\n"
 				+ "You lost 10 HP due to being in the stench for too long.\r\n"
-				+ "", -10);
+				+ "", -10, -10);
 		
-		Room room14Wrong3b = new Room("Norriton’s Zoo", "“I don’t have time to search the entire zoo. I must look at the drone footage they have” – Falcone\r\n"
+		WrongRoom room14Wrong3b = new WrongRoom("Norriton’s Zoo", "“I don’t have time to search the entire zoo. I must look at the drone footage they have” – Falcone\r\n"
 				+ "“I need to check the camera footage to see if I can find a green dead body ” – Falcone\r\n"
 				+ "“Sure thing – Zoo Camera Officer\r\n"
 				+ "\r\n"
 				+ "The body isn’t here\r\n"
 				+ "As you are walking out to leave the zoo, a Gorilla throws his poo at you (-10 HP)\r\n"
-				+ "", -10);
+				+ "", -10, 0);
 		
-		Room room15Body4 = new Room("Nightfall Bridge", "Falcone hopped in the R8 and drove over the Nightfall Bridge. "
+		CorrectRoom room15Body4 = new CorrectRoom("Nightfall Bridge", "Falcone hopped in the R8 and drove over the Nightfall Bridge. "
 				+ "You weren’t able to find anything suspicious on the top of the bridge. You decide to search under the "
 				+ "bridge before leaving. “Good thing I checked down here…Never mind… this is disgusting! The body is hanging "
 				+ "from a hook connected to the bottom of the bridge. Let me lower this thing to take a closer look.”", 100);
 		
-		Room room16Wrong4a = new Room("Fieri’s Grocery Store", "“You have 10 minutes to get the ingredients for a tuna casserole "
+		WrongRoom room16Wrong4a = new WrongRoom("Fieri’s Grocery Store", "“You have 10 minutes to get the ingredients for a tuna casserole "
 				+ "with chocolate syrup. 3, 2, 1 Go!” – Guy Fieri\r\n"
 				+ "“What…. I need to…” – Falcone\r\n"
 				+ "“Go!” – Brad\r\n"
@@ -177,9 +177,9 @@ public class World {
 				+ " While rushing around the track you looked for suspicious signs but couldn’t find anything. \r\n"
 				+ "“Sorry Guy but I got lives to save. I didn’t notice any suspicious activity but I’ll have a backup "
 				+ "team check for confirmation. Goodbye” - Falcone\r\n"
-				+ "", -10);
+				+ "", -10, 0);
 		
-		Room room17Wrong4b = new Room("Bobby Flay’s Filet Place", "“Hey good friend. Anything I can do to help you, "
+		WrongRoom room17Wrong4b = new WrongRoom("Bobby Flay’s Filet Place", "“Hey good friend. Anything I can do to help you, "
 				+ "I noticed you’re busy on this new case with the green morphing dead bodies” – Bobby Flay\r\n"
 				+ "“I just need to examine your place for any suspicious activity. I think the clue on the last "
 				+ "body led me here” – Falcone\r\n"
@@ -187,21 +187,21 @@ public class World {
 				+ "“Let me cook you real quick” – Falcone\r\n"
 				+ "Having made a protein shake right before starting this whole journey, you beat bobby flay! He gifted "
 				+ "you a exquisite steak. (+10 HP)\r\n"
-				+ "", -10);
+				+ "", -10, 10);
 		
-		Room room18Body5 = new Room("Ramsay’s Restaurant", "“Gordon’s my buddy. I hope nothing happened to him.” Pick up your "
+		CorrectRoom room18Body5 = new CorrectRoom("Ramsay’s Restaurant", "“Gordon’s my buddy. I hope nothing happened to him.” Pick up your "
 				+ "phone and call him to empty the restaurant for a search. ", 100);
 		
-		Room room19Wrong5a = new Room("City Hall", "The body is not here. Go back.", -20);
+		WrongRoom room19Wrong5a = new WrongRoom("City Hall", "The body is not here. Go back.", -20, 0);
 		
-		Room room20Wrong5b = new Room("Public Square", "“I’d be really disappointed if the body were here. "
+		WrongRoom room20Wrong5b = new WrongRoom("Public Square", "“I’d be really disappointed if the body were here. "
 				+ "This is literally hiding in plain sight as the police station is right next to the public square."
 				+ " But I’m the detective for a reason so let’s investigate.” \r\n"
 				+ "\r\n"
 				+ "As expected, nothing to be seen. This was embarrassing clue analysis. This place is full of the homeless. \r\n"
-				+ "", -20);
+				+ "", -20, 0);
 		
-		Room room21Body6 = new Room("Jazz Club", "“We didn’t have to travel far for this one as it’s in this same rich part of the city.”\r\n"
+		CorrectRoom room21Body6 = new CorrectRoom("Jazz Club", "“We didn’t have to travel far for this one as it’s in this same rich part of the city.”\r\n"
 				+ " The Jazz Club is packed with men in suits and women in dresses. Everyone seems to be having a sophisticated conversation "
 				+ "while drinking coffee as they wait for the Louis Armstrong performance in 15 minutes. You look around for hints of green "
 				+ "blood as you walk through the club. You notice a small circular burn mark on the drum set on stage. You look closer and "
@@ -210,32 +210,32 @@ public class World {
 				+ "clearly, also contaminated with whatever is causing these transformations.”\r\n"
 				+ "", 100);
 		
-		Room room22Wrong6a = new Room("K’s Coffee Shop", "The body is not here.", -20);
+		WrongRoom room22Wrong6a = new WrongRoom("K’s Coffee Shop", "The body is not here.", -20, 0);
 		
-		Room room23Wrong6b = new Room("No’s Coffee Shop", "The body is not here.", -20);
+		WrongRoom room23Wrong6b = new WrongRoom("No’s Coffee Shop", "The body is not here.", -20, 0);
 		
-		Room room24Wrong6c = new Room("Ho’s Coffee Shop", "iThe body is not here.", -20);
+		WrongRoom room24Wrong6c = new WrongRoom("Ho’s Coffee Shop", "iThe body is not here.", -20, 0);
 		
-		Room room25Body7 = new Room("Po’s Coffee Shop", "The body is clearly visible through the tinted windows. "
+		CorrectRoom room25Body7 = new CorrectRoom("Po’s Coffee Shop", "The body is clearly visible through the tinted windows. "
 				+ "However, the coffee shop is closed due to the death of the owner – Highest. "
 				+ "You need to break into the shop. Maybe try shooting the lock. ", 100);
 		
-		Room room26Wrong7a = new Room("Planet Fitness", "“Man, idk what the hell you’re doin’ here! I’ve never seen "
+		WrongRoom room26Wrong7a = new WrongRoom("Planet Fitness", "“Man, idk what the hell you’re doin’ here! I’ve never seen "
 				+ "no one as fit in my life!” – CaseOh\r\n"
 				+ "“Have you seen suspicious activity anywhere” – Falcone\r\n"
 				+ "“Nothin’ other than the massive dookie I left on that toilet. "
 				+ "Them steakhouse burritos from Taco Bell were fire, had 20 of the thangs!” - CaseOh\r\n"
 				+ "\r\n"
 				+ "Case caused an earthquake as he walked away from you (-10 HP)\r\n"
-				+ "", -10);
+				+ "", -10, -10);
 		
-		Room room27Wrong7b = new Room("Yoga Studio", "“Am I stupid. There’s nothing here but an open "
+		WrongRoom room27Wrong7b = new WrongRoom("Yoga Studio", "“Am I stupid. There’s nothing here but an open "
 				+ "hall full of old ladies following this yoga routine to get their cardio in.” – Falcone\r\n"
 				+ "\r\n"
 				+ "You slapped yourself in the face too hard (-10HP)\r\n"
-				+ "", -10);
+				+ "", -10, -10);
 		
-		Room room28Body8 = new Room("Ancient Library", "You get a call from your assistant: “Mr. Falcone, I noticed "
+		CorrectRoom room28Body8 = new CorrectRoom("Ancient Library", "You get a call from your assistant: “Mr. Falcone, I noticed "
 				+ "a delayed output from the scanner. Just out of curiosity, sir, I did some digging on the final clue."
 				+ " I’m sure by now you’ve already figured out the location of the last body, but this information may help. "
 				+ "There’s this very ancient book called “Odd One Out” written by an old mathematician about his theory of prime "
@@ -285,9 +285,50 @@ public class World {
 		this.addRoom(room29);
 		
 		// Creating all the doors between the rooms.
-		this.createDoor()
+		//Rooms that are just part of the story before bodies begin.
+		this.createDoor(room1, "basement", room2);
+		this.createDoor(room2, "elevator", room3);
+		this.createDoor(room3, "helicopter", room4);
+		this.createDoor(room4, "audi", room5);
+		this.createDoor(room5, "clock", room6Body1);
 		
+		//Doors for Body 1
+		this.createDoor(room6Body1, "A", room7Wrong1a);
+		this.createDoor(room6Body1, "B", room8Wrong1b);
+		this.createDoor(room6Body1, "C", room9Body2);
+		//Doors for Body 2
+		this.createDoor(room9Body2, "A", room12Body3);
+		this.createDoor(room9Body2, "B", room10Wrong2a);
+		this.createDoor(room9Body2, "C", room11Wrong2b);
+		//Doors for Body 3
+		this.createDoor(room12Body3, "A", room15Body4);
+		this.createDoor(room12Body3, "B", room13Wrong3a);
+		this.createDoor(room12Body3, "C", room14Wrong3b);
+		//Doors for Body 4
+		this.createDoor(room15Body4, "A", room16Wrong4a);
+		this.createDoor(room15Body4, "B", room18Body5);
+		this.createDoor(room15Body4, "C", room17Wrong4b);
+		//Doors for Body 5
+		this.createDoor(room18Body5, "A", room19Wrong5a);
+		this.createDoor(room18Body5, "B", room20Wrong5b);
+		this.createDoor(room18Body5, "C", room21Body6);
+		//Doors for Body 6. This one has 4 choices
+		this.createDoor(room21Body6, "A", room22Wrong6a);
+		this.createDoor(room21Body6, "B", room25Body7);
+		this.createDoor(room21Body6, "C", room23Wrong6b);
+		this.createDoor(room21Body6, "D", room24Wrong6c);
+		//Doors for Body 7
+		this.createDoor(room25Body7, "A", room28Body8);
+		this.createDoor(room25Body7, "B", room26Wrong7a);
+		this.createDoor(room25Body7, "C", room27Wrong7b);
+		//Doors for Body 8. This one has 5 choices. It's the final room with a body
+		this.createDoor(room28Body8, "A", need to design room);
+		this.createDoor(room28Body8, "B", );
+		this.createDoor(room28Body8, "C", );
+		this.createDoor(room28Body8, "D", room29);
+		this.createDoor(room28Body8, "E", );
 		
+		//Doors for all wrong rooms.
 		
 		
 		

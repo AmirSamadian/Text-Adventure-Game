@@ -8,6 +8,24 @@ public class Player {
 	 * This is the player's current room
 	 */
 	private Room currentRoom;
+	/** This stores the room the player just came from. */
+	private Room previousRoom;
+	/** health keeps track of the players health and starts at 100. */
+	private int health = 100;
+
+	/**
+	 * @return the health
+	 */
+	public int getHealth() {
+		return health;
+	}
+
+	/**
+	 * @param health the health to set
+	 */
+	public void setHealth(int health) {
+		this.health = health;
+	}
 
 	/**
 	 * @param currentRoom
@@ -18,7 +36,7 @@ public class Player {
 	}
 	
 	/**
-	 * @return the currentRoom
+	 * @return the currentRoom 
 	 */
 	public Room getCurrentRoom() {
 		return currentRoom;

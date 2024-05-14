@@ -95,10 +95,11 @@ public class Game {
 				break;
 			case BACK:
 				Writer.println(CommandEnum.BACK.getText() + " is not implemented yet!");
+				printHelp();
 				break;
 		
 			default:
-				return wantToQuit;
+				Writer.println("That's not a valid command. Try again.");
 				
 		}
 		
@@ -125,24 +126,14 @@ public class Game {
 
 			// Try to leave current.
 			Door doorway = null;
-			if (direction.equals("north")) {
-				doorway = ryderFalcone.getCurrentRoom().northExit;
-			}
-			if (direction.equals("east")) {
-				doorway = ryderFalcone.getCurrentRoom().eastExit;
-			}
-			if (direction.equals("south")) {
-				doorway = ryderFalcone.getCurrentRoom().southExit;
-			}
-			if (direction.equals("west")) {
-				doorway = ryderFalcone.getCurrentRoom().westExit;
-			}
-
+			doorway = ryderFalcone.getCurrentRoom().getExit(direction);
+			
 			if (doorway == null) {
 				Writer.println("There is no door!");
 			} else {
 				Room newRoom = doorway.getDestination();
 				ryderFalcone.setCurrentRoom(newRoom);
+				score += newRoom.getPoints();
 				printLocationInformation();
 			}
 		}
