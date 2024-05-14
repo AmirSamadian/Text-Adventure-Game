@@ -8,7 +8,7 @@ public enum CommandEnum {
 	LOOK("look"), 
 	EXAMINE("examine");
 
-	/* text stores the string that would be entered by the person playing the game. */
+	/** text stores the string that would be entered by the person playing the game. */
 	private final String text;
 	
 	private CommandEnum(String text) {

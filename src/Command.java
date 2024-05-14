@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author Maria Jump
  * @version 2015.02.01
  *
- * Used with permission from Dr. Maria Jump at Northeastern University
+ * Used with permission from Dr. Maria Jump at Northeastern University.
  */
 
 public class Command {

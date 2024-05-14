@@ -48,6 +48,7 @@ public class Room {
 		this.name = name;
 		this.description = description;
 		this.points = points;
+		this.exits = new HashMap<String, Door>();
 		counter++;
 	}
 

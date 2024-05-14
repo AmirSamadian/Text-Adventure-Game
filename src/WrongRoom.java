@@ -15,6 +15,7 @@ public class WrongRoom extends Room{
 
 
 	/**
+	 * getter for the healthChange field.
 	 * @return the healthChange
 	 */
 	public int getHealthChange() {

@@ -47,7 +47,7 @@ public class CorrectRoom extends Room {
 	/* This is an overriden version of getExitStriing from the Room class. 
 	 * exit would be a direction string from the HashMap containing the doors. 
 	 * For these rooms, exit will always be a letter (A, B, C, D, or E). Most of the time it's 3 options. 
-	 * There's only 1 room with 4 and 1 room with 5
+	 * There's only 1 room with 4 and 1 room with 5.
 	 * */
 	public String getExitString() {
 		String exitMessage = "Where to go?  \r\n";

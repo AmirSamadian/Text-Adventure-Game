@@ -293,40 +293,41 @@ public class World {
 		this.createDoor(room5, "clock", room6Body1);
 		
 		//Doors for Body 1
-		this.createDoor(room6Body1, "A", room7Wrong1a);
-		this.createDoor(room6Body1, "B", room8Wrong1b);
-		this.createDoor(room6Body1, "C", room9Body2);
+		this.createDoor(room6Body1, "a", room7Wrong1a);
+		this.createDoor(room6Body1, "b", room8Wrong1b);
+		this.createDoor(room6Body1, "c", room9Body2);
 		//Doors for Body 2
-		this.createDoor(room9Body2, "A", room12Body3);
-		this.createDoor(room9Body2, "B", room10Wrong2a);
-		this.createDoor(room9Body2, "C", room11Wrong2b);
+		this.createDoor(room9Body2, "a", room12Body3);
+		this.createDoor(room9Body2, "b", room10Wrong2a);
+		this.createDoor(room9Body2, "c", room11Wrong2b);
 		//Doors for Body 3
-		this.createDoor(room12Body3, "A", room15Body4);
-		this.createDoor(room12Body3, "B", room13Wrong3a);
-		this.createDoor(room12Body3, "C", room14Wrong3b);
+		this.createDoor(room12Body3, "a", room15Body4);
+		this.createDoor(room12Body3, "b", room13Wrong3a);
+		this.createDoor(room12Body3, "c", room14Wrong3b);
 		//Doors for Body 4
-		this.createDoor(room15Body4, "A", room16Wrong4a);
-		this.createDoor(room15Body4, "B", room18Body5);
-		this.createDoor(room15Body4, "C", room17Wrong4b);
+		this.createDoor(room15Body4, "a", room16Wrong4a);
+		this.createDoor(room15Body4, "b", room18Body5);
+		this.createDoor(room15Body4, "c", room17Wrong4b);
 		//Doors for Body 5
-		this.createDoor(room18Body5, "A", room19Wrong5a);
-		this.createDoor(room18Body5, "B", room20Wrong5b);
-		this.createDoor(room18Body5, "C", room21Body6);
+		this.createDoor(room18Body5, "a", room19Wrong5a);
+		this.createDoor(room18Body5, "b", room20Wrong5b);
+		this.createDoor(room18Body5, "c", room21Body6);
 		//Doors for Body 6. This one has 4 choices
-		this.createDoor(room21Body6, "A", room22Wrong6a);
-		this.createDoor(room21Body6, "B", room25Body7);
-		this.createDoor(room21Body6, "C", room23Wrong6b);
-		this.createDoor(room21Body6, "D", room24Wrong6c);
+		this.createDoor(room21Body6, "a", room22Wrong6a);
+		this.createDoor(room21Body6, "b", room25Body7);
+		this.createDoor(room21Body6, "c", room23Wrong6b);
+		this.createDoor(room21Body6, "d", room24Wrong6c);
 		//Doors for Body 7
-		this.createDoor(room25Body7, "A", room28Body8);
-		this.createDoor(room25Body7, "B", room26Wrong7a);
-		this.createDoor(room25Body7, "C", room27Wrong7b);
+		this.createDoor(room25Body7, "a", room28Body8);
+		this.createDoor(room25Body7, "b", room26Wrong7a);
+		this.createDoor(room25Body7, "c", room27Wrong7b);
 		//Doors for Body 8. This one has 5 choices. It's the final room with a body
-		this.createDoor(room28Body8, "A", need to design room);
-		this.createDoor(room28Body8, "B", );
-		this.createDoor(room28Body8, "C", );
-		this.createDoor(room28Body8, "D", room29);
-		this.createDoor(room28Body8, "E", );
+		/*
+		 * this.createDoor(room28Body8, "A", need to design room);
+		 * this.createDoor(room28Body8, "B", ); this.createDoor(room28Body8, "C", );
+		 * this.createDoor(room28Body8, "D", room29); this.createDoor(room28Body8, "E",
+		 * );
+		 */
 		
 		//Doors for all wrong rooms.
 		

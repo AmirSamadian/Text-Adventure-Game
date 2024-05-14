@@ -76,11 +76,17 @@ public class Game {
 	private boolean processCommand(Command command) {
 		boolean wantToQuit = false;
 
+		if (command.isUnknown()) {
+			Writer.println("That's not a valid command. Try again.");
+		}
 		
-		switch (command.getCommandWord()) {
-		
+		else {
+			
+			switch (command.getCommandWord()) {
+			
 			case QUIT:
 				wantToQuit = quit(command);
+				break;
 			case HELP:
 				printHelp();
 				break;
@@ -94,15 +100,17 @@ public class Game {
 				status();
 				break;
 			case BACK:
-				Writer.println(CommandEnum.BACK.getText() + " is not implemented yet!");
-				printHelp();
+				back();
 				break;
 		
 			default:
-				Writer.println("That's not a valid command. Try again.");
+				Writer.println("Sorry, this command is not implemented yet.");
 				
 		}
 		
+			
+		}
+
 		return wantToQuit;
 	}
 
@@ -133,6 +141,7 @@ public class Game {
 			} else {
 				Room newRoom = doorway.getDestination();
 				ryderFalcone.setCurrentRoom(newRoom);
+				//This is where the score is updated.
 				score += newRoom.getPoints();
 				printLocationInformation();
 			}
@@ -155,6 +164,16 @@ public class Game {
 		
 	}
 	
+	private void back() {
+		Room prev = ryderFalcone.getPreviousRoom();
+		if (prev != null) {
+			ryderFalcone.setCurrentRoom(prev);
+			printLocationInformation();
+		}
+		else {
+			Writer.println("You can't go back!");
+		}
+	}
 	
 	/**
 	 * Print out the closing message for the player.

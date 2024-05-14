@@ -20,7 +20,7 @@ import javax.swing.text.StyleConstants;
  * @author Maria Jump
  * @version 2016-12-18
  *
- * Used with permission from Dr. Maria Jump at Northeastern University
+ * Used with permission from Dr. Maria Jump at Northeastern University.
  */
 public class Writer {
 

@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author Maria Jump
  * @version 2015.02.01
  *
- * Used with permission from Dr. Maria Jump at Northeastern University
+ * Used with permission from Dr. Maria Jump at Northeastern University.
  */
 
 public class CommandWords {
@@ -25,7 +25,7 @@ public class CommandWords {
 			validCommands.put(command.getText(), command);
 		}
 	} 
-
+ 
 	/** 
 	 * Check whether a given String is a valid command word.
 	 *

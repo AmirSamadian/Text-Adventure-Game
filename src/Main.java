@@ -111,7 +111,7 @@ public class Main extends JFrame implements ActionListener {
 		game = new Game();
 		game.play();
 	}
-
+ 
 	/**
 	 * Default action listener.
 	 *

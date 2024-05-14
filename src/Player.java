@@ -44,9 +44,26 @@ public class Player {
 
 	/**
 	 * @param currentRoom the currentRoom to set
+	 * 
 	 */
 	public void setCurrentRoom(Room currentRoom) {
+		this.previousRoom = this.currentRoom;
 		this.currentRoom = currentRoom;
+	}
+
+	
+	/**
+	 * @return the previousRoom
+	 */
+	public Room getPreviousRoom() {
+		return previousRoom;
+	}
+
+	/**
+	 * @param previousRoom the previousRoom to set
+	 */
+	public void setPreviousRoom(Room previousRoom) {
+		this.previousRoom = previousRoom;
 	}
 	
 
