@@ -21,7 +21,7 @@ public class Room {
 	private String name;
 	/** The description of this room. */
 	private String description;
-	/** This stores the number of points someone gets for entering this room */
+	/** This stores the number of points someone gets for entering this room. */
 	private int points;
 	
 	

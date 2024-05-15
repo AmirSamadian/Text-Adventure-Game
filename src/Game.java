@@ -189,11 +189,15 @@ public class Game {
 	 * message and a list of the command words.
 	 */
 	private void printHelp() {
-		Writer.println("You are lost. You are alone. You wander");
-		Writer.println("around at the university.");
-		Writer.println();
-		Writer.println("Your command words are:");
-		Writer.println("   go quit help");
+		Writer.println("I see you're confused. This is normal for a detective. Maybe this will help: ");
+		Writer.println("Here's a list of all available commands: \r\n");
+		
+		String message = "";
+		CommandEnum[] list = CommandEnum.values();
+		for (CommandEnum command : list) {
+			message += command.getText() + "  ";
+		}
+		Writer.println(message);
 	}
 
 	/**
