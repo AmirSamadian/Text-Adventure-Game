@@ -17,9 +17,9 @@ import java.util.Scanner;
  *
  * @author Maria Jump
  * @version 2017.12.18
- *
+ * 
  * Used with permission from Dr. Maria Jump at Northeastern University
- */
+ */ 
 public class Reader {
 	/** The source of command input. */
 	private static Scanner reader;
@@ -54,7 +54,7 @@ public class Reader {
             	while(tokenizer.hasNext()) {
             		restOfLine.add(tokenizer.next());
             	}
-            }
+            } 
         }
         tokenizer.close();
 

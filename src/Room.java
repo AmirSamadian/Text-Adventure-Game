@@ -23,10 +23,14 @@ public class Room {
 	private String description;
 	/** This stores the number of points someone gets for entering this room. */
 	private int points;
+	/** healthChange contains the amount of health that a Room will add or subtract from the player's health. */
+	protected int healthChange;
 	
 	
 	/** This HashMap maps a string to a door that will be an exit of a room. */
 	protected HashMap<String,Door> exits;
+	/** This HashMap maps a string to an Item. Collection of items stored in this room. */
+	protected HashMap<String,Item> items;
 
 	/**
 	 * Static initializer.
@@ -49,6 +53,7 @@ public class Room {
 		this.description = description;
 		this.points = points;
 		this.exits = new HashMap<String, Door>();
+		this.items = new HashMap<String, Item>();
 		counter++;
 	}
 
@@ -78,6 +83,20 @@ public class Room {
 		return counter;
 		
 	}
+	
+	/**
+	 * @return the healthChange
+	 */
+	public int getHealthChange() {
+		return healthChange;
+	}
+
+	/**
+	 * @param healthChange the healthChange to set
+	 */
+	public void setHealthChange(int healthChange) {
+		this.healthChange = healthChange;
+	}
 
 	/**
 	 * getter for the points variable. Also makes sure that you only get points the first time you enter a room. If second time, gives 0.
@@ -103,15 +122,44 @@ public class Room {
 		this.points = points;
 	}
 	
+	/**
+	* adds an item to the items hashmap.
+	*
+	* @param itemName The name of the item.
+	* @param item The item that has that name that we're putting in the hashmap.
+	*/
+	public void addItem(String itemName, Item item) {
+		items.put(itemName, item);
+	}
+	
+	/**
+	* Gets an item from the room with the name that was passed to the method.
+	* @param itemName The name of the item.
+	* @return The item with that name.
+	*/
+	public Item getItem(String itemName) {
+		return items.get(itemName);
+	}
+	
+	/**
+	* removes the key, value pair associated with the item whose name is itemName.
+	* @param itemName The name of the item we want to remove.
+	* @return The item that we are removing. Null if no mapping to that key.
+	*/
+	public Item removeItem(String itemName) {
+		return items.remove(itemName);
+			
+	}
+	
 	
 	/**
 	* Defines an exit from this room.
 	*
 	* @param direction The direction of the exit.
-	* @param neighbor The door in the given direction.
+	* @param door The door in the given direction.
 	*/
-	public void setExit(String direction, Door neighbor) {
-		exits.put(direction, neighbor);
+	public void setExit(String direction, Door door) {
+		exits.put(direction, door);
 	}
 	
 	/**
@@ -127,14 +175,14 @@ public class Room {
 	/**
 	* Returns a string description of a Room's exits.
 	* For example,
-	* Exits: 
+	* Where to go?
 	* Choice A: Zoo
 	* Choice B: Sewer 
 	* Choice C: Casino
 	*
 	* @return A string showing the possible exits of a room.
 	*/
-	public String getExitString() {
+	protected String getExitString() {
 		String exitMessage = "Where to go?  \r\n";
 		for (String currentDirection : exits.keySet()) {
 			exitMessage += currentDirection + " \r\n";
@@ -143,6 +191,28 @@ public class Room {
 		return exitMessage;
 	}
 	
+	/**
+	* Returns a string description of the list  of items in a room.
+	* For example,
+	* This room contains the following:
+	* couch
+	* body
+	* necklace
+	*
+	* @return A string showing the list of items in the room.
+	*/
+	protected String getItemsInRoomString() {
+		String itemsMessage = "This room contains the following: \r\n";
+		if (items.isEmpty()) {
+			itemsMessage = "There are no items in this room. \r\n \r\n";
+		} 
+		else {
+			for (String item : items.keySet()) {
+				itemsMessage += item + " \r\n";
+			}
+		}	
+		return itemsMessage;
+	}
 	
 	/**
 	* Returns a string description including all the details of a Room.
@@ -156,7 +226,7 @@ public class Room {
 	public String toString() {
 		
 		String message = name + ": " + "\r\n"
-				+ description + "\r\n" + getExitString();
+				+ description + "\r\n" + getItemsInRoomString() + "\r\n" + getExitString();
 		
 		return message;
 		

@@ -1,10 +1,6 @@
 
 public class WrongRoom extends Room{
 	
-	/** damage contains the amount of health that a WrongRoom will subtract from the player's health. */
-	private int healthChange;
-
-	
 	/*
 	 * Constructor for the WrongRoom
 	 */
@@ -12,24 +8,6 @@ public class WrongRoom extends Room{
 		super(name, description, points);
 		this.healthChange = healthChange;
 	}
-
-
-	/**
-	 * getter for the healthChange field.
-	 * @return the healthChange
-	 */
-	public int getHealthChange() {
-		return healthChange;
-	}
-
-
-	/**
-	 * @param healthChange the healthChange to set
-	 */
-	public void setHealthChange(int healthChange) {
-		this.healthChange = healthChange;
-	}
-	
 	
 	/*
 	 * Overriden version of getexitString from Room. 

@@ -13,7 +13,7 @@
  *
  * Used with permission from Dr. Maria Jump at Northeastern University.
  */
-public class Door {
+public class Door {  
 
 	/** The room that this door leads to. */
 	private Room destination;

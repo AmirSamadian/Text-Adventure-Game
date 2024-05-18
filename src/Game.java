@@ -102,15 +102,25 @@ public class Game {
 			case BACK:
 				back();
 				break;
-		
+			case EXAMINE:
+				examine(command);
+				break;
+			case TAKE:
+				take(command);
+				break;
+			case DROP:
+				drop(command);
+				break;
+			case INVENTORY:
+				displayInventory();
+				break;
+				
+				
 			default:
 				Writer.println("Sorry, this command is not implemented yet.");
 				
+			}
 		}
-		
-			
-		}
-
 		return wantToQuit;
 	}
 
@@ -141,8 +151,11 @@ public class Game {
 			} else {
 				Room newRoom = doorway.getDestination();
 				ryderFalcone.setCurrentRoom(newRoom);
-				//This is where the score is updated.
-				score += newRoom.getPoints();
+				score += newRoom.getPoints(); 	//This is where the score is updated.
+				
+				int newHealth = ryderFalcone.getHealth() + newRoom.getHealthChange();  //The health changes for wrongRooms will be negative so should use plus.
+				ryderFalcone.setHealth(newHealth);
+				
 				printLocationInformation();
 			}
 		}
@@ -150,7 +163,7 @@ public class Game {
 
 	
 	/**
-	 * Prints out the location information.
+	 * Prints out the locations description.
 	 */
 	private void look() {
 		printLocationInformation();
@@ -174,6 +187,88 @@ public class Game {
 			Writer.println("You can't go back!");
 		}
 	}
+	
+	
+	/** 
+	 * 
+	 * @param command is the full command that the player typed in. First word should be the drop commandEnum. 
+	 * */
+	private void drop(Command command) {
+	    if (!command.hasSecondWord()) {
+	        // If there is no second word, we don't know what to drop so we display the message.
+	        Writer.println("What do you want to drop?");
+	    } else {
+		    String itemName = command.getRestOfLine(); //The rest of the line in the command should be the item name.
+	        Item item = ryderFalcone.getItem(itemName);  // Retrieve the item from the player's inventory
+
+	        if (item == null) {
+	            Writer.println("You don't have " + itemName + " in your inventory.");
+	        } else {
+	            ryderFalcone.removeItem(itemName);   // Remove the item from inventory. removeItem handles weight.
+	            ryderFalcone.getCurrentRoom().addItem(itemName, item);  // Add the item to the current room
+	            Writer.println("You have successfully dropped the " + itemName + " from your inventory. The item is now in the room.");
+	        }
+	    }
+	}
+	
+	
+	/** 
+	 * Note: The cases from the GWT that deal with weight capacity are handled by the addItemToInventory method.
+	 * @param command is the full command that the player typed in. First word should be the take commandEnum. 
+	 * */
+	private void take(Command command) {	    
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to drop so we display the message.
+			Writer.println("What do you want to take?");
+	    } else {
+			String itemName = command.getRestOfLine(); //The rest of the line in the command should be the item name.
+	        Item item = ryderFalcone.getCurrentRoom().getItem(itemName);  // Retrieve the item from the room.
+
+	        if (item == null) {
+	            Writer.println(itemName + " isn't in this room.");
+	        } else {
+	        	//This method handles the case where the item makes it so weight limit is exceeded.
+	        	//It displays a message for when weight is exceeded. A different message if the item was successfully added. Message displaying done by addItemToInventory
+	        	//It also updates the curent weight of the inventory (carryWeight)
+	            if (ryderFalcone.addItemToInventory(item)) { //still calls the function but also checks if true 
+	            	ryderFalcone.getCurrentRoom().removeItem(itemName);	//removes the item from the room.
+	            }
+	        }
+	        
+	    }
+	}
+
+	
+	private void examine(Command command) {    
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to drop so we display the message.
+			Writer.println("What do you want to examine?");
+		} else {
+			String itemName = command.getRestOfLine(); //The rest of the line in the command should be the item name.
+			// If the item we want to examine is in the room, retrieve the item from the room.
+			Item roomItem = ryderFalcone.getCurrentRoom().getItem(itemName);  
+			// If the item we want to examine is in the playe's inventory, retrieve the item from the inventory.
+			Item inventoryItem = ryderFalcone.getItem(itemName);  
+			
+			if ((roomItem == null) && (inventoryItem == null)) {
+	            Writer.println(itemName + " isn't in this room or in you inventory.");
+			} 
+			else if (roomItem != null) { 		//The item is in the room
+				Writer.println(roomItem.toString()); 
+			}
+			else {								//The item is in the inventory
+				Writer.println(inventoryItem.toString());
+				Writer.println("By the way, this item is in your inventory.");
+			}
+		}
+	}
+	
+	/** Displays the list of items in the player's inventory by calling the getItemsInInventoryString method from Player class. */
+	private void displayInventory() {
+		Writer.println(ryderFalcone.getItemsInInventoryString());
+	}
+	
+	
 	
 	/**
 	 * Print out the closing message for the player.

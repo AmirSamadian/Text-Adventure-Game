@@ -1,5 +1,5 @@
 
-public enum CommandEnum {
+public enum CommandEnum { 
 	/** Instance of type CommandEnum representing the quit command. */
 	QUIT("quit"),
 	/** Instance of type CommandEnum representing the help command. */
@@ -13,7 +13,13 @@ public enum CommandEnum {
 	/** Instance of type CommandEnum representing the look command. */
 	LOOK("look"), 
 	/** Instance of type CommandEnum representing the examine command. */
-	EXAMINE("examine");
+	EXAMINE("examine"),
+	/** Instance of type CommandEnum representing the take command. */
+	TAKE("take"),
+	/** Instance of type CommandEnum representing the drop command. */
+	DROP("drop"),
+	/** Instance of type CommandEnum representing the inventory command. */
+	INVENTORY("inventory");
 
 	/** text stores the string that would be entered by the person playing the game. */
 	private final String text;

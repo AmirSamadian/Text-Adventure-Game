@@ -1,33 +1,15 @@
 
 public class CorrectRoom extends Room {
 
+	/** Contains the text that will be displayed when the scanner item is used. */
+	private String scannerHint;
+	
 	public CorrectRoom(String name, String description, int points) {
 		super(name, description, points);
+		this.healthChange = 0;
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * Contains the text that will be displayed when the examine command is entered.
-	 */
-	private String examineDescription;
-	/** Contains the text that will be displayed when the scanner item is used. */
-	private String scannerHint;
-
-
-	/**
-	 * @return the examineDescription
-	 */
-	public String getExamineDescription() {
-		return examineDescription;
-	}
-
-	/**
-	 * @param examineDescription the examineDescription to set Setter for
-	 *                           examineDescription
-	 */
-	public void setExamineDescription(String examineDescription) {
-		this.examineDescription = examineDescription;
-	}
 
 	/**
 	 * @return the scannerHint

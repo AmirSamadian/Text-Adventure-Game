@@ -53,7 +53,7 @@ public class World {
 
 
 	/**
-	* Helper method for creating doors between rooms.
+	* Helper method for creating doors between rooms. This is called in createRooms
 	*
 	* @param from The room where the door originates.
 	* @param direction The direction of the door in the from room.
@@ -62,6 +62,20 @@ public class World {
 	private void createDoor(Room from, String direction, Room to) {
 		Door door = new Door(to);
 		from.setExit(direction, door);
+	}
+	
+	/**
+	* Helper method for creating and adding items into a room. This is called in createRooms
+	*
+	* @param room The room that we want to put an item into.
+	* @param itemName The name of the item that we want to add.
+	* @param description The description of the item we're adding.
+	* @param pointValue The number of points the item has.
+	* @param weight The weight of the item.
+	*/
+	private void createItems(Room room, String itemName, String description, int pointValue, double weight) {
+		Item item = new Item(itemName, description, pointValue, weight);
+		room.addItem(itemName, item);
 	}
 	
 	
@@ -77,10 +91,10 @@ public class World {
 				+ "is reporting a weirdly shaped body tied to the city’s large clock tower. He immediately gets a call from "
 				+ "the chief of police to come to the police station as they have more info. \r\n"
 				+ "\r\n"
-				+ "Go to basement to get weapons and items\r\n"
+				+ "Go to basement to get weapons and necessary items\r\n"
 				+ "", 0);
 		
-		Room room2 = new Room("Ryder Falcone’s Mansion’s – Weapon Armory in Basement", "We must prepare for what is to come, "
+		Room room2 = new Room("Ryder Falcone’s Mansion’s – Weapon Armory in Basement", "You must prepare for what is to come, "
 				+ "make your choice for what weapon or weapons you want to carry. You may be tempted to grab it all, but beware, we can’t "
 				+ "carry more than 50 lbs so make sure to leave enough room to carry other things. Also, it’s a disadvantage to carry more than 15 lbs "
 				+ "during battle. Anyway, here are your options:\r\n"
@@ -91,7 +105,7 @@ public class World {
 				+ "-	CR-56 Amax – 25 lbs \r\n"
 				+ "", 0);
 		
-		Room room3 = new Room("Mansion Helipad", "Falcone walks toward the helicopter as wind blows in his face and enters the Helicopter to head to police station.", 0);
+		Room room3 = new Room("Mansion Helipad", "Wind blows in your face as you walk toward the helicopter. Let’s go to the police station to get more information.", 0);
 		
 		Room room4 = new Room("Police Station Helipad", "Officer Bob Marshall walks toward you calmly as wind from the chopper blows in his face. "
 				+ "As you both walk inside, he says: 'Looks like someone is looking to challenge you. We don’t know who, but the lunatic is obsessed "
@@ -124,7 +138,10 @@ public class World {
 		CorrectRoom room9Body2 = new CorrectRoom("Mulberry Apartment Rooftop", "In the slums lies a 20 floor, damaged apartment complex "
 				+ "with a large LED sign that says Mulberry. \r\n"
 				+ "“Based on the clue, I assume the body is on the roof, so I’ll begin examining from top down.”\r\n"
-				+ "", 100);
+				+ "You are at the roof. There are AC units and antennas everywhere. After a few minutes of zigzagging "
+				+ "through the AC units and antennas, you notice a green liquid dripping from an AC unit. "
+				+ "We need to reveal the body from under the AC unit. “There it is. The body looks just like the last: "
+				+ "sick, green, and morphing. It has the same cut marks and bubbles. This seems like a common theme.” \r\n", 100);
 
 				
 		WrongRoom room10Wrong2a = new WrongRoom("Night Club", "“This is the busiest I’ve ever seen this place. "
@@ -166,7 +183,7 @@ public class World {
 		
 		CorrectRoom room15Body4 = new CorrectRoom("Nightfall Bridge", "Falcone hopped in the R8 and drove over the Nightfall Bridge. "
 				+ "You weren’t able to find anything suspicious on the top of the bridge. You decide to search under the "
-				+ "bridge before leaving. “Good thing I checked down here…Never mind… this is disgusting! The body is hanging "
+				+ "bridge before leaving. “Good thing I checked down here…Never mind… this is pure gore! The body is hanging "
 				+ "from a hook connected to the bottom of the bridge. Let me lower this thing to take a closer look.”", 100);
 		
 		WrongRoom room16Wrong4a = new WrongRoom("Fieri’s Grocery Store", "“You have 10 minutes to get the ingredients for a tuna casserole "
@@ -250,8 +267,14 @@ public class World {
 				+ "take you there, you just have to pick the correct address.\r\n"
 				+ "", 100);
 		
-		Room room29 = new Room("Abandoned Building", "in Dr Sliva's office.", 0);
-	
+		Room room29 = new Room("- 843.91 i-hat, - 665.74 j-hat", "in Dr Sliva's office.", 100);
+		WrongRoom room30Wrong8a = new WrongRoom("143.21 i-hat, 265.34 j-hat","Certainly not where I have to be, "
+				+ "this is just a cornfield with no possible secret entrances.", -10, -10);
+		WrongRoom room31Wrong8b = new WrongRoom("21.21 i-hat, - 2121.21 j-hat","Certainly not where I have to be, "
+				+ "this is just a children’s playground.", -10, -10);
+		WrongRoom room32Wrong8c = new WrongRoom("- 433.94 i-hat, 109.76 j-hat","Certainly not where I have to be, "
+				+ "this is just a tennis court.", -10, -10);
+		WrongRoom room33Wrong8d = new WrongRoom("what is going on!","Focus on the signs and the scanner hint", 2, 0);
 		
 		// Adding all the rooms to the world.
 		this.addRoom(room1);
@@ -283,55 +306,159 @@ public class World {
 		this.addRoom(room27Wrong7b);
 		this.addRoom(room28Body8);
 		this.addRoom(room29);
+		this.addRoom(room30Wrong8a);
+		this.addRoom(room31Wrong8b);
+		this.addRoom(room32Wrong8c);
+		this.addRoom(room33Wrong8d);
 		
 		// Creating all the doors between the rooms.
 		//Rooms that are just part of the story before bodies begin.
 		this.createDoor(room1, "basement", room2);
+		
 		this.createDoor(room2, "elevator", room3);
+		this.createDoor(room2, "kitchen", room1);
+		
 		this.createDoor(room3, "helicopter", room4);
+		this.createDoor(room3, "basement", room2);
+		
 		this.createDoor(room4, "audi", room5);
+		
 		this.createDoor(room5, "clock", room6Body1);
+		this.createDoor(room5, "home", room1);
 		
 		//Doors for Body 1
 		this.createDoor(room6Body1, "a", room7Wrong1a);
 		this.createDoor(room6Body1, "b", room8Wrong1b);
 		this.createDoor(room6Body1, "c", room9Body2);
+		this.createDoor(room6Body1, "audi", room5);
 		//Doors for Body 2
 		this.createDoor(room9Body2, "a", room12Body3);
 		this.createDoor(room9Body2, "b", room10Wrong2a);
 		this.createDoor(room9Body2, "c", room11Wrong2b);
+		this.createDoor(room9Body2, "prev body", room6Body1);
 		//Doors for Body 3
 		this.createDoor(room12Body3, "a", room15Body4);
 		this.createDoor(room12Body3, "b", room13Wrong3a);
 		this.createDoor(room12Body3, "c", room14Wrong3b);
+		this.createDoor(room12Body3, "prev body", room9Body2);
 		//Doors for Body 4
 		this.createDoor(room15Body4, "a", room16Wrong4a);
 		this.createDoor(room15Body4, "b", room18Body5);
 		this.createDoor(room15Body4, "c", room17Wrong4b);
+		this.createDoor(room15Body4, "prev body", room12Body3);
 		//Doors for Body 5
 		this.createDoor(room18Body5, "a", room19Wrong5a);
 		this.createDoor(room18Body5, "b", room20Wrong5b);
 		this.createDoor(room18Body5, "c", room21Body6);
+		this.createDoor(room18Body5, "prev body", room15Body4);
 		//Doors for Body 6. This one has 4 choices
 		this.createDoor(room21Body6, "a", room22Wrong6a);
 		this.createDoor(room21Body6, "b", room25Body7);
 		this.createDoor(room21Body6, "c", room23Wrong6b);
 		this.createDoor(room21Body6, "d", room24Wrong6c);
+		this.createDoor(room21Body6, "prev body", room18Body5);
 		//Doors for Body 7
 		this.createDoor(room25Body7, "a", room28Body8);
-		this.createDoor(room25Body7, "b", room26Wrong7a);
+		this.createDoor(room25Body7, "b", room26Wrong7a); 
 		this.createDoor(room25Body7, "c", room27Wrong7b);
+		this.createDoor(room25Body7, "prev body", room21Body6);
 		//Doors for Body 8. This one has 5 choices. It's the final room with a body
-		/*
-		 * this.createDoor(room28Body8, "A", need to design room);
-		 * this.createDoor(room28Body8, "B", ); this.createDoor(room28Body8, "C", );
-		 * this.createDoor(room28Body8, "D", room29); this.createDoor(room28Body8, "E",
-		 * );
-		 */
+	
+		this.createDoor(room28Body8, "a", room30Wrong8a);
+		this.createDoor(room28Body8, "b", room31Wrong8b); 
+		this.createDoor(room28Body8, "c", room32Wrong8c);
+		this.createDoor(room28Body8, "d", room29); 
+		this.createDoor(room28Body8, "e", room33Wrong8d);
+		this.createDoor(room28Body8, "prev body", room25Body7);
 		
-		//Doors for all wrong rooms.
+		//Wrong rooms don't have any doors other than the one door that got the player to that room. 
+		//When a player enters a wrong room, they must use back command to go back.
 		
 		
+		//this.createItems(room5, "cologne", "Wood", 0, 1); //template
+		
+		//Creating all the items that go into each room.
+		this.createItems(room1, "phone", "You can make important calls with this that will give important information", 5, 1);
+		this.createItems(room1, "protein shake", "This is just a chocolate-flavored protein shaken", 5, 1);
+		this.createItems(room1, "tv", "The news is showing a weirdly shaped green dead body hanging on the clock tower", 0, 60);
+		this.createItems(room1, "couch", "Black, leather, L-shaped couch by the fireplace", 0, 400);
+		
+		this.createItems(room2, "scanner", "Falcone built this device himself. It can provide useful information "
+				+ "from the slightest of hints and marks left behind. It can analyze every language on earth in "
+				+ "addition to all sorts of code", 1, 2);
+		this.createItems(room2, "falcone’s daily", "Loaded, silenced 9mm Pistol", 0, 3);
+		this.createItems(room2, "escrima sticks", "Weapon that is two, short electrically charged bars. Useful for acrobatic battle", 0, 6);
+		this.createItems(room2, "rpg", "makes things boom", 0, 35);
+		this.createItems(room2, "flash grenade", "Blinds enemies. Can blind a whole group at once", 0, 2);
+		this.createItems(room2, "cr-56 amax ", "Heavy Assault Rifle", 0, 25);
+		
+		this.createItems(room5, "protective gear", "This is good precaution for examining the bodies", 2, 4);
+		this.createItems(room5, "cologne", "Tom Ford Oud Wood", 0, 0.5);
+		
+		this.createItems(room6Body1,"body 1" ,"The person is wearing a T-shirt and shorts. \r\n"
+				+ " Bubbles are visible. There’s green blood pouring out of the bubbles.\r\n"
+				+ "The cut marks contain binary code written in minuscule print. Maybe try using "
+				+ "the scanner to decode the marks.\r\n", 0, 145);
+		this.createItems(room6Body1, "lion sculptures", "Nothing special here, just decoration", 0, 100);
+		this.createItems(room6Body1, "paper guide", "What are you thinking, stop wasting time. It’s just a guide for tourists", 0, 0.5);
+		this.createItems(room6Body1, "tarp", "not bad thinking, there may have been a clue here but there’s nothing but green blood on it", 0, 1);
+	
+		this.createItems(room7Wrong1a, "sandwich", "bacon egg and cheese", 0, 2);
+		
+		this.createItems(room8Wrong1b, "needle", "Aaron’s tattoo needle", 0, 0.5);
+
+		this.createItems(room9Body2, "body 2", "The person is old, overweight, and is wearing a polo and suit pants\r\n"
+				+ "The person’s wallet is empty\r\n", 0, 300);
+		this.createItems(room9Body2, "antenna", "These antennas seem normal", 0, 15);
+		this.createItems(room9Body2, "pigeon", "You approached the pigeon, and it flew away. How embarrassing.", 0, 0.5);
+		
+		this.createItems(room10Wrong2a, "tequilla", "You can’t drink on the job. Put it down", 0, 0.1);
+		this.createItems(room10Wrong2a, "beer", "You can’t drink on the job. Put it down", 0, 1);
+		
+		this.createItems(room11Wrong2b, "vodka", "You can’t drink on the job. Put it down", 0, 0.1);
+		
+		this.createItems(room12Body3, "body 3", "The woman has a necklace with the letter N on it.", 0, 110);
+		this.createItems(room12Body3, "bucket", "Janitor’s bucket", 0, 14);
+		this.createItems(room12Body3, "mop", "it’s a wet mop", 0, 4);
+		
+		this.createItems(room13Wrong3a, "poo", "You’re disgusting, why are you touching this", -2, 0.1);
+		
+		this.createItems(room14Wrong3b, "poop", "Damn it! I got poo all over my face.", 0, 0.1);
+		
+		this.createItems(room15Body4, "body 4", "After lowering the body from the hook, you notice that the person "
+				+ "is a man in an elegant, collared shirt with the buttons undone and is wearing a Hublot Watch. ", 0, 165);
+		this.createItems(room15Body4, "rocks", "There’s a variety of rocks on the bed of the bridge", 0, 1);
+		this.createItems(room15Body4, "hook", "The hook has no marks on it leading to the villain", 0, 3);
+		
+		this.createItems(room16Wrong4a, "tuna", "can of tuna", 0, 0.2);
+		this.createItems(room16Wrong4a, "syrup", "chocolate syrup", 0, 0.1);
+		this.createItems(room16Wrong4a, "shopping cart", "Guy Fieri’s shopping cart", 0, 30);
+		
+		this.createItems(room17Wrong4b, "blender", "you used this to make the shake", 0, 3);
+		this.createItems(room17Wrong4b, "plate", "empty plate for the stake you just ate", 0, 1);
+		
+		this.createItems(room18Body5, "body 5" ,"Stuck to Gordon’s green, transforming body is an image of a man in an all-black suit "
+				+ "and a top hat drinking coffee.", 0, 185);
+		this.createItems(room18Body5, "sandwich", "idiot sandwich", 1, 2);
+		this.createItems(room18Body5, "spatula", "", 0, 1);
+		this.createItems(room18Body5, "stove", "Gordon’s special stove", 0, 100);
+		
+		this.createItems(room21Body6, "body 6", "This is a coffee shop owner. His name is Highest.", 0, 130);
+		this.createItems(room21Body6, "drums", "This is the drum that had the green mark", 0, 80);
+		this.createItems(room21Body6, "saxophone", "", 0, 12);
+		this.createItems(room21Body6, "trumpet", "", 0, 7);
+		
+		this.createItems(room25Body7, "body 7", "The person is so far into the transformation that no facial or "
+				+ "body features can be a clue. This new being doesn’t even look like an animal. It holds the shape"
+				+ " of a human but has features of an unknown creature. The skin is FULLY covered in numbers as if "
+				+ "someone wrote an essay with a precision knife. ", 0, 90);
+		this.createItems(room25Body7, "coffee machine", "", 0, 20);
+		this.createItems(room25Body7, "mugs", "", 0, 12);
+		this.createItems(room25Body7, "tv", "It’s just playing some Louis Armstrong music", 0, 50);
+		
+		this.createItems(room28Body8, "body 8", "On the person’s body it says: For every wrong guess,"
+				+ " a building gets blown up, GREEN!", 0, 170);
 		
 	}
+	
 }
