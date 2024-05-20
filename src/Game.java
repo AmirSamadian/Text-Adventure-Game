@@ -26,6 +26,7 @@ public class Game {
 	private int turn = 0;
 	/** Variable score keeps track of the total scare. Tally of all the points gained throughout the game */
 	private int score = 0;
+	
 	/**
 	 * Create the game and initialize its internal map.
 	 */
@@ -44,9 +45,15 @@ public class Game {
 		// Enter the main game loop. Here we repeatedly read commands and
 		// execute them until the game is over.
 		boolean wantToQuit = false;
-		while (!wantToQuit) {
+		boolean isDead = false;
+		while (!wantToQuit && !isDead) {
 			Command command = Reader.getCommand();
 			wantToQuit = processCommand(command);
+			if (ryderFalcone.getHealth() <= 0) {		//checks if ryderFalcone is dead. If so, isDead is changed to true.
+				isDead = true;
+				Writer.println();
+				Writer.println("YOU DIED	\r\n \r\n");
+			}
 			// other stuff that needs to happen every turn can be added here.
 			
 			turn++;
@@ -177,6 +184,7 @@ public class Game {
 				ryderFalcone.setHealth(newHealth);
 				
 				printLocationInformation();
+				
 			}
 		}
 	}
@@ -191,6 +199,7 @@ public class Game {
 	
 	private void status() {
 		Writer.println("Here is your current status: ");
+		Writer.println("  - Current Health: " + ryderFalcone.getHealth());
 		Writer.println("  - Current Score: " + score);
 		Writer.println("  - Turns used so far: " + turn);
 		Writer.println("  - Description of your current location: " + ryderFalcone.getCurrentRoom().getDescription());
