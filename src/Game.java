@@ -168,7 +168,7 @@ public class Game {
 			} else {
 				Room newRoom = doorway.getDestination();
 				ryderFalcone.setCurrentRoom(newRoom);
-				score += newRoom.getPoints(); 	//This is where the score is updated.
+				score += newRoom.getPoints(); 	//This is where the score is updated for points that come from rooms.
 				
 				int newHealth = ryderFalcone.getHealth() + newRoom.getHealthChange();  //The health changes for wrongRooms will be negative so should use plus.
 				ryderFalcone.setHealth(newHealth);
@@ -530,6 +530,8 @@ public class Game {
 	 * Print out the closing message for the player.
 	 */
 	private void printGoodbye() {
+		//The points obtained from items gets added to score. The player was keeping track of this. points from rooms have already been added to score by goRoom().
+		score += ryderFalcone.getPointsFromItemsTally();
 		Writer.println("Thank you for playing! I hope you enjoyed the game.");
 		Writer.println("You have earned " + score + " points in " + turn + " turns");
 		Writer.println("The max amount of points you could've gotten was 814 points.");

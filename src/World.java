@@ -417,7 +417,7 @@ public class World {
 		
 		//Creating all the items and containers that go into each room.
 		this.createItems(room1, "phone", "You can make important calls with this that will give important information", 5, 1);
-		this.createItems(room1, "protein shake", "This is just a chocolate-flavored protein shaken", 5, 1);
+		this.createItems(room1, "protein shake", "This is just a chocolate-flavored protein shaken", 0, 1);
 		this.createItems(room1, "tv", "The news is showing a weirdly shaped green dead body hanging on the clock tower", 0, 60);
 		this.createItems(room1, "couch", "Black, leather, L-shaped couch by the fireplace", 0, 400);
 		this.createItems(room1, "armory key", "key to unlock armory", 0, 0.01);

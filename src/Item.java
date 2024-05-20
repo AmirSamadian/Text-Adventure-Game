@@ -57,9 +57,15 @@ public class Item {
 
 	/**
 	 * getter for an item's point value. 
+	 * Makes sure that you only get the points for an item the first time you grab it. Once points is used, it gets reset to 0, so you can't rack up points.
 	 * @return the pointValue
 	 */
 	public int getPointValue() {
+		if (pointValue > 0) {
+			int temp = pointValue;
+			pointValue = 0;
+			return temp;
+		}
 		return pointValue;
 	}
 

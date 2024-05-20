@@ -6,9 +6,7 @@ import java.util.HashMap;
  * This is the player character
  */
 public class Player {
-	/**
-	 * This is the player's current room.
-	 */
+	/** This is the player's current room. */
 	private Room currentRoom;
 	/** This stores the room the player just came from. */
 	private Room previousRoom;
@@ -20,9 +18,12 @@ public class Player {
 	private final double maxCarryWeight = 50; 
 	/** variable that stores the amount of weight the player is carrying. */
 	private double carryWeight = 0;
+	/** Everytime an item is picked up for the first time, the addItemToInventory method should update this tally. */
+	private int pointsFromItemsTally = 0;
 	 
 	/** HashMap storing all the items in the player's inventory. */
 	private HashMap<String, Item> inventory;
+
 	
 	
 	/**
@@ -123,6 +124,14 @@ public class Player {
 	public double getMaxCarryWeight() {
 		return maxCarryWeight;
 	}
+	
+	/**
+	 * getter for pointsFromItemsTally.
+	 * @return the pointsFromItemsTally
+	 */
+	public int getPointsFromItemsTally() {
+		return pointsFromItemsTally;
+	}
 
 	/**
 	 * Checks if you're able too add an item to the inventory by checking how it would change your carryWeight. 
@@ -139,7 +148,8 @@ public class Player {
 		}
 		else if (newWeight <= maxCarryWeight) {
 			inventory.put(item.getName(), item);    //adds the item to the player's inventory
-			carryWeight = newWeight; //updates the carryWeight to include the weight of the item just added
+			carryWeight = newWeight; //updates the carryWeight to include the weight of the item just added	
+			pointsFromItemsTally += item.getPointValue();	//updates the tally to include the points from the item just added to inventory.
 			Writer.println(item.getName() + " was successfully added to your inventory!");
 			return true;
 		}	
@@ -152,7 +162,7 @@ public class Player {
 
 	
 	/**
-	* Gets an item from the inventory with the name that was passed to the method.
+	* Gets an item from the inventory with the name that was passed to the method. Not an accessor for a field in Player.
 	* @param itemName The name of the item.
 	* @return The item with that name. Null if not in the inventory
 	*/
