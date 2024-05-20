@@ -9,9 +9,20 @@ public class CorrectRoom extends Room {
 		this.healthChange = 0;
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
+	/** 
+	 * boolean method that returns false if the room is not of type correctRoom and true if it is a correctRoom. 
+	 * overridden version of isCorrectRoom in the correctRoom subclass to return true.
+	 * @return true because this is a correct room.
+	 * */
+	public boolean isCorrectRoom() {
+		return true;
+	}
+	
 
 	/**
+	 * Getter for the hint message that should be displayed when a scanner is used.
 	 * @return the scannerHint
 	 */
 	public String getScannerHint() {
@@ -19,6 +30,7 @@ public class CorrectRoom extends Room {
 	}
 
 	/**
+	 * Setter for the hint message that should be displayed when a scanner is used.
 	 * @param scannerHint the scannerHint to set
 	 */
 	public void setScannerHint(String scannerHint) {

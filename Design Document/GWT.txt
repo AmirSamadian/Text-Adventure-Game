@@ -373,4 +373,26 @@ UNPACK Scenario #7: Item can be unpacked
      and : appropriate message is displayed (you unpack it)
 
 
+///////////////////////////////////////////////////////////////////////////////
+// Commands specific to my game (alphabetical)
+
+SCAN Scenario #1: Scanner not in inventory
+   GIVEN : "scan" is entered
+    WHEN : scanner item is NOT in player's inventory
+      or : scanner in a container in the player's inventory
+    THEN : Display Message: "The scanner is not in your inventory. It might be in a container, if so, unpack it."
+
+SCAN Scenario #2: Player not in a correct room
+   GIVEN : "scan" is entered
+    WHEN : Player's current room is not a correct room (rooms with bodies to scan)
+     and : scanner item is in player's inventory
+    THEN : Display Message: "There's no dead body in this room for you to scan. You are in the wrong place detective."
+
+SCAN Scenario #3: Scanner can be used
+   GIVEN : "scan" is entered
+    WHEN : scanner item is in player's inventory
+     and : Player in a correct room
+    THEN : Scanner hint associated with the body in the player's current room should be displayed.
+
+
 

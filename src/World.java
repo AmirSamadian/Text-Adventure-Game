@@ -350,6 +350,23 @@ public class World {
 		this.addRoom(room32Wrong8c);
 		this.addRoom(room33Wrong8d);
 		
+		
+		//Adding all the scanner hints for the correct rooms.
+		room6Body1.setScannerHint("Analysis of minuscule code from cut marks reveals the following clue: High up");
+		room9Body2.setScannerHint("DNA analysis of the person’s blood reveals 0.15 blood alcohol content.");
+		room12Body3.setScannerHint("Analysis of miniscule code from cut marks reveals the following clue: From A to B");
+		room15Body4.setScannerHint("The scanner has revealed a UV light marking that says: First is 18th");
+		room18Body5.setScannerHint("The scanner analyzed the code marked on Ramsay’s skin via knife scratches. "
+				+ "The scanner converted it to the following sentence: “I don’t want to be around the homeless or "
+				+ "think about how to solve the issue”");
+		room21Body6.setScannerHint("Due to examining so many bodies, the scanner figured out some of the chemical "
+				+ "components in the altered, green blood. Abnormal Elements in the blood: 2% Holmium, 7% Uranium, "
+				+ "5% Nobelium, 10% Potassium, 42% Polonium");
+		room25Body7.setScannerHint("The scanner took longer than usual and initially failed. Falcone, as the creator "
+				+ "of the device, was able to debug the issue and fix the scanner. The scan was rerun and revealed "
+				+ "the following message from the numbers: “(2k +1) won (not in)”");
+		room28Body8.setScannerHint("The scanner just shows: Quadrant 3");
+		
 		// Creating all the doors between the rooms.
 		//Rooms that are just part of the story before bodies begin.
 		this.createDoor(room1, "basement", room2, true, "armory key");

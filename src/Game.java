@@ -129,6 +129,9 @@ public class Game {
 			case CWEIGHT:
 				containerWeight(command);
 				break;
+			case SCAN:
+				scan();
+				break;
 				
 			default:
 				Writer.println("Sorry, this command is not implemented yet.");
@@ -522,6 +525,22 @@ public class Game {
 		     return; // End function if container not found	
 		}	
 		Writer.println("the total weight of this container is " + container.getWeight());
+	}
+
+	
+	
+	/** 
+	 * Function for the command scan. Follows scenarios outlined in GWT's.
+	 * */
+	private void scan() {
+		if (ryderFalcone.getItem("scanner") == null) {
+			Writer.println("The scanner is not in your inventory. It might be in a container, if so, unpack it.");
+		} else if (!ryderFalcone.getCurrentRoom().isCorrectRoom()) {	//not a correct room so no dead body to scan
+			Writer.println("There's no dead body in this room for you to scan. You are in the wrong place to scan, detective.");
+		} else {
+			String hint = ((CorrectRoom) ryderFalcone.getCurrentRoom()).getScannerHint();
+			Writer.println(hint);
+		}
 	}
 	
 	

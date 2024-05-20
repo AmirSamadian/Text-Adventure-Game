@@ -154,6 +154,16 @@ public class Room {
 			
 	}
 	
+	/** 
+	 * boolean method that returns false if the room is not of type correctRoom and true if it is a correctRoom. 
+	 * This gets overriden in the correctRoom subclass to return true
+	 * @return false because normally, rooms are not correct rooms.
+	 * */
+	public boolean isCorrectRoom() {
+		return false;
+	}
+	
+	
 	
 	/**
 	* Defines an exit from this room.
