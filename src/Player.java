@@ -1,19 +1,23 @@
 import java.util.HashMap;
 /**
+ * Contains fields and methods associated with a player object.
+ * 
  * @author AmirSamadian
  * This is the player character
  */
 public class Player {
 	/**
-	 * This is the player's current room
+	 * This is the player's current room.
 	 */
 	private Room currentRoom;
 	/** This stores the room the player just came from. */
 	private Room previousRoom;
 	/** health keeps track of the players health and starts at 100. */
 	private int health = 100;
-	/** constant variable that tells the max carrying capacity of the player. */
-	private final float maxCarryWeight = 50;
+	/** constant variable that tells the max amount of weight the player can even lift. */
+	private final double maxLiftWeight = 300;
+	/** constant variable that tells the max carrying capacity of the player. How much will exceed inventory limit. */
+	private final double maxCarryWeight = 50; 
 	/** variable that stores the amount of weight the player is carrying. */
 	private double carryWeight = 0;
 	 
@@ -23,7 +27,7 @@ public class Player {
 	
 	/**
 	 * This is the constructor of the Player class.
-	 * @param currentRoom 
+	 * @param currentRoom  
 	 * 
 	 */
 	public Player(Room currentRoom) {
@@ -89,6 +93,38 @@ public class Player {
 	
 	
 	/**
+	 * getter for carryWeight.
+	 * @return the carryWeight
+	 */
+	public double getCarryWeight() {
+		return carryWeight;
+	}
+	
+	/**
+	 * setter for carryWeight.
+	 * @param weight : the new carryWeight
+	 */
+	public void setCarryWeight(double weight) {
+		this.carryWeight = weight;
+	}
+	
+	/**
+	 * getter for maxLiftWeight.
+	 * @return the maxLiftWeight
+	 */
+	public double getMaxLiftWeight() {
+		return maxLiftWeight;
+	}
+
+	/**
+	 * getter for maxCarryWeight.
+	 * @return the maxCarryWeight
+	 */
+	public double getMaxCarryWeight() {
+		return maxCarryWeight;
+	}
+
+	/**
 	 * Checks if you're able too add an item to the inventory by checking how it would change your carryWeight. 
 	 * If new weight is less than or equal to max carry weight, item is added to inventory, carry weight is updated and true is returned.
 	 * If exceeds max weight, return false and give a message saying what happened.
@@ -97,7 +133,7 @@ public class Player {
 	 */
 	public boolean addItemToInventory(Item item) {
 		double newWeight = carryWeight + item.getWeight();
-		if (item.getWeight() > 300) {		//300lbs is the most ryderFalcone can pick up
+		if (item.getWeight() > maxLiftWeight) {		//300lbs is the most ryderFalcone can pick up
 			Writer.println("You can't lift that lil bro. Too heavy");
 			return false;
 		}
@@ -113,11 +149,12 @@ public class Player {
 			
 		}
 	}
+
 	
 	/**
 	* Gets an item from the inventory with the name that was passed to the method.
 	* @param itemName The name of the item.
-	* @return The item with that name.
+	* @return The item with that name. Null if not in the inventory
 	*/
 	public Item getItem(String itemName) {
 		return inventory.get(itemName);
@@ -133,6 +170,17 @@ public class Player {
 		carryWeight = carryWeight - itemWeight; 	//updates carryWeight by subtracting the items weight from it.
 		return inventory.remove(itemName); 		//removes the item from the inventory hashmap and returns the removed item. Null if no mapping.
 	}
+	
+	/** 
+	 * This is a simple version of removeItem. It just takes the item out of the inventory without handling anything with weight.
+	 * Functions that use this method will handle the weight when appropriate.
+	 * @param itemName is the name of the item being removed.
+	 * @return returns the item removed.
+	 * */
+	public Item removeItem2(String itemName) {	//simple version. no weight handling
+		return inventory.remove(itemName); 		//removes the item from the inventory hashmap and returns the removed item. Null if no mapping.
+	}
+	
 	
 	/**
 	* Returns a string description of the list of items in the player's inventory.

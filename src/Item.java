@@ -46,6 +46,7 @@ public class Item {
 	}
 
 	/**
+	 * setter for the description field.
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -71,6 +72,13 @@ public class Item {
 		return weight;
 	}
 
+	/** 
+	 * If an item is just an item, it will return false. This is overriden in the container subclass to return true if the item is a container. 
+	 * @return false
+	 * */
+	public boolean isContainer() {
+		return false;
+	}
 	
 	/**
 	* Returns a string description including all the details of an Item.

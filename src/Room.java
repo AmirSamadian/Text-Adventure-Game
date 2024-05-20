@@ -84,25 +84,12 @@ public class Room {
 		
 	}
 	
-	/**
-	 * @return the healthChange
-	 */
-	public int getHealthChange() {
-		return healthChange;
-	}
-
-	/**
-	 * @param healthChange the healthChange to set
-	 */
-	public void setHealthChange(int healthChange) {
-		this.healthChange = healthChange;
-	}
 
 	/**
 	 * getter for the points variable. Also makes sure that you only get points the first time you enter a room. If second time, gives 0.
 	 * 
-	 * @return the points you get for entering a room
-	 * @return the temp variable which 
+	 * @return the points you get for entering a room. Usually points gives 0.
+	 * @return temp variable which returns number of points you get for entering a room. Usually a nonzero value.
 	 */
 	public int getPoints() {
 		if (points > 0) {
@@ -120,6 +107,22 @@ public class Room {
 	 */
 	public void setPoints(int points) {
 		this.points = points;
+	}
+	
+	/**
+	 * returns the amount of health change that this room causes for a player.
+	 * @return the healthChange
+	 */
+	public int getHealthChange() {
+		return healthChange;
+	}
+
+	/**
+	 * sets the health change for a room.
+	 * @param healthChange the healthChange to set
+	 */
+	public void setHealthChange(int healthChange) {
+		this.healthChange = healthChange;
 	}
 	
 	/**
@@ -165,6 +168,7 @@ public class Room {
 	/**
 	* Gets a door in a specified direction if it exists.
 	*
+	* @param direction the direction a door is located.
 	* @return The door in the specified direction or null if it does not exist.
 	*/
 	public Door getExit(String direction) {

@@ -20,12 +20,30 @@ public class Container extends Item {
 	}
 	
 	/** 
+	 * if an item is a container, it returns true. If only an item, returns false (this comes from the original method in the item class).
+	 * overriden version.
+	 * @return true
+	 * */
+	public boolean isContainer() {
+		return true;
+	}
+	
+	/** 
 	 * adds an item to the container and updates the container weight.
 	 * @param item
 	 * */
 	public void addItem(Item item) {
 		 containerItems.put(item.getName(), item);	//adds item to the hashmap
 		 this.weight += item.getWeight();	//updates the weight of the container to include the weight of all items in it.
+	}
+	
+	/** 
+	 * gets an item from the container.
+	 * @param itemName
+	 * @return the item (type Item)
+	 * */
+	public Item getItem(String itemName) {
+		return containerItems.get(itemName);
 	}
 	
 	/**

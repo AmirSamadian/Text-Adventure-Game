@@ -65,7 +65,26 @@ public class World {
 	}
 	
 	/**
-	* Helper method for creating and adding items into a room. This is called in createRooms
+	* overloaded version of the constructor for making locked doors. I made this to avoid having to enter redundant arguments for rooms that aree already unlocked.
+	* 
+	* Helper method for creating doors between rooms. This is called in createRooms
+	*
+	* @param from The room where the door originates.
+	* @param direction The direction of the door in the from room.
+	* @param to The room where the door goes.
+	* @param locked is true if the room is locked, false if its unlocked
+	* @param keyName is the name of the key item that unlocks this door. 
+	* 
+	*/
+	private void createDoor(Room from, String direction, Room to, boolean locked, String keyName) {
+		Door door = new Door(to);
+		from.setExit(direction, door);
+		door.setLocked(locked);
+		door.setKeyName(keyName);
+	}
+	
+	/**
+	* Helper method for creating and adding items into a room. This is called in createRooms.
 	*
 	* @param room The room that we want to put an item into.
 	* @param itemName The name of the item that we want to add.
@@ -76,6 +95,20 @@ public class World {
 	private void createItems(Room room, String itemName, String description, int pointValue, double weight) {
 		Item item = new Item(itemName, description, pointValue, weight);
 		room.addItem(itemName, item);
+	}
+	
+	/**
+	* Helper method for creating and adding containers into a room. This is called in createRooms.
+	*
+	* @param room The room that we want to put an item into.
+	* @param itemName The name of the container item that we want to add.
+	* @param description The description of the item we're adding.
+	* @param pointValue The number of points the item has.
+	* @param weight The weight of the item.
+	*/
+	private void createContainer(Room room, String itemName, String description, int pointValue, double weight) {
+		Container container = new Container(itemName, description, pointValue, weight);
+		room.addItem(itemName, container);
 	}
 	
 	
@@ -98,12 +131,13 @@ public class World {
 				+ "make your choice for what weapon or weapons you want to carry. You may be tempted to grab it all, but beware, we can’t "
 				+ "carry more than 50 lbs so make sure to leave enough room to carry other things. Also, it’s a disadvantage to carry more than 15 lbs "
 				+ "during battle. Anyway, here are your options:\r\n"
-				+ "-	Falcone’s Daily – Silenced 9mm Pistol – 3 lbs.  *recommended*\r\n"
+				+ "-	Scanner - 2 lbs		**required** \r\n "
+				+ "-	Falcones Daily – Silenced 9mm Pistol – 3 lbs.  *recommended*\r\n"
 				+ "-	Escrima Sticks (has electricity) – 7 lbs    *recommended*\r\n"
 				+ "-	RPG – 35 lbs\r\n"
 				+ "-	Flash Grenade – 2 lbs    *recommended*\r\n"
 				+ "-	CR-56 Amax – 25 lbs \r\n"
-				+ "", 0);
+				+ "-	Weapon Case - 10 lbs \r\n", 0);
 		
 		Room room3 = new Room("Mansion Helipad", "Wind blows in your face as you walk toward the helicopter. Let’s go to the police station to get more information.", 0);
 		
@@ -121,7 +155,12 @@ public class World {
 		Room room5 = new Room("Audi R8", "“Oh sweet! My assistant prepped the Audi beforehand. There is protective gear placed on the backseat.”"
 				+ "", 0);
 		
-		CorrectRoom room6Body1 = new CorrectRoom("Clock Tower", "in Dr Sliva's office.", 100);
+		CorrectRoom room6Body1 = new CorrectRoom("Clock Tower", "The body has already been lowered from the tower by the police. "
+				+ "It’s lying on a tarp on the floor.\r\n"
+				+ "“This is brutal. The body looks inhumane, it’s unnatural in every way possible. Whoever did this had goals beyond "
+				+ "just killing this person. It looks as if it’s transforming into a different being. His skin is turning green and "
+				+ "there are cut marks all over him and green bubonic-plague-type bubbles”\r\n"
+				+ "", 100);
 		
 		WrongRoom room7Wrong1a = new WrongRoom("Deli", "“How ya doin! What can I get ya?” – Antonio\r\n"
 				+ "“A dead body?” – Falcone\r\n"
@@ -313,18 +352,17 @@ public class World {
 		
 		// Creating all the doors between the rooms.
 		//Rooms that are just part of the story before bodies begin.
-		this.createDoor(room1, "basement", room2);
+		this.createDoor(room1, "basement", room2, true, "armory key");
 		
 		this.createDoor(room2, "elevator", room3);
 		this.createDoor(room2, "kitchen", room1);
 		
 		this.createDoor(room3, "helicopter", room4);
-		this.createDoor(room3, "basement", room2);
+		this.createDoor(room3, "basement", room2, false, "armory key");
 		
 		this.createDoor(room4, "audi", room5);
 		
 		this.createDoor(room5, "clock", room6Body1);
-		this.createDoor(room5, "home", room1);
 		
 		//Doors for Body 1
 		this.createDoor(room6Body1, "a", room7Wrong1a);
@@ -377,20 +415,25 @@ public class World {
 		
 		//this.createItems(room5, "cologne", "Wood", 0, 1); //template
 		
-		//Creating all the items that go into each room.
+		//Creating all the items and containers that go into each room.
 		this.createItems(room1, "phone", "You can make important calls with this that will give important information", 5, 1);
 		this.createItems(room1, "protein shake", "This is just a chocolate-flavored protein shaken", 5, 1);
 		this.createItems(room1, "tv", "The news is showing a weirdly shaped green dead body hanging on the clock tower", 0, 60);
 		this.createItems(room1, "couch", "Black, leather, L-shaped couch by the fireplace", 0, 400);
+		this.createItems(room1, "armory key", "key to unlock armory", 0, 0.01);
 		
 		this.createItems(room2, "scanner", "Falcone built this device himself. It can provide useful information "
 				+ "from the slightest of hints and marks left behind. It can analyze every language on earth in "
 				+ "addition to all sorts of code", 1, 2);
-		this.createItems(room2, "falcone’s daily", "Loaded, silenced 9mm Pistol", 0, 3);
+		this.createItems(room2, "falcones daily", "Loaded, silenced 9mm Pistol", 0, 3);
 		this.createItems(room2, "escrima sticks", "Weapon that is two, short electrically charged bars. Useful for acrobatic battle", 0, 6);
 		this.createItems(room2, "rpg", "makes things boom", 0, 35);
 		this.createItems(room2, "flash grenade", "Blinds enemies. Can blind a whole group at once", 0, 2);
-		this.createItems(room2, "cr-56 amax ", "Heavy Assault Rifle", 0, 25);
+		this.createItems(room2, "cr-56 amax", "Heavy Assault Rifle", 0, 25);
+		//This is one of the container items. This one starts out as empty.
+		this.createContainer(room2, "weapon case", "This is a fancy, organized case that can store all the weapons you choose. "
+				+ "Pack your chosen weapons into the case once you add the case to your inventory. But make sure to unpack the "
+				+ "weapons before you use them.", 5, 10);
 		
 		this.createItems(room5, "protective gear", "This is good precaution for examining the bodies", 2, 4);
 		this.createItems(room5, "cologne", "Tom Ford Oud Wood", 0, 0.5);

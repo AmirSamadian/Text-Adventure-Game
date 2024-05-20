@@ -114,7 +114,21 @@ public class Game {
 			case INVENTORY:
 				displayInventory();
 				break;
-				
+			case LOCK:
+				lock(command);
+				break;
+			case UNLOCK:
+				unlock(command);
+				break;
+			case PACK:
+				pack(command);
+				break;
+			case UNPACK:
+				unpack(command);
+				break;
+			case CWEIGHT:
+				containerWeight(command);
+				break;
 				
 			default:
 				Writer.println("Sorry, this command is not implemented yet.");
@@ -148,6 +162,9 @@ public class Game {
 			
 			if (doorway == null) {
 				Writer.println("There is no door!");
+			} 
+			else if (doorway.isLocked() == true) {
+				Writer.println("The door to that location is locked. Get the appropriate key to unlock it");
 			} else {
 				Room newRoom = doorway.getDestination();
 				ryderFalcone.setCurrentRoom(newRoom);
@@ -190,9 +207,9 @@ public class Game {
 	
 	
 	/** 
-	 * 
+	 * removes an item from player inventory and puts it into the room.
 	 * @param command is the full command that the player typed in. First word should be the drop commandEnum. 
-	 * */
+	 */
 	private void drop(Command command) {
 	    if (!command.hasSecondWord()) {
 	        // If there is no second word, we don't know what to drop so we display the message.
@@ -266,6 +283,245 @@ public class Game {
 	/** Displays the list of items in the player's inventory by calling the getItemsInInventoryString method from Player class. */
 	private void displayInventory() {
 		Writer.println(ryderFalcone.getItemsInInventoryString());
+		Writer.println("you are carrying " + ryderFalcone.getCarryWeight() + "lbs");
+	}
+	
+	/** 
+	 * All cases covered in GWT file. Main purpose is to set an unlocked door to locked when appropriate key in player inventory.
+	 * @param command is the command that was entered that included command word lock.
+	 * */
+	private void lock(Command command) {
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to unlock so we display the message.
+			Writer.println("What do you want to unlock?");
+		} else {
+			String direction = command.getRestOfLine();	//string after command word lock
+			// Try to leave current.
+			Door doorway = null;
+			doorway = ryderFalcone.getCurrentRoom().getExit(direction);	//get the door that leads to next room
+			
+			if (doorway == null) {
+				Writer.println("There is no door!");
+			} 
+			else if (doorway.isLocked() == true) {
+				Writer.println("That door is already locked.");
+			}
+			else if (doorway.getKeyName() == null) {
+				Writer.println("You can't unlock this door/path. There's no key for it.");
+			}
+			else {					//There is a door, it's unlocked, and a key exists to lock it.
+				Writer.println("Enter the key name");		//re-prompt user to give us key name.
+				String response = Reader.getResponse();
+				if (!response.equals(doorway.getKeyName())) {
+					Writer.println("That's not the correct key's name");
+				} else {
+					if (ryderFalcone.getItem(doorway.getKeyName()) == null) {	//checks if player has key in their inventory
+						Writer.println("You don't have the key.");
+					} else {
+						doorway.setLocked(true);
+						Writer.println("The door has been locked.");
+					}	
+				}
+			}
+		}
+	}
+	
+	/** 
+	 * All cases covered in GWT file. Main purpose is to set a locked door to unlocked when appropriate key is in player inventory.
+	 * @param command is the command that was entered that included command word unlock.
+	 * */
+	private void unlock(Command command) {
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to unlock so we display the message.
+			Writer.println("What do you want to unlock?");
+		} else {
+			String direction = command.getRestOfLine();	//string after command word lock
+			// Try to leave current.
+			Door doorway = null;
+			doorway = ryderFalcone.getCurrentRoom().getExit(direction);	//get the door that leads to next room
+			
+			if (doorway == null) {
+				Writer.println("There is no door!");
+			} 
+			else if (doorway.isLocked() == false) {
+				Writer.println("That door is already unlocked.");
+			}
+			else {					//There is a door and it's locked.
+				Writer.println("Enter the key name");		//re-prompt user to give us key name.
+				String response = Reader.getResponse();
+				if (!response.equals(doorway.getKeyName())) {
+					Writer.println("That's not the correct key's name. Try again, check for typos.");
+				} else {
+					if (ryderFalcone.getItem(doorway.getKeyName()) == null) {	//checks if player has key in their inventory
+						Writer.println("You don't have the key.");
+					} else {
+						doorway.setLocked(false);
+						Writer.println("The door has been unlocked. You may now enter.");
+					}	
+				}
+			}
+		}	
+	}
+	
+	
+	/** 
+	 * All cases in the GWT txt file. Supposed to remove an item from room or inventory and add it to a specified container.
+	 * @param command is the command that was entered containing the command word pack. May have more words
+	 * 
+	*/
+	private void pack(Command command) {
+		// Check if the command has a second word
+	    if (!command.hasSecondWord()) {
+	        Writer.println("What do you want to pack?");
+	        return; // End function if no second word
+	    }
+
+	    String itemName = command.getRestOfLine();
+	    Item item = ryderFalcone.getItem(itemName);
+	    boolean i_inRoom = false;		//this boolean is used to more conveniently check if the item is in the room or inv.
+
+	    // Try to find the item in the current room if it's not in the inventory
+	    if (item == null) {
+	        item = ryderFalcone.getCurrentRoom().getItem(itemName);
+	        i_inRoom = true;
+	    }
+
+	    // If the item is not found in both inventory and room
+	    if (item == null) {
+	        Writer.println("You don't have it. It's not in your inventory or at your current location.");
+	        return; // End function if item not found
+	    }
+
+	    // Check if the item is too heavy to lift
+	    if (item.getWeight() > ryderFalcone.getMaxLiftWeight()) {
+	        Writer.println("You can't lift that lil bro. Too heavy.");
+	        return; // End function if item is too heavy
+	    }
+
+	    Writer.println("What container do you want to pack " + itemName + " into.");
+	    String containerName = Reader.getResponse();
+	    Item container = ryderFalcone.getItem(containerName);
+	    boolean c_inRoom = false;		//this boolean is used to more conveniently check if the container is in the room or inv.
+
+	    // Try to find the container in the current room if it's not in the inventory
+	    if (container == null) {
+	        container = ryderFalcone.getCurrentRoom().getItem(containerName);
+	        c_inRoom = true;
+	    }
+
+	    // If the container is not found in both inventory and room
+	    if (container == null) {
+	        Writer.println("You can't see that container. It's not in the room or in your inventory.");
+	        return; // End function if container not found
+	    }
+
+	    // Check if the item is a valid container
+	    if (!container.isContainer()) {
+	        Writer.println("That's not a container.");
+	        return; // End function if the item is not a container
+	    }
+	    
+	    double initialWeight = ryderFalcone.getCarryWeight();
+	    
+	    if (i_inRoom && !c_inRoom) {
+	    	double newWeight = initialWeight + item.getWeight();
+	    	if (newWeight > ryderFalcone.getMaxCarryWeight()) {
+	    		 Writer.println("This will exceed your carrying capacity of 50 lbs.");
+	    		 return;
+	    	} else {
+	    		((Container) container).addItem(item);
+	    		ryderFalcone.getCurrentRoom().removeItem(itemName);
+	    		ryderFalcone.setCarryWeight(newWeight);
+	    		Writer.println(itemName + " was successfully packed into " + container.getName());
+	    	}
+	    } else if (!i_inRoom && !c_inRoom) {	//since the item and container both start out in inventory, there shouldn't be a case were exceeds carry weight.
+	    	((Container) container).addItem(item);
+	    	ryderFalcone.removeItem2(itemName);		//doesn't change inventory weight but removes from hashmap.
+	    	//ryderFalcone.setCarryWeight(initialWeight); redundant
+	    	 Writer.println(itemName + " was successfully packed into " + container.getName());
+	    } else if (!i_inRoom && c_inRoom) {		//taking an item out of inv so should never exceed weight. But do have to subtract item weight.
+	    	((Container) container).addItem(item);
+	    	ryderFalcone.removeItem(itemName);	//this handles inventory weight.
+	    	 Writer.println(itemName + " was successfully packed into " + container.getName());
+	    } else if (i_inRoom && c_inRoom) {
+	    	((Container) container).addItem(item);
+    		ryderFalcone.getCurrentRoom().removeItem(itemName);
+    		Writer.println(itemName + " was successfully packed into " + container.getName());
+	    }
+	}
+	
+	
+	
+	
+	
+	/** 
+	 * All cases in the GWT txt file. Supposed to remove an item from a specified container and add it to the player's invenrtory.
+	 * @param command is the command that was entered containing the command word unpack. May have more words
+	 * */
+	private void unpack(Command command) {
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to unpack so we display the message.
+			Writer.println("What do you want to unpack?");
+			return;
+		} 
+		
+		String containerName = command.getRestOfLine();	//string after command word unpack
+		Item container = ryderFalcone.getItem(containerName);	//if the container is not in inventory, container will be null.
+		
+		if (container == null) {
+			container = ryderFalcone.getCurrentRoom().getItem(containerName);
+		}
+		if (container == null) {	//if this is null that means the container wasn't in the room either.
+			 Writer.println("You can't see that container. It's not in the room or in your inventory.");
+		     return; // End function if container not found
+		}
+		if (!container.isContainer()) {
+			Writer.println("That's not a container.");
+		    return; // End function if container not found
+		}
+		
+		Writer.println("What item do you want to unpack from " + container.getName());
+		String itemName = Reader.getResponse();
+		//We already verified that container var is a Container so we can cast it so it can use getItem.
+		Item item = ((Container) container).getItem(itemName); 
+		
+		if (item == null) {		
+			Writer.println(itemName + " is not in the container.");
+			return;
+		}
+		
+		double currentWeight = ryderFalcone.getCarryWeight();
+		
+		//whenever an item is removed from a container and the container is in the inventory, want to remove the item's weight from carry weight.
+		if (ryderFalcone.getItem(containerName) != null) {
+			ryderFalcone.setCarryWeight(currentWeight - item.getWeight());
+		}
+		
+		if (ryderFalcone.addItemToInventory(item)) { 		//adds item's weight to carry weight
+			((Container) container).removeItem(itemName);		//removes item from container and subtracts item weight from container weight
+		}
+	}
+	
+	/** 
+	 * This goes with the command word cweight. Displays a message revealing weight of container. It's just something helpful for testing code. 
+	 * @param command 
+	 * */
+	private void containerWeight(Command command) {
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to unpack so we display the message.
+			Writer.println("no second word entered. What container do you want to check thee weight for?");
+			return;
+		} 
+		String containerName = command.getRestOfLine();	//string after command word unpack
+		Item container = ryderFalcone.getItem(containerName);
+		if (container == null) {
+			container = ryderFalcone.getCurrentRoom().getItem(containerName);
+		}
+		if (container == null) {	//if this is null that means the container wasn't in the room either.
+			 Writer.println("You can't see that container. It's not in the room or in your inventory.");
+		     return; // End function if container not found	
+		}	
+		Writer.println("the total weight of this container is " + container.getWeight());
 	}
 	
 	
@@ -274,11 +530,13 @@ public class Game {
 	 * Print out the closing message for the player.
 	 */
 	private void printGoodbye() {
-		Writer.println("I hope you weren't too bored here on the Campus of Kings!");
-		Writer.println("Thank you for playing.  Good bye.");
+		Writer.println("Thank you for playing! I hope you enjoyed the game.");
 		Writer.println("You have earned " + score + " points in " + turn + " turns");
+		Writer.println("The max amount of points you could've gotten was 814 points.");
+
 	}
 
+	
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic
 	 * message and a list of the command words.
@@ -300,9 +558,11 @@ public class Game {
 	 */
 	private void printWelcome() {
 		Writer.println();
-		Writer.println("Welcome to the Campus of Kings!");
-		Writer.println("Campus of Kings is a new, incredibly boring adventure game.");
-		Writer.println("Type 'help' if you need help.");
+		Writer.println("Welcome to Detective Ryder Falcone: Riddler’s Transformation. This is a mystery "
+				+ "text adventure game where you must find and investigate dead bodies based on clues. "
+				+ "Find out where the bodies lead you and try to save the city from the Riddler. \n"
+				+ "Use the help command to get the list of all commands in the game.\n"
+				+ "");
 		Writer.println();
 		printLocationInformation();
 	}

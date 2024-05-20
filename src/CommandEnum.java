@@ -19,7 +19,19 @@ public enum CommandEnum {
 	/** Instance of type CommandEnum representing the drop command. */
 	DROP("drop"),
 	/** Instance of type CommandEnum representing the inventory command. */
-	INVENTORY("inventory");
+	INVENTORY("inventory"),
+	/** Instance of type CommandEnum representing the unlock command. */
+	UNLOCK("unlock"),
+	/** Instance of type CommandEnum representing the lock command. */
+	LOCK("lock"),
+	/** Instance of type CommandEnum representing the pack command. */
+	PACK("pack"),
+	/** Instance of type CommandEnum representing the unpack command. */
+	UNPACK("unpack"),
+	/** Instance of type CommandEnum representing the scan command. */
+	SCAN("scan"),
+	/** Instance of type CommandEnum representing the cweight command. */
+	CWEIGHT("cweight");
 
 	/** text stores the string that would be entered by the person playing the game. */
 	private final String text;

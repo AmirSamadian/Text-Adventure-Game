@@ -19,6 +19,9 @@ public class Door {
 	private Room destination;
 	/** Whether this door is locked. */
 	private boolean locked;
+	/** The name of the key item that unlocks this door. */
+	private String keyName;
+	
 
 	/**
 	 * Constructor for the Door class.
@@ -52,4 +55,22 @@ public class Door {
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
+
+	/**
+	 * getter for key.
+	 * @return the key
+	 */
+	public String getKeyName() {
+		return keyName;
+	}
+
+	/**
+	 * setter for key.
+	 * @param keyName the name of the key to set.
+	 */
+	public void setKeyName(String keyName) {
+		this.keyName = keyName;
+	}
+	
+	
 }
