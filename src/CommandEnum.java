@@ -31,7 +31,10 @@ public enum CommandEnum {
 	/** Instance of type CommandEnum representing the scan command. */
 	SCAN("scan"),
 	/** Instance of type CommandEnum representing the cweight command. */
-	CWEIGHT("cweight");
+	CWEIGHT("cweight"),
+	/** Instance of type CommandEnum representing the escape command. */
+	ESCAPE("escape"),
+	DEBUG("debug");
 
 	/** text stores the string that would be entered by the person playing the game. */
 	private final String text;

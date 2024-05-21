@@ -139,6 +139,12 @@ public class Game {
 			case SCAN:
 				scan();
 				break;
+			case ESCAPE:
+				escape();
+				break;
+			case DEBUG:
+				debug(command);
+				break;
 				
 			default:
 				Writer.println("Sorry, this command is not implemented yet.");
@@ -515,8 +521,8 @@ public class Game {
 	}
 	
 	/** 
-	 * This goes with the command word cweight. Displays a message revealing weight of container. It's just something helpful for testing code. 
-	 * @param command 
+	 * This goes with the command word cweight. Displays a message revealing weight of container. It's helpful for testing code but also for playing the game so I keep it in. Doesn't create an easy cheat.
+	 * @param command  
 	 * */
 	private void containerWeight(Command command) {
 		if (!command.hasSecondWord()) {
@@ -535,7 +541,7 @@ public class Game {
 		}	
 		Writer.println("the total weight of this container is " + container.getWeight());
 	}
-
+ 
 	
 	
 	/** 
@@ -553,6 +559,35 @@ public class Game {
 	}
 	
 	
+	/** 
+	 * Function for the command escape. Follows scenarios outlined in GWT's. A special feature.
+	 * */
+	private void escape() {
+		Room room29 = world.getRoom("- 843.91 i-hat, - 665.74 j-hat");
+		if (ryderFalcone.getCurrentRoom() != room29) { //if not in room29
+			Writer.println("You are free, there's nothing to escape out of.");
+			return;
+		} 
+		Writer.println("What do you think would be helpful to escape this electric cage? Enter the name of an item in your inventory. "		//re-prompt user
+				+ "Make sure you first unpack any items in containers if you think they are helpful.");
+		String response = Reader.getResponse();
+		
+		if (!response.equals("escrima sticks")) {
+			Writer.println ("That won't help. Try another item. Remember the cage is electric so something electric would be helpful.");
+			return;
+		} 
+		if (ryderFalcone.getItem("escrima sticks") == null) {
+			Writer.println("It's not in your inventory. Sorry but you're gonna be stuck here forever and die.");
+			ryderFalcone.setHealth(0);
+			return;
+		}
+		Writer.println("You slammed the escrima sticks into the ground which created an electrical blast that entered the power box of "
+				+ "the cage and disabled the electricity allowing you to escape the cage. Look for the key to this abandoned building to go to the mall." );
+		
+		Item key = new Item("abandoned key", "Since you escaped the cage, you now can take this key which lets you go to the mall outside", 6, 0.01);
+		room29.addItem("abandoned key", key);
+	}
+	
 	
 	/**
 	 * Print out the closing message for the player.
@@ -562,8 +597,14 @@ public class Game {
 		score += ryderFalcone.getPointsFromItemsTally();
 		Writer.println("Thank you for playing! I hope you enjoyed the game.");
 		Writer.println("You have earned " + score + " points in " + turn + " turns");
-		Writer.println("The max amount of points you could've gotten was 814 points.");
+		Writer.println("The max amount of points you could've gotten was 1014 points.");
 
+	}
+	
+	//////get rid of this before release.
+	private void debug(Command command) {
+		ryderFalcone.setCurrentRoom(world.getRoom(command.getRestOfLine()));
+		printLocationInformation();
 	}
 
 	

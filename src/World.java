@@ -274,7 +274,7 @@ public class World {
 		
 		CorrectRoom room25Body7 = new CorrectRoom("Po’s Coffee Shop", "The body is clearly visible through the tinted windows. "
 				+ "However, the coffee shop is closed due to the death of the owner – Highest. "
-				+ "You need to break into the shop. Maybe try shooting the lock. ", 100);
+				+ "You broke into the shop and can now see the body more clearly.", 100);
 		
 		WrongRoom room26Wrong7a = new WrongRoom("Planet Fitness", "“Man, idk what the hell you’re doin’ here! I’ve never seen "
 				+ "no one as fit in my life!” – CaseOh\r\n"
@@ -306,7 +306,25 @@ public class World {
 				+ "take you there, you just have to pick the correct address.\r\n"
 				+ "", 100);
 		
-		Room room29 = new Room("- 843.91 i-hat, - 665.74 j-hat", "in Dr Sliva's office.", 100);
+		Room room29 = new Room("- 843.91 i-hat, - 665.74 j-hat", "This looks like an abandoned building. It’s nighttime and there are no lights on. "
+				+ "You enter the building and see nothing due to the darkness, but before you can move, a giant cage falls from the room and traps you inside. "
+				+ "The cage is electrically powered. The electricity allows for a force field that prevents anything from passing through it. \r\n"
+				+ "From the darkness, a glowing green object approaches you, as it gets closer, things start to clear up and you see a man in a lab coat holding "
+				+ "a syringe gun with glowing, bubbly green fluid in it.\r\n"
+				+ "“Falcone…what took you so long? It’s rude to keep your toughest challenge waiting. HAHA. I’m glad that you finally get to put a face to the man "
+				+ "who’s been terrorizing your small brain this whole time since the clock tower incident. Now let me introduce myself… I am the Riddler, master of clues. "
+				+ "Riddle me this: do you recognize this old man?” - Riddler\r\n"
+				+ "The green lights of the warehouse turn on and a group of 10 goons wearing grey jackets bring a body in front of you.\r\n"
+				+ "“NOOOOOO! You’re an absolute lunatic! I HATEE YOUUU! Why would you do this? Officer Bob Marshall has done nothing but provide justice and safety for this city!” – Falcone\r\n"
+				+ "“HAHAHAAAA this is GREAT! I’ve never seen you get so rowdy and uncontrollable. Don’t worry Falcone, I didn’t have anything against him, he was just in the way. "
+				+ "Everyone in this city will be gifted this opportunity. A new life! They’ll transform into a being much more powerful than humans. You see, this radioactive syringe "
+				+ "that I hold in my hand has been responsible for all the people you found unconscious. That’s right, they’re not dead. They will get back up ready to enjoy their new body. "
+				+ "But of course, a syringe isn’t that effective. How about we go booom! HAHAHAHA” – Riddler\r\n"
+				+ "The riddler and his goons leave the room and you are stuck in this cage. \r\n"
+				+ "\r\n"
+				+ "“While the Riddler was busy laughing, I was able to observe the jackets the goons were wearing. They all had grey jackets with the same logo. The logo said Uptown Mall. This is the only lead I have since they took Bob Marshall’s body with them. First I have to get out of this cage.” – Falcone\r\n"
+				+ "*Try the escape command\r\n"
+				+ "", 100);
 		WrongRoom room30Wrong8a = new WrongRoom("143.21 i-hat, 265.34 j-hat","Certainly not where I have to be, "
 				+ "this is just a cornfield with no possible secret entrances.", -10, -10);
 		WrongRoom room31Wrong8b = new WrongRoom("21.21 i-hat, - 2121.21 j-hat","Certainly not where I have to be, "
@@ -314,6 +332,8 @@ public class World {
 		WrongRoom room32Wrong8c = new WrongRoom("- 433.94 i-hat, 109.76 j-hat","Certainly not where I have to be, "
 				+ "this is just a tennis court.", -10, -10);
 		WrongRoom room33Wrong8d = new WrongRoom("what is going on!","Focus on the signs and the scanner hint", 2, 0);
+		
+		Room room34 = new Room("mall parking", "description", 100);
 		
 		// Adding all the rooms to the world.
 		this.addRoom(room1);
@@ -349,6 +369,7 @@ public class World {
 		this.addRoom(room31Wrong8b);
 		this.addRoom(room32Wrong8c);
 		this.addRoom(room33Wrong8d);
+		this.addRoom(room34);
 		
 		
 		//Adding all the scanner hints for the correct rooms.
@@ -426,6 +447,8 @@ public class World {
 		this.createDoor(room28Body8, "e", room33Wrong8d);
 		this.createDoor(room28Body8, "prev body", room25Body7);
 		
+		this.createDoor(room29, "mall parking", room34, true, "abandoned key");
+		
 		//Wrong rooms don't have any doors other than the one door that got the player to that room. 
 		//When a player enters a wrong room, they must use back command to go back.
 		
@@ -443,7 +466,7 @@ public class World {
 				+ "from the slightest of hints and marks left behind. It can analyze every language on earth in "
 				+ "addition to all sorts of code", 1, 2);
 		this.createItems(room2, "falcones daily", "Loaded, silenced 9mm Pistol", 0, 3);
-		this.createItems(room2, "escrima sticks", "Weapon that is two, short electrically charged bars. Useful for acrobatic battle", 0, 6);
+		this.createItems(room2, "escrima sticks", "Weapon that is two, short electrically charged bars. Useful for acrobatic battle and wrecking electrical supplies", 0, 6);
 		this.createItems(room2, "rpg", "makes things boom", 0, 35);
 		this.createItems(room2, "flash grenade", "Blinds enemies. Can blind a whole group at once", 0, 2);
 		this.createItems(room2, "cr-56 amax", "Heavy Assault Rifle", 0, 25);

@@ -394,5 +394,68 @@ SCAN Scenario #3: Scanner can be used
      and : Player in a correct room
     THEN : Scanner hint associated with the body in the player's current room should be displayed.
 
+///
 
+ESCAPE Scenario #1: Player not in room 29
+   GIVEN : "escape" is entered
+    WHEN : Player not in room 29
+    THEN : Display Message: "You are free, there's nothing to escape out of."
 
+ESCAPE Scenario #2: Player is in room 29
+   GIVEN : "escape" is entered
+    WHEN : Player is in room 29
+    THEN : Ask Player: "What do you think would be helpful to escape this electric cage? Enter the name of an item in your inventory. Make sure you first unpack any items in containers if you think they are helpful."
+
+ESCAPE Scenario #3: Player prompted for item and enters an unhelpful item (anything other than escrima sticks)
+   GIVEN : "escape" is entered
+    WHEN : Player is in room 29
+      and: Player enters an unhelpful item as a response to the prompt.
+    THEN : Display Message: "That won't help. Try another item. Remember the cage is electric so something electric would be helpful." 
+    
+ESCAPE Scenario #4: Player enters escrima sticks but not in inventory.
+   GIVEN : "escape" is entered
+    WHEN : Player is in room 29
+      and: Player enters escrima sticks as response to the prompt.
+      and: escrima sticks not in inventory. even if it's in a container in inventory.
+    THEN : Display Message: "It's not in your inventory. Sorry but you're gonna be stuck here forever and die." 
+      and: set player health to 0 which ends the game.
+    
+ESCAPE Scenario #4: Player enters escrima sticks and it's in inventory.
+   GIVEN : "escape" is entered
+    WHEN : Player is in room 29
+      and: Player enters escrima sticks as response to the prompt.
+      and: escrima sticks in player inventory.
+    THEN : Display Message: "You slammed the escrima sticks into the ground which created an electrical blast that entered the power box of the cage and disabled the electricity allowing you to escape the cage. Look for the key to this abandoned building to go to the mall." 
+      and: generate the key that unlocks the door to the next room. The next room was locked this whole time.
+    
+///
+
+SHOOT Scenario #1: No target specified.
+   GIVEN : "shoot" is entered
+    WHEN : 
+    THEN : Display Message: "Who do you need to shoot?"
+    
+SHOOT Scenario #2: Player not in room 34 (mall parking)
+   GIVEN : "shoot goons" is entered
+    WHEN : player not in room 34
+    THEN : Display Message: "This isn't the right time to pull out a weapon."
+    
+SHOOT Scenario #3:  Player is in room 34 (mall parking)
+   GIVEN : "shoot goons" is entered
+    WHEN : player is in room 34
+    THEN : Ask Player: "With what weapon?"
+
+SHOOT Scenario #3:  Player enters an item that isn't a weapon
+   GIVEN : "shoot goons" is entered
+    WHEN : player enters an item that isn't a weapon as response to prompt
+      and: player is in room 34
+    THEN : Display Message: "That's not a weapon"
+  
+  THIS IS IN AN ELSE
+    
+    
+    
+    
+    
+    
+    
