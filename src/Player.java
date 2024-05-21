@@ -20,6 +20,8 @@ public class Player {
 	private double carryWeight = 0;
 	/** Everytime an item is picked up for the first time, the addItemToInventory method should update this tally. */
 	private int pointsFromItemsTally = 0;
+	/** This is false until the player has successfully flashed the goons in room35. */
+	private boolean hasFlashed = false;
 	 
 	/** HashMap storing all the items in the player's inventory. */
 	private HashMap<String, Item> inventory;
@@ -131,6 +133,22 @@ public class Player {
 	 */
 	public int getPointsFromItemsTally() {
 		return pointsFromItemsTally;
+	}
+
+	/**
+	 * getter for hasFlashed.
+	 * @return the hasFlashed
+	 */
+	public boolean getHasFlashed() {
+		return hasFlashed;
+	}
+
+	/**
+	 * setter for hasFlashed.
+	 * @param hasFlashed the hasFlashed to set
+	 */
+	public void setHasFlashed(boolean hasFlashed) {
+		this.hasFlashed = hasFlashed;
 	}
 
 	/**

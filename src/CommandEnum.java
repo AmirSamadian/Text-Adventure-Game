@@ -34,6 +34,14 @@ public enum CommandEnum {
 	CWEIGHT("cweight"),
 	/** Instance of type CommandEnum representing the escape command. */
 	ESCAPE("escape"),
+	/** Instance of type CommandEnum representing the shoot command. */
+	SHOOT("shoot"),
+	/** Instance of type CommandEnum representing the flash command. */
+	FLASH("flash"),
+	/** Instance of type CommandEnum representing the attack command. */
+	ATTACK("attack"),
+	/** Instance of type CommandEnum representing the deactivate command. */
+	DEACTIVATE("deactivate"),
 	DEBUG("debug");
 
 	/** text stores the string that would be entered by the person playing the game. */

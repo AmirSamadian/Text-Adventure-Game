@@ -54,8 +54,6 @@ public class Game {
 				Writer.println();
 				Writer.println("YOU DIED	\r\n \r\n");
 			}
-			// other stuff that needs to happen every turn can be added here.
-			
 			turn++;
 		}
 		printGoodbye();
@@ -141,6 +139,18 @@ public class Game {
 				break;
 			case ESCAPE:
 				escape();
+				break;
+			case SHOOT:
+				shoot(command);
+				break;
+			case FLASH:
+				flash();
+				break;
+			case ATTACK:
+				attack();
+				break;
+			case DEACTIVATE:
+				wantToQuit = deactivate();
 				break;
 			case DEBUG:
 				debug(command);
@@ -589,6 +599,195 @@ public class Game {
 	}
 	
 	
+	/** 
+	 * Function for the command shoot. Follows scenarios outlined in GWT's. Part of guard battling special feature.
+	 * @param command the command entered by the user that's first word was shoot
+	 * */
+	private void shoot(Command command) {
+		Room room34 = world.getRoom("mall parking");
+		boolean areDead = false;
+		if (ryderFalcone.getCurrentRoom() != room34) { //if not in room34
+			Writer.println("The shoot command isn't appropriate for this room.");
+			return;
+		} 
+		if (!command.hasSecondWord()) {
+			// If there is no second word, we don't know what to shoot so we display the message.
+			Writer.println("Who do you need to shoot?");
+			return;
+		}
+		String target = command.getRestOfLine();
+		if ((!target.equals("guards")) && (!target.equals("goons"))) {
+			Writer.println("We need to shoot the guards idiot. Enter shoot guards or shoot goons");
+			Writer.println("*" + target + "*");
+			return;
+		}
+		Writer.println("Whith what weapon?");
+		String response = Reader.getResponse();
+		
+		if (ryderFalcone.getItem(response) == null) {		//item that they entered isn't in their inventory
+			Writer.println("You don't have that weapon in your inventory. Maybe you have it packed?");
+			return;
+		}
+		if (response.equals("cr-56 amax")) {
+			Writer.println("You were able to kill guard 1 but gave your position away. Guard 2 ran away and called for backup. "
+					+ "They sniped you before you could escape.");
+			ryderFalcone.setHealth(0);  		//kill Falcone
+			return;
+		}
+		
+		if (response.equals("rpg")) {
+			Writer.println("You blew those guards up! They are both dead. Go get the key to the mall from their clothes and enter the mall.");
+			areDead = true;
+		} 
+		else if (response.equals("falcones daily")) {
+			Writer.println("You killed guard 1 and guard 2 was confused as to where he got shot from since falcones daily is a silenced pistol."
+					+ "By the time he could react, you killed him too. Go get the key to the mall from their clothes and enter the mall.");
+			areDead = true;
+		}
+		else {
+			Writer.println("That's not a long-ranged weapon?");
+			areDead = false;
+		}
+		if (areDead) {
+			Item key = new Item("mall key", "This is an access card that opens up the mall. It’s in the goon’s jacket’s pocket", 0, 0.01);
+			room34.addItem("mall key", key);
+		}
+	}
+	
+	/** 
+	 * Function for the command flash. Follows scenarios outlined in GWT's. Part of guard battling special feature.
+	 * */
+	private void flash() {
+		Room room35 = world.getRoom("mall");
+		Item grenade = ryderFalcone.getItem("flash grenade");
+		if (ryderFalcone.getCurrentRoom() != room35) { //if not in room35
+			Writer.println("You shouldn't use a flash grenade here.");
+			return;
+		} 
+		if (grenade == null) { 	//flash grenade not in inventory
+			Writer.println("You don't have a flash grenade in your inventory");
+			return;
+		}
+	
+		Writer.println("You have successfully blinded the group of goons. Take advantage of this and follow up with an attack using another weapon.");
+		ryderFalcone.setHasFlashed(true);
+		ryderFalcone.removeItem(grenade.getName()); //get rid of grenade bc it has been used.
+	}
+	
+	
+	/** 
+	 * Function for the command attack. Follows scenarios outlined in GWT's. Part of guard battling special feature.
+	 * */
+	private void attack() {
+		Room room35 = world.getRoom("mall");
+		boolean areDead = false;									//if goons are dead, it turns to true
+		if (ryderFalcone.getCurrentRoom() != room35) { 	  //if not in room35
+			Writer.println("Attack isn't an appropriate command for this room");
+			return;
+		} 
+		Writer.println("with what?");
+		String response = Reader.getResponse();
+		if (ryderFalcone.getItem(response) == null) {
+			Writer.println("You don't have that weapon in your inventory. Maybe you have it packed?");
+			return;
+		}
+		
+		if (response.equals("escrima sticks")) {
+			if (ryderFalcone.getHasFlashed() == false) {
+				Writer.println("Don't bring a melee weapon to a gunfight unless you have some advantage, detective. "
+						+ "I thought you were a better fighter than this.");
+				ryderFalcone.setHealth(0);
+			} else {
+				if (ryderFalcone.getCarryWeight() > 15) {
+					Writer.println("You can't move as fast as you normally do with all this junk in your inventory. You weren't battle ready!");
+					ryderFalcone.setHealth(0);
+				} else {
+					Writer.println("While the goons were struggling to see, you acrobatically jumped towards them. "
+							+ "You used 10 different martial arts techniques to disarm them while smacking the hell "
+							+ "out of them with the escrima sticks. Grab the key from them and unlock the door.");
+					areDead = true;
+				}
+			}
+		}
+		else if (response.equals("falcones daily")) {
+			if (ryderFalcone.getHasFlashed() == false) {
+				Writer.println("You let your ego get the best of you, detective. 10 assault rifles always beat a pistol,"
+						+ "unless you have some advantage. I thought you were a better fighter than this.");
+				ryderFalcone.setHealth(0);
+			} else {
+				if (ryderFalcone.getCarryWeight() > 15) {
+					Writer.println("You can't move as fast as you normally do with all this junk in your inventory. You weren't battle ready!");
+					ryderFalcone.setHealth(0);
+				} else {
+					Writer.println("You were able to kill all of them with precision aim as they were busy trying to see. Grab the key from them and unlock the door.");
+					areDead = true;
+				}
+			}
+		}
+		
+		else if (response.equals("rpg")) {
+			Writer.println("BOOOM! Down go the goons. Grab the key from them and unlock the door.");
+			areDead = true;
+		}
+		else if (response.equals("cr-56 amax")) {
+			Writer.println("Unlucky! your gun jammed and the goons saw you.");
+			ryderFalcone.setHealth(0);
+		}
+		else { 		//This is when the response is not an item that is a weapon
+			Writer.println("You ran at the guards like an idiot holding a " + response + " and they killed you.");
+			ryderFalcone.setHealth(0);
+		}
+		
+		if (areDead) {
+			Item key = new Item("secret key", "This is an access card that opens up the passcode room. It’s in the goon’s jacket’s pocket", 0, 0.01);
+			room35.addItem("secret key", key);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/** 
+	 * Function for the command deactivate. Follows scenarios outlined in GWT's. 
+	 * @return false is bomb wasn't deactivated. True if bomb was deactivated.
+	 * 
+	 * */
+	private boolean deactivate() {
+		boolean wentThroughLoop = false;
+		Room room37 = world.getRoom("Radioactive Warehouse in Mall");
+		if (ryderFalcone.getCurrentRoom() != room37) { //if not in room37
+			Writer.println("There is nothing to deactivate in this room");
+			return false;
+		} 
+		for (int num = 0; num < 3; num++) {
+			wentThroughLoop = true;
+			Writer.println("Enter the passcode: ");
+			String response = Reader.getResponse();
+			if (response.equals("24080369717")) {
+				Writer.println("You win! Congratulations detective. This becomes case #10,001 comleted. You have saved the city from this lunatic!");
+				return true;
+			} 
+			if (num != 2) {
+				Writer.println("INCORRECT. Try Again.  Enter the passcode: ");
+			}
+		}
+		if (wentThroughLoop) {
+			Writer.println("INCORRECT. 3, 2, 1, BEEP BEEP BEEP BOOOM!! The world is doomed.");
+			ryderFalcone.setHealth(0);
+			return false;
+		}
+		return false;	//default is to return false
+	}
+	
+	
 	/**
 	 * Print out the closing message for the player.
 	 */
@@ -597,7 +796,7 @@ public class Game {
 		score += ryderFalcone.getPointsFromItemsTally();
 		Writer.println("Thank you for playing! I hope you enjoyed the game.");
 		Writer.println("You have earned " + score + " points in " + turn + " turns");
-		Writer.println("The max amount of points you could've gotten was 1014 points.");
+		Writer.println("The max amount of points you could've gotten was 1200 points.");
 
 	}
 	

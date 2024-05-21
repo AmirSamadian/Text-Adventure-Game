@@ -99,6 +99,7 @@ public class World {
 	
 	/**
 	* Helper method for creating and adding containers into a room. This is called in createRooms.
+	* This version of the method is for creating containers that start out as empty.
 	*
 	* @param room The room that we want to put an item into.
 	* @param itemName The name of the container item that we want to add.
@@ -108,6 +109,25 @@ public class World {
 	*/
 	private void createContainer(Room room, String itemName, String description, int pointValue, double weight) {
 		Container container = new Container(itemName, description, pointValue, weight);
+		room.addItem(itemName, container);
+	}
+	
+	
+	
+	/** 
+	*  Helper method for creating and adding containers into a room. This is called in createRooms.
+	*  This version of the method is for containers that don't start out as empty. They already have an item inside.
+	*
+	* @param room The room that we want to put an item into.
+	* @param itemName The name of the container item that we want to add.
+	* @param description The description of the item we're adding.
+	* @param pointValue The number of points the item has.
+	* @param weight The weight of the item.
+	* @param item is the item that comes pre-packed into this container.
+	*/
+	private void createContainer(Room room, String itemName, String description, int pointValue, double weight, Item item) {
+		Container container = new Container(itemName, description, pointValue, weight);
+		container.addItem(item);
 		room.addItem(itemName, container);
 	}
 	
@@ -333,7 +353,30 @@ public class World {
 				+ "this is just a tennis court.", -10, -10);
 		WrongRoom room33Wrong8d = new WrongRoom("what is going on!","Focus on the signs and the scanner hint", 2, 0);
 		
-		Room room34 = new Room("mall parking", "description", 100);
+		Room room34 = new Room("mall parking", "It’s 4 AM as you’re in your Audi R8 driving toward the mall’s parking. You notice that two jacked goons are guarding the mall’s entrance with machine guns. "
+				+ "You didn’t approach sneakily so they noticed your trademark car first and fired some shots at it. Luckily, you turned around quickly and didn’t take any damage.\r\n"
+				+ "“Their weapons outpower mine, I must find a sneaky approach to killing them and entering the mall. There’s a hill bordering the parking lot and there are many trees for cover. "
+				+ "I should drive to the bottom and walk all the way up” - Falcone\r\n"
+				+ "You are now at the top of the hill and the goons have no idea. Shoot them with one of your guns. \r\n"
+				+ "", 100);
+		
+		Room room35 = new Room("mall", "You are now in this empty mall. Based on the fact that goons were guarding this mall, it’s certain that you’re in the right place. "
+				+ "Sneaking and searching this ginormous mall was tedious, but eventually, you heard a group of 10 armed goons cracking jokes as they were guarding a room."
+				+ " Whatever that room is must be important, but you must kill all goons before you can enter. \r\n"
+				+ "“I must be smart with the way I choose to attack. I need to pick a weapon or combination of weapons that allows me to kill them all at once or "
+				+ "one-by-one without interference from the others.” – Falcone\r\n"
+				+ "Use help command if you need a refresher of all available commands. \r\n"
+				+ "", 30);
+		
+		Room room36 = new Room("Passcode Room","This room is completely empty, except there is a door and a chest.", 55);
+		
+		Room room37 = new Room("Radioactive Warehouse in Mall", "You have opened the door and see a stairway going down into a warehouse. You hear a maniacal laugh as you walk down the stairs. "
+				+ "The riddler is dancing with joy as the countdown on the bomb keeps going down but doesn’t see you. It’s at 59 seconds.\r\n"
+				+ "“Riddle me this dumbass” – Falcone\r\n"
+				+ "“How did you - ” – Riddler\r\n"
+				+ "You knocked out the riddler and killed him with your bare hands. Deactivate the bomb. You have 10 seconds. \r\n"
+				+ "", 100);
+		
 		
 		// Adding all the rooms to the world.
 		this.addRoom(room1);
@@ -370,7 +413,9 @@ public class World {
 		this.addRoom(room32Wrong8c);
 		this.addRoom(room33Wrong8d);
 		this.addRoom(room34);
-		
+		this.addRoom(room35);
+		this.addRoom(room36);
+		this.addRoom(room37);
 		
 		//Adding all the scanner hints for the correct rooms.
 		room6Body1.setScannerHint("Analysis of minuscule code from cut marks reveals the following clue: High up");
@@ -401,6 +446,7 @@ public class World {
 		this.createDoor(room4, "audi", room5);
 		
 		this.createDoor(room5, "clock", room6Body1);
+		this.createDoor(room5, "police", room4);
 		
 		//Doors for Body 1
 		this.createDoor(room6Body1, "a", room7Wrong1a);
@@ -448,6 +494,13 @@ public class World {
 		this.createDoor(room28Body8, "prev body", room25Body7);
 		
 		this.createDoor(room29, "mall parking", room34, true, "abandoned key");
+		
+		this.createDoor(room34, "mall", room35, true, "mall key");
+		
+		this.createDoor(room35, "secret room", room36, true, "secret key");
+		
+		this.createDoor(room36, "door", room37);
+		
 		
 		//Wrong rooms don't have any doors other than the one door that got the player to that room. 
 		//When a player enters a wrong room, they must use back command to go back.
@@ -541,6 +594,8 @@ public class World {
 		
 		this.createItems(room28Body8, "body 8", "On the person’s body it says: For every wrong guess,"
 				+ " a building gets blown up, GREEN!", 0, 170);
+		
+		this.createItems(room36, "card", "passcode = 24080369717", 0, 1);
 		
 	}
 	

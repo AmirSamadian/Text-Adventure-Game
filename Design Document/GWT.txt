@@ -376,6 +376,225 @@ UNPACK Scenario #7: Item can be unpacked
 ///////////////////////////////////////////////////////////////////////////////
 // Commands specific to my game (alphabetical)
 
+
+ATTACK Scenario #1: Player not in room 35 (mall)
+   GIVEN : "attack" is entered
+    WHEN : player not in room 35
+    THEN : Display Message: "Attack isn't an appropriate command for this room"
+
+ATTACK Scenario #2: Player is in room 35 
+   GIVEN : "attack" is entered
+    WHEN : player is in room 35
+    THEN : Ask Player: "With what?"
+
+ATTACK Scenario #3:  Player enters an item that isn't in their inventory
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : entered item is not in player inventory
+     and : player is in room 35
+    THEN : Display Message: "You don't have that weapon in your inventory. Maybe you have it packed?"
+    
+	 
+	* Cases that don't succeed *
+	 
+ATTACK Scenario #4:  Player enters an item that isn't a weapon
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters an item that isn't a weapon as response to prompt
+      and: player is in room 35
+      and: item is in inventory
+    THEN : Display Message: "You ran at the guards like an idiot holding a 'response item' and they killed you."
+	 and : set player health to 0 which ends game.	 
+ 
+ATTACK Scenario #5:  Player enters escrima sticks but didn't flash
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters escrima sticks
+     and : player is in room 35
+     and : item is in inventory
+     and : goons haven't been flashed
+    THEN : Display Message: "Don't bring a melee weapon to a gunfight unless you have some advantage, detective. 
+    						I thought you were a better fighter than this."
+	 and : set player health to 0 which ends game.	
+	 
+ATTACK Scenario #6:  Player enters escrima sticks, flashed, but their inventory weight is more than 15 lbs
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters escrima sticks
+     and : player is in room 35
+     and : item is in inventory
+     and : goons have been flashed
+     and : player inventory weight > 15 lbs
+    THEN : Display Message: "You can't move as fast as you normally do with all this junk in your inventory you weren't battle ready!"
+	 and : set player health to 0 which ends game.	
+	 
+ATTACK Scenario #7:  Player enters falcones daily but didn't flash
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters falcones daily
+     and : player is in room 35
+     and : item is in inventory
+     and : goons haven't been flashed
+    THEN : Display Message: "You let your ego get the best of you, detective. 10 assault rifles always beat a pistol, 
+    						unless you have some advantage. I thought you were a better fighter than this."
+	 and : set player health to 0 which ends game.	 
+	 
+ATTACK Scenario #8:  Player enters falcones daily, flashed, but their inventory weight is more than 15lbs
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters falcones daily
+     and : player is in room 35
+     and : item is in inventory
+     and : goons have been flashed
+     and : player inventory weight > 15 lbs
+    THEN : Display Message: "You can't move as fast as you normally do with all this junk in your inventory you weren't battle ready!"
+	 and : set player health to 0 which ends game.	 
+	 
+ATTACK Scenario #9:  Player enters cr-56 amax
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters cr-56 amax
+     and : player is in room 35
+     and : item is in inventory
+    THEN : Display Message: "Unlucky! your gun jammed and the goons saw you."
+	 and : set player health to 0 which ends game.	 	 
+	 
+	 
+	 	* Cases that succeed *
+	 	
+ATTACK Scenario #10:  Player enters rpg
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters rpg
+     and : player is in room 35
+     and : item is in inventory
+    THEN : Display Message: "BOOOM! Down go the goons. Grab the key from them and unlock the door. "
+	 and : create secret key to unlock next room
+	 
+ATTACK Scenario #11:  Player enters falcones daily, flashed, and their inventory weight is less than 15lbs
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters falcones daily
+     and : player is in room 35
+     and : item is in inventory
+     and : goons have been flashed
+     and : inventory weight < 15 lbs
+    THEN : Display Message: "You were able to kill all of them with precision aim as they were busy trying to see. Grab the key from them and unlock the door. "
+	 and : create secret key to unlock next room
+	 
+ATTACK Scenario #12:  Player enters escrima sticks, flashed, and their inventory weight is less than 15lbs
+   GIVEN : "attack" had been entered
+     and : user has been prompted
+    WHEN : player enters escrima sticks
+     and : player is in room 35
+     and : item is in inventory
+     and : goons have been flashed
+     and : inventory weight < 15 lbs
+    THEN : Display Message: "While the goons were struggling to see, you acrobatically jumped towards them. 
+    					You used 10 different martial arts techniques to disarm them while smacking the hell 
+    					out of them with the escrima sticks. Grab the key from them and unlock the door. "
+	 and : create secret key to unlock next room
+	 
+///
+
+
+
+
+
+///
+
+DEACTIVATE Scenario #1: Player not in room 37
+   GIVEN : "deactivate" is entered
+    WHEN : Player not in room 37
+    THEN : Display Message: "There is nothing to deactivate in this room"
+    
+DEACTIVATE Scenario #2: Player is in room 37
+   GIVEN : "deactivate" is entered
+    WHEN : Player is in room 37
+    THEN : Ask Player: "Enter the passcode: "
+
+DEACTIVATE Scenario #3: passcode correct
+   GIVEN : "deactivate" has been entered
+    WHEN : Player is in room 37
+      and: Passcode entered was correct
+    THEN : Display Message: "You win! Congratulations detective. This becomes case #10,001 completed. You have saved the city from this lunatic!"
+      and: printGoodBye
+
+DEACTIVATE Scenario #4: passcode incorrect
+   GIVEN : "deactivate" has been entered
+    WHEN : Player is in room 37
+      and: passcode was NOT correct
+    THEN : Ask Player Again: "INCORRECT. Enter the passcode: "
+
+DEACTIVATE Scenario #5: passcode incorrect for the third time
+   GIVEN : "deactivate" has been entered
+    WHEN : Player is in room 37
+      and: passcode was NOT correct for the third time
+    THEN : Display Message: "INCORRECT. 3, 2, 1, BEEP BEEP BEEP BOOOM!! The world is doomed."
+      and: set player health to 0 which kills him and displays you lose and the goodbye message.
+
+///
+
+ESCAPE Scenario #1: Player not in room 29
+   GIVEN : "escape" is entered
+    WHEN : Player not in room 29
+    THEN : Display Message: "You are free, there's nothing to escape out of."
+
+ESCAPE Scenario #2: Player is in room 29
+   GIVEN : "escape" is entered
+    WHEN : Player is in room 29
+    THEN : Ask Player: "What do you think would be helpful to escape this electric cage? Enter the name of an item in your inventory. Make sure you first unpack any items in containers if you think they are helpful."
+
+ESCAPE Scenario #3: Player prompted for item and enters an unhelpful item (anything other than escrima sticks)
+   GIVEN : "escape" had been entered
+     and : user has been prompted
+    WHEN : Player is in room 29
+     and : Player enters an unhelpful item as a response to the prompt.
+    THEN : Display Message: "That won't help. Try another item. Remember the cage is electric so something electric would be helpful." 
+    
+ESCAPE Scenario #4: Player enters escrima sticks but not in inventory.
+   GIVEN : "escape" had been entered
+     and : user has been prompted
+    WHEN : Player is in room 29
+      and: Player enters escrima sticks as response to the prompt.
+      and: escrima sticks not in inventory. even if it's in a container in inventory.
+    THEN : Display Message: "It's not in your inventory. Sorry but you're gonna be stuck here forever and die." 
+      and: set player health to 0 which ends the game.
+    
+ESCAPE Scenario #4: Player enters escrima sticks and it's in inventory.
+   GIVEN : "escape" had been entered
+     and : user has been prompted
+    WHEN : Player is in room 29
+      and: Player enters escrima sticks as response to the prompt.
+      and: escrima sticks in player inventory.
+    THEN : Display Message: "You slammed the escrima sticks into the ground which created an electrical blast that entered the power box of the cage and disabled the electricity allowing you to escape the cage. Look for the key to this abandoned building to go to the mall." 
+      and: generate the key that unlocks the door to the next room. The next room was locked this whole time.
+    
+///
+
+FLASH Scenario #1: Player not in room 35 (mall)
+   GIVEN : "flash" is entered
+    WHEN : Player not in room 35
+    THEN : Display Message: "You shouldn't use a flash grenade here."
+
+FLASH Scenario #2: Flash Grenade not in player inventory
+   GIVEN : "flash" is entered
+    WHEN : Player is in room 35
+      and: flash grenade not in player inventory
+    THEN : Display Message: "You don't have a flash grenade in your inventory"
+
+FLASH Scenario #3: Flash Grenade is in player inventory
+   GIVEN : "flash" is entered
+    WHEN : Player is in room 35
+      and: flash grenade is in player inventory
+    THEN : Display Message: "You have successfully blinded the group of goons. Take advantage of this and 
+    						follow up with an attack using another weapon."
+      and: sets hasFlashed boolean from the player class equal to true
+      and: remove flash grenade from inventory 
+
+///
+
+
 SCAN Scenario #1: Scanner not in inventory
    GIVEN : "scan" is entered
     WHEN : scanner item is NOT in player's inventory
@@ -396,62 +615,88 @@ SCAN Scenario #3: Scanner can be used
 
 ///
 
-ESCAPE Scenario #1: Player not in room 29
-   GIVEN : "escape" is entered
-    WHEN : Player not in room 29
-    THEN : Display Message: "You are free, there's nothing to escape out of."
-
-ESCAPE Scenario #2: Player is in room 29
-   GIVEN : "escape" is entered
-    WHEN : Player is in room 29
-    THEN : Ask Player: "What do you think would be helpful to escape this electric cage? Enter the name of an item in your inventory. Make sure you first unpack any items in containers if you think they are helpful."
-
-ESCAPE Scenario #3: Player prompted for item and enters an unhelpful item (anything other than escrima sticks)
-   GIVEN : "escape" is entered
-    WHEN : Player is in room 29
-      and: Player enters an unhelpful item as a response to the prompt.
-    THEN : Display Message: "That won't help. Try another item. Remember the cage is electric so something electric would be helpful." 
     
-ESCAPE Scenario #4: Player enters escrima sticks but not in inventory.
-   GIVEN : "escape" is entered
-    WHEN : Player is in room 29
-      and: Player enters escrima sticks as response to the prompt.
-      and: escrima sticks not in inventory. even if it's in a container in inventory.
-    THEN : Display Message: "It's not in your inventory. Sorry but you're gonna be stuck here forever and die." 
-      and: set player health to 0 which ends the game.
+SHOOT Scenario #1: Player not in room 34 (mall parking)
+   GIVEN : "shoot goons" is entered
+       or: "shoot" is entered
+    WHEN : player not in room 34
+    THEN : Display Message: "The shoot command isn't appropriate for this room."
     
-ESCAPE Scenario #4: Player enters escrima sticks and it's in inventory.
-   GIVEN : "escape" is entered
-    WHEN : Player is in room 29
-      and: Player enters escrima sticks as response to the prompt.
-      and: escrima sticks in player inventory.
-    THEN : Display Message: "You slammed the escrima sticks into the ground which created an electrical blast that entered the power box of the cage and disabled the electricity allowing you to escape the cage. Look for the key to this abandoned building to go to the mall." 
-      and: generate the key that unlocks the door to the next room. The next room was locked this whole time.
-    
-///
-
-SHOOT Scenario #1: No target specified.
+SHOOT Scenario #2: No target specified.
    GIVEN : "shoot" is entered
     WHEN : 
     THEN : Display Message: "Who do you need to shoot?"
     
-SHOOT Scenario #2: Player not in room 34 (mall parking)
-   GIVEN : "shoot goons" is entered
-    WHEN : player not in room 34
-    THEN : Display Message: "This isn't the right time to pull out a weapon."
-    
-SHOOT Scenario #3:  Player is in room 34 (mall parking)
+SHOOT Scenario #3: target specified isn't guards or goons.
+   GIVEN : "shoot target" is entered and target isn't the string guards or goons
+    WHEN : player in room34
+    THEN : Display Message: "We need to shoot the guards idiot"   
+ 
+SHOOT Scenario #4:  Player is in room 34 (mall parking)
    GIVEN : "shoot goons" is entered
     WHEN : player is in room 34
     THEN : Ask Player: "With what weapon?"
 
-SHOOT Scenario #3:  Player enters an item that isn't a weapon
-   GIVEN : "shoot goons" is entered
-    WHEN : player enters an item that isn't a weapon as response to prompt
+SHOOT Scenario #5:  Player enters an item that isn't in their inventory
+   GIVEN : "shoot goons" had been entered
+     and : user has been prompted
+    WHEN : item is not in player inventory
       and: player is in room 34
-    THEN : Display Message: "That's not a weapon"
-  
-  THIS IS IN AN ELSE
+    THEN : Display Message: "You don't have that weapon in your inventory. Maybe you have it packed?"
+    
+SHOOT Scenario #6:  Player enters an item that isn't a gun or rpg
+   GIVEN : "shoot goons" had been entered
+     and : user has been prompted
+    WHEN : player enters an item that isn't a gun or rpg as response to prompt
+      and: player is in room 34
+      and: item is in inventory
+    THEN : Display Message: "That's not a long-ranged weapon"
+    
+SHOOT Scenario #7:  Player enters rpg
+   GIVEN : "shoot goons" had been entered
+     and : user has been prompted
+    WHEN : player enters rpg response to prompt
+      and: player is in room 34
+      and: rpg is in player inventory
+    THEN : add mall key to room 34
+      and: Display Message: "You blew those guards up! They are both dead. Go get the key to the mall from their clothes and enter the mall."
+
+SHOOT Scenario #8:  Player enters falcones daily
+   GIVEN : "shoot goons" had been entered
+     and : user has been prompted
+    WHEN : player enters falcones daily as response to prompt
+      and: player is in room 34
+      and: falcones daily is in player inventory
+    THEN : add mall key to room 34
+      and: Display Message: "You killed guard 1 and guard 2 was confused as to where he got shot from since falcones daily is a silenced pistol. 
+      						By the time he could react, you killed him too. Go get the key to the mall from their clothes and enter the mall."
+    
+SHOOT Scenario #9:  Player enters cr-56 amax
+   GIVEN : "shoot goons" had been entered
+     and : user has been prompted
+    WHEN : player enters cr-56 amax as response to prompt
+      and: player is in room 34
+      and: cr-56 amax is in player inventory
+    THEN : Display Message: "You were able to kill guard 1 but gave your position away. Guard 2 ran away and called for backup. They sniped you before you could escape."
+	  and: set player health to 0 which ends game.
+	  
+//////	  
+    
+
+
+
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
