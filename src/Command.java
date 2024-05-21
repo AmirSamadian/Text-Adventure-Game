@@ -39,7 +39,7 @@ public class Command {
 	public Command(String firstWord) {
 		commandWord = CommandWords.getCommand(firstWord);
 		restOfLine = new ArrayList<String>();
-	} 
+	}  
 
 	/**
 	 * Create a command object. First and second word must be supplied, but

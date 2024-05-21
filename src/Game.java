@@ -152,9 +152,6 @@ public class Game {
 			case DEACTIVATE:
 				wantToQuit = deactivate();
 				break;
-			case DEBUG:
-				debug(command);
-				break;
 				
 			default:
 				Writer.println("Sorry, this command is not implemented yet.");
@@ -406,12 +403,12 @@ public class Game {
 
 	    String itemName = command.getRestOfLine();
 	    Item item = ryderFalcone.getItem(itemName);
-	    boolean i_inRoom = false;		//this boolean is used to more conveniently check if the item is in the room or inv.
+	    boolean itemInRoom = false;		//this boolean is used to more conveniently check if the item is in the room or inv.
 
 	    // Try to find the item in the current room if it's not in the inventory
 	    if (item == null) {
 	        item = ryderFalcone.getCurrentRoom().getItem(itemName);
-	        i_inRoom = true;
+	        itemInRoom = true;
 	    }
 
 	    // If the item is not found in both inventory and room
@@ -429,12 +426,12 @@ public class Game {
 	    Writer.println("What container do you want to pack " + itemName + " into.");
 	    String containerName = Reader.getResponse();
 	    Item container = ryderFalcone.getItem(containerName);
-	    boolean c_inRoom = false;		//this boolean is used to more conveniently check if the container is in the room or inv.
+	    boolean containerInRoom = false;		//this boolean is used to more conveniently check if the container is in the room or inv.
 
 	    // Try to find the container in the current room if it's not in the inventory
 	    if (container == null) {
 	        container = ryderFalcone.getCurrentRoom().getItem(containerName);
-	        c_inRoom = true;
+	        containerInRoom = true;
 	    }
 
 	    // If the container is not found in both inventory and room
@@ -451,7 +448,7 @@ public class Game {
 	    
 	    double initialWeight = ryderFalcone.getCarryWeight();
 	    
-	    if (i_inRoom && !c_inRoom) {
+	    if (itemInRoom && !containerInRoom) {
 	    	double newWeight = initialWeight + item.getWeight();
 	    	if (newWeight > ryderFalcone.getMaxCarryWeight()) {
 	    		 Writer.println("This will exceed your carrying capacity of 50 lbs.");
@@ -462,16 +459,16 @@ public class Game {
 	    		ryderFalcone.setCarryWeight(newWeight);
 	    		Writer.println(itemName + " was successfully packed into " + container.getName());
 	    	}
-	    } else if (!i_inRoom && !c_inRoom) {	//since the item and container both start out in inventory, there shouldn't be a case were exceeds carry weight.
+	    } else if (!itemInRoom && !containerInRoom) {	//since the item and container both start out in inventory, there shouldn't be a case were exceeds carry weight.
 	    	((Container) container).addItem(item);
 	    	ryderFalcone.removeItem2(itemName);		//doesn't change inventory weight but removes from hashmap.
 	    	//ryderFalcone.setCarryWeight(initialWeight); redundant
 	    	 Writer.println(itemName + " was successfully packed into " + container.getName());
-	    } else if (!i_inRoom && c_inRoom) {		//taking an item out of inv so should never exceed weight. But do have to subtract item weight.
+	    } else if (!itemInRoom && containerInRoom) {		//taking an item out of inv so should never exceed weight. But do have to subtract item weight.
 	    	((Container) container).addItem(item);
 	    	ryderFalcone.removeItem(itemName);	//this handles inventory weight.
 	    	 Writer.println(itemName + " was successfully packed into " + container.getName());
-	    } else if (i_inRoom && c_inRoom) {
+	    } else if (itemInRoom && containerInRoom) {
 	    	((Container) container).addItem(item);
     		ryderFalcone.getCurrentRoom().removeItem(itemName);
     		Writer.println(itemName + " was successfully packed into " + container.getName());
@@ -747,14 +744,6 @@ public class Game {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	/** 
 	 * Function for the command deactivate. Follows scenarios outlined in GWT's. 
 	 * @return false is bomb wasn't deactivated. True if bomb was deactivated.
@@ -800,12 +789,6 @@ public class Game {
 
 	}
 	
-	//////get rid of this before release.
-	private void debug(Command command) {
-		ryderFalcone.setCurrentRoom(world.getRoom(command.getRestOfLine()));
-		printLocationInformation();
-	}
-
 	
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic

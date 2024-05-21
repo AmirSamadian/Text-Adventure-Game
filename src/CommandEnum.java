@@ -41,16 +41,23 @@ public enum CommandEnum {
 	/** Instance of type CommandEnum representing the attack command. */
 	ATTACK("attack"),
 	/** Instance of type CommandEnum representing the deactivate command. */
-	DEACTIVATE("deactivate"),
-	DEBUG("debug");
-
+	DEACTIVATE("deactivate");
+	
 	/** text stores the string that would be entered by the person playing the game. */
 	private final String text;
 	
+	/** 
+	 * Constructor for CommandEnum.
+	 * @param text the command word string of the command.
+	 *  */
 	private CommandEnum(String text) {
 		this.text = text;
 	}
 	
+	/** 
+	 * getter for the command word string of the command.
+	 * @return text
+	 * */
 	public String getText() {
 		return text;
 	} 

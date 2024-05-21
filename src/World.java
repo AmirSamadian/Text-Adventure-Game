@@ -99,7 +99,6 @@ public class World {
 	
 	/**
 	* Helper method for creating and adding containers into a room. This is called in createRooms.
-	* This version of the method is for creating containers that start out as empty.
 	*
 	* @param room The room that we want to put an item into.
 	* @param itemName The name of the container item that we want to add.
@@ -109,25 +108,6 @@ public class World {
 	*/
 	private void createContainer(Room room, String itemName, String description, int pointValue, double weight) {
 		Container container = new Container(itemName, description, pointValue, weight);
-		room.addItem(itemName, container);
-	}
-	
-	
-	
-	/** 
-	*  Helper method for creating and adding containers into a room. This is called in createRooms.
-	*  This version of the method is for containers that don't start out as empty. They already have an item inside.
-	*
-	* @param room The room that we want to put an item into.
-	* @param itemName The name of the container item that we want to add.
-	* @param description The description of the item we're adding.
-	* @param pointValue The number of points the item has.
-	* @param weight The weight of the item.
-	* @param item is the item that comes pre-packed into this container.
-	*/
-	private void createContainer(Room room, String itemName, String description, int pointValue, double weight, Item item) {
-		Container container = new Container(itemName, description, pointValue, weight);
-		container.addItem(item);
 		room.addItem(itemName, container);
 	}
 	
@@ -157,7 +137,7 @@ public class World {
 				+ "-	RPG – 35 lbs\r\n"
 				+ "-	Flash Grenade – 2 lbs    *recommended*\r\n"
 				+ "-	CR-56 Amax – 25 lbs \r\n"
-				+ "-	Weapon Case - 10 lbs \r\n", 0);
+				+ "-	Weapon Case - 10 lbs 		*recommended* \r\n", 0);
 		
 		Room room3 = new Room("Mansion Helipad", "Wind blows in your face as you walk toward the helicopter. Let’s go to the police station to get more information.", 0);
 		
@@ -265,8 +245,13 @@ public class World {
 				+ "you a exquisite steak. (+10 HP)\r\n"
 				+ "", -10, 10);
 		
-		CorrectRoom room18Body5 = new CorrectRoom("Ramsay’s Restaurant", "“Gordon’s my buddy. I hope nothing happened to him.” Pick up your "
-				+ "phone and call him to empty the restaurant for a search. ", 100);
+		CorrectRoom room18Body5 = new CorrectRoom("Ramsay’s Restaurant", "“Gordon’s my buddy. I hope nothing happened to him. Let me try calling him. Huh… unresponsive. Let me call his assistant.  \r\n"
+				+ "“Hey, I need to do a search of the restaurant. Can you clear it for examination?” – Falcone\r\n"
+				+ "“Sure thing!” – assistant\r\n"
+				+ "You are now in the restaurant. It’s very chic and fancy. The place is clean and smells good. They also have some nice soothing jazz playing in the background.\r\n"
+				+ "\r\n"
+				+ "“NOOOOO! He got to Ramsay.\r\n"
+				+ "", 100);
 		
 		WrongRoom room19Wrong5a = new WrongRoom("City Hall", "The body is not here. Go back.", -20, 0);
 		

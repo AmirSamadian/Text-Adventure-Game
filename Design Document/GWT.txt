@@ -497,8 +497,22 @@ ATTACK Scenario #12:  Player enters escrima sticks, flashed, and their inventory
 	 
 ///
 
+CWEIGHT Scenario #1: No container specified.
+   GIVEN : "cweight" is entered
+    WHEN : 
+    THEN : Display Message: "no second word entered. What container do you want to check the weight for?"
 
+CWEIGHT Scenario #2: container not in room or inventory
+   GIVEN : "cweight containerName" is entered
+    WHEN : container not in inventory
+      or : container not in room
+    THEN : Display Message: "You can't see that container. It's not in the room or in your inventory."
 
+CWEIGHT Scenario #2: container is in room or inventory
+   GIVEN : "cweight containerName" is entered
+    WHEN : container is in inventory
+      or : container is in room
+    THEN : "the total weight of this container is " + container.getWeight()
 
 
 ///

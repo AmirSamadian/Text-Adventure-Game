@@ -20,7 +20,7 @@ public class Player {
 	private double carryWeight = 0;
 	/** Everytime an item is picked up for the first time, the addItemToInventory method should update this tally. */
 	private int pointsFromItemsTally = 0;
-	/** This is false until the player has successfully flashed the goons in room35. */
+	/** This is false until the player has successfully flashed the goons in room35 with a flash grenade. */
 	private boolean hasFlashed = false;
 	 
 	/** HashMap storing all the items in the player's inventory. */
@@ -156,7 +156,7 @@ public class Player {
 	 * If new weight is less than or equal to max carry weight, item is added to inventory, carry weight is updated and true is returned.
 	 * If exceeds max weight, return false and give a message saying what happened.
 	 * @param item is the item we want to add
-	 * @retun true if the item meets the weight requirement and was able to be added to the inventory.
+	 * @return true if the item meets the weight requirement and was able to be added to the inventory. False if wasn't added.
 	 */
 	public boolean addItemToInventory(Item item) {
 		double newWeight = carryWeight + item.getWeight();

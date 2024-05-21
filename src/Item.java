@@ -1,4 +1,7 @@
-
+/** 
+ * It contains all information and methods related to items. superclass of container.
+ * @author Amir Samadian
+ * */
 public class Item {
 	
 	/** stores the name of an item. */

@@ -1,0 +1,818 @@
+
+Welcome to Detective Ryder Falcone: Riddler’s Transformation. This is a mystery text adventure game where you must find and investigate dead bodies based on clues. Find out where the bodies lead you and try to save the city from the Riddler. 
+Use the help command to get the list of all commands in the game.
+
+
+Ryder Falcone’s Mansion’s - Living Room & Kitchen: 
+Falcone is making a protein shake in his kitchen and he notices the news on the TV. He walks to the living room and sees that the news is reporting a weirdly shaped body tied to the city’s large clock tower. He immediately gets a call from the chief of police to come to the police station as they have more info. 
+
+Go to basement to get weapons and necessary items
+
+This room contains the following: 
+protein shake 
+tv 
+phone 
+couch 
+armory key 
+
+Where to go?  
+basement 
+
+
+> help
+I see you're confused. This is normal for a detective. Maybe this will help: 
+Here's a list of all available commands: 
+
+quit  help  go  status  back  look  examine  take  drop  inventory  unlock  lock  pack  unpack  scan  cweight  escape  shoot  flash  attack  deactivate  
+> take couch
+You can't lift that lil bro. Too heavy
+> take
+What do you want to take?
+> take tv
+Can't add tv. This item will exceed your carrying capacity of 50 lbs.
+> take phone
+phone was successfully added to your inventory!
+> go basement
+The door to that location is locked. Get the appropriate key to unlock it
+> unlock basement
+Enter the key name
+armory key
+You don't have the key.
+> take armory key
+armory key was successfully added to your inventory!
+> unlock
+What do you want to unlock?
+> unlock basement
+Enter the key name
+armory key
+The door has been unlocked. You may now enter.
+> goo basement
+That's not a valid command. Try again.
+> go basement
+Ryder Falcone’s Mansion’s – Weapon Armory in Basement: 
+You must prepare for what is to come, make your choice for what weapon or weapons you want to carry. You may be tempted to grab it all, but beware, we can’t carry more than 50 lbs so make sure to leave enough room to carry other things. Also, it’s a disadvantage to carry more than 15 lbs during battle. Anyway, here are your options:
+-	Scanner - 2 lbs		**required** 
+ -	Falcones Daily – Silenced 9mm Pistol – 3 lbs.  *recommended*
+-	Escrima Sticks (has electricity) – 7 lbs    *recommended*
+-	RPG – 35 lbs
+-	Flash Grenade – 2 lbs    *recommended*
+-	CR-56 Amax – 25 lbs 
+-	Weapon Case - 10 lbs 		*recommended* 
+
+This room contains the following: 
+weapon case 
+cr-56 amax 
+flash grenade 
+escrima sticks 
+scanner 
+rpg 
+falcones daily 
+
+Where to go?  
+elevator 
+kitchen 
+
+
+> take scanner
+scanner was successfully added to your inventory!
+> pack escrima sticks
+What container do you want to pack escrima sticks into.
+weapon case
+escrima sticks was successfully packed into weapon case
+> inventory
+These are the items in your inventory: 
+phone 
+scanner 
+armory key 
+
+you are carrying 3.01lbs
+> cweight weapon case
+the total weight of this container is 16.0
+> take weapon case
+weapon case was successfully added to your inventory!
+> inventory
+These are the items in your inventory: 
+weapon case 
+phone 
+scanner 
+armory key 
+
+you are carrying 19.009999999999998lbs
+> pack flash grenade
+What container do you want to pack flash grenade into.
+weapon case
+flash grenade was successfully packed into weapon case
+> pack falcones daily
+What container do you want to pack falcones daily into.
+weapon case
+falcones daily was successfully packed into weapon case
+> inventory
+These are the items in your inventory: 
+weapon case 
+phone 
+scanner 
+armory key 
+
+you are carrying 24.009999999999998lbs
+> look
+Ryder Falcone’s Mansion’s – Weapon Armory in Basement: 
+You must prepare for what is to come, make your choice for what weapon or weapons you want to carry. You may be tempted to grab it all, but beware, we can’t carry more than 50 lbs so make sure to leave enough room to carry other things. Also, it’s a disadvantage to carry more than 15 lbs during battle. Anyway, here are your options:
+-	Scanner - 2 lbs		**required** 
+ -	Falcones Daily – Silenced 9mm Pistol – 3 lbs.  *recommended*
+-	Escrima Sticks (has electricity) – 7 lbs    *recommended*
+-	RPG – 35 lbs
+-	Flash Grenade – 2 lbs    *recommended*
+-	CR-56 Amax – 25 lbs 
+-	Weapon Case - 10 lbs 		*recommended* 
+
+This room contains the following: 
+cr-56 amax 
+rpg 
+
+Where to go?  
+elevator 
+kitchen 
+
+
+> go kitchen
+Ryder Falcone’s Mansion’s - Living Room & Kitchen: 
+Falcone is making a protein shake in his kitchen and he notices the news on the TV. He walks to the living room and sees that the news is reporting a weirdly shaped body tied to the city’s large clock tower. He immediately gets a call from the chief of police to come to the police station as they have more info. 
+
+Go to basement to get weapons and necessary items
+
+This room contains the following: 
+protein shake 
+tv 
+couch 
+
+Where to go?  
+basement 
+
+
+> back
+Ryder Falcone’s Mansion’s – Weapon Armory in Basement: 
+You must prepare for what is to come, make your choice for what weapon or weapons you want to carry. You may be tempted to grab it all, but beware, we can’t carry more than 50 lbs so make sure to leave enough room to carry other things. Also, it’s a disadvantage to carry more than 15 lbs during battle. Anyway, here are your options:
+-	Scanner - 2 lbs		**required** 
+ -	Falcones Daily – Silenced 9mm Pistol – 3 lbs.  *recommended*
+-	Escrima Sticks (has electricity) – 7 lbs    *recommended*
+-	RPG – 35 lbs
+-	Flash Grenade – 2 lbs    *recommended*
+-	CR-56 Amax – 25 lbs 
+-	Weapon Case - 10 lbs 		*recommended* 
+
+This room contains the following: 
+cr-56 amax 
+rpg 
+
+Where to go?  
+elevator 
+kitchen 
+
+
+> go elevatoor
+There is no door!
+> go elevator
+Mansion Helipad: 
+Wind blows in your face as you walk toward the helicopter. Let’s go to the police station to get more information.
+There are no items in this room. 
+ 
+
+Where to go?  
+basement 
+helicopter 
+
+
+> go helicopter
+Police Station Helipad: 
+Officer Bob Marshall walks toward you calmly as wind from the chopper blows in his face. As you both walk inside, he says: 'Looks like someone is looking to challenge you. We don’t know who, but the lunatic is obsessed with riddles and hidden clues. I just wish the clues were written on paper rather than hidden in bodies. Who knows how many people he’s killed, but he sent us a teasing message revealing that there’s 8 bodies that he’s used as just clues. The whole country knows that where the first clue is, it’s so obviously hung on the clock tower. We need you to investigate that body and use the clues to find all bodies. Be careful when examining the body, you wouldn’t want to get contaminated. Eventually the clues will lead you right to him, just beware since he’ll have home field advantage'.
+
+I must go check out the body. Go to your Audi R8
+
+There are no items in this room. 
+ 
+
+Where to go?  
+audi 
+
+
+> go audi
+Audi R8: 
+“Oh sweet! My assistant prepped the Audi beforehand. There is protective gear placed on the backseat.”
+This room contains the following: 
+cologne 
+protective gear 
+
+Where to go?  
+police 
+clock 
+
+
+> examine protective gear
+protective gear: 
+Item description: This is good precaution for examining the bodies
+Weight: 4.0lbs
+> examine cologne
+cologne: 
+Item description: Tom Ford Oud Wood
+Weight: 0.5lbs
+> take protective gear
+protective gear was successfully added to your inventory!
+> go police
+Police Station Helipad: 
+Officer Bob Marshall walks toward you calmly as wind from the chopper blows in his face. As you both walk inside, he says: 'Looks like someone is looking to challenge you. We don’t know who, but the lunatic is obsessed with riddles and hidden clues. I just wish the clues were written on paper rather than hidden in bodies. Who knows how many people he’s killed, but he sent us a teasing message revealing that there’s 8 bodies that he’s used as just clues. The whole country knows that where the first clue is, it’s so obviously hung on the clock tower. We need you to investigate that body and use the clues to find all bodies. Be careful when examining the body, you wouldn’t want to get contaminated. Eventually the clues will lead you right to him, just beware since he’ll have home field advantage'.
+
+I must go check out the body. Go to your Audi R8
+
+There are no items in this room. 
+ 
+
+Where to go?  
+audi 
+
+
+> 
+That's not a valid command. Try again.
+> back
+Audi R8: 
+“Oh sweet! My assistant prepped the Audi beforehand. There is protective gear placed on the backseat.”
+This room contains the following: 
+cologne 
+
+Where to go?  
+police 
+clock 
+
+
+> go clock
+Clock Tower: 
+The body has already been lowered from the tower by the police. It’s lying on a tarp on the floor.
+“This is brutal. The body looks inhumane, it’s unnatural in every way possible. Whoever did this had goals beyond just killing this person. It looks as if it’s transforming into a different being. His skin is turning green and there are cut marks all over him and green bubonic-plague-type bubbles”
+
+This room contains the following: 
+lion sculptures 
+body 1 
+paper guide 
+tarp 
+
+Where to go?  
+Choice a: Deli 
+Choice b: Aaron's Tattoo Shop 
+Choice c: Mulberry Apartment Rooftop 
+Choice audi: Audi R8 
+Pick: a b c audi 
+
+> shoot
+The shoot command isn't appropriate for this room.
+> attack
+Attack isn't an appropriate command for this room
+> flash
+You shouldn't use a flash grenade here.
+> help
+I see you're confused. This is normal for a detective. Maybe this will help: 
+Here's a list of all available commands: 
+
+quit  help  go  status  back  look  examine  take  drop  inventory  unlock  lock  pack  unpack  scan  cweight  escape  shoot  flash  attack  deactivate  
+> deeactivate
+That's not a valid command. Try again.
+> deactivate
+There is nothing to deactivate in this room
+> examine body 1
+body 1: 
+Item description: The person is wearing a T-shirt and shorts. 
+ Bubbles are visible. There’s green blood pouring out of the bubbles.
+The cut marks contain binary code written in minuscule print. Maybe try using the scanner to decode the marks.
+
+Weight: 145.0lbs
+> scan
+Analysis of minuscule code from cut marks reveals the following clue: High up
+> go a
+Deli: 
+“How ya doin! What can I get ya?” – Antonio
+“A dead body?” – Falcone
+“Man get the hell outta here!” – Antonio
+
+This room contains the following: 
+sandwich 
+
+Where to go?  
+You're not supposed to be here, Go back
+
+> status
+Here is your current status: 
+  - Current Health: 100
+  - Current Score: 90
+  - Turns used so far: 44
+  - Description of your current location: “How ya doin! What can I get ya?” – Antonio
+“A dead body?” – Falcone
+“Man get the hell outta here!” – Antonio
+
+> back
+Clock Tower: 
+The body has already been lowered from the tower by the police. It’s lying on a tarp on the floor.
+“This is brutal. The body looks inhumane, it’s unnatural in every way possible. Whoever did this had goals beyond just killing this person. It looks as if it’s transforming into a different being. His skin is turning green and there are cut marks all over him and green bubonic-plague-type bubbles”
+
+This room contains the following: 
+lion sculptures 
+body 1 
+paper guide 
+tarp 
+
+Where to go?  
+Choice a: Deli 
+Choice b: Aaron's Tattoo Shop 
+Choice c: Mulberry Apartment Rooftop 
+Choice audi: Audi R8 
+Pick: a b c audi 
+
+> go c
+Mulberry Apartment Rooftop: 
+In the slums lies a 20 floor, damaged apartment complex with a large LED sign that says Mulberry. 
+“Based on the clue, I assume the body is on the roof, so I’ll begin examining from top down.”
+You are at the roof. There are AC units and antennas everywhere. After a few minutes of zigzagging through the AC units and antennas, you notice a green liquid dripping from an AC unit. We need to reveal the body from under the AC unit. “There it is. The body looks just like the last: sick, green, and morphing. It has the same cut marks and bubbles. This seems like a common theme.” 
+
+This room contains the following: 
+antenna 
+pigeon 
+body 2 
+
+Where to go?  
+Choice a: Casino 
+Choice b: Night Club 
+Choice c: Delta Phi Frat House 
+Choice prev body: Clock Tower 
+Pick: a b c prev body 
+
+> status
+Here is your current status: 
+  - Current Health: 100
+  - Current Score: 190
+  - Turns used so far: 47
+  - Description of your current location: In the slums lies a 20 floor, damaged apartment complex with a large LED sign that says Mulberry. 
+“Based on the clue, I assume the body is on the roof, so I’ll begin examining from top down.”
+You are at the roof. There are AC units and antennas everywhere. After a few minutes of zigzagging through the AC units and antennas, you notice a green liquid dripping from an AC unit. We need to reveal the body from under the AC unit. “There it is. The body looks just like the last: sick, green, and morphing. It has the same cut marks and bubbles. This seems like a common theme.” 
+
+> go a
+Casino: 
+You must do a search of the casino but must first inform the owner that he’s required by the police department to clear the building for this search. After going to the officer guarding the door and informing him about the search, he calls the owner of the casino and approves the search. Everyone has fled the building and it’s time to search.  
+
+After a thorough search, Falcone was able to find the body on the ceiling of the janitor’s office. The body is horizontally hanging from wall to wall with her feet glued to one wall and her arms to the opposing wall. There’s a toy car on the woman’s stomach. As usual, the body is morphing and has green bubbles dripping green liquid. This made a puddle under the woman.
+
+This room contains the following: 
+bucket 
+body 3 
+mop 
+
+Where to go?  
+Choice a: Nightfall Bridge 
+Choice b: Sewer Ab3432 
+Choice c: Norriton’s Zoo 
+Choice prev body: Mulberry Apartment Rooftop 
+Pick: a b c prev body 
+
+> go a
+Nightfall Bridge: 
+Falcone hopped in the R8 and drove over the Nightfall Bridge. You weren’t able to find anything suspicious on the top of the bridge. You decide to search under the bridge before leaving. “Good thing I checked down here…Never mind… this is pure gore! The body is hanging from a hook connected to the bottom of the bridge. Let me lower this thing to take a closer look.”
+This room contains the following: 
+body 4 
+hook 
+rocks 
+
+Where to go?  
+Choice a: Fieri’s Grocery Store 
+Choice b: Ramsay’s Restaurant 
+Choice c: Bobby Flay’s Filet Place 
+Choice prev body: Casino 
+Pick: a b c prev body 
+
+> go b
+Ramsay’s Restaurant: 
+“Gordon’s my buddy. I hope nothing happened to him. Let me try calling him. Huh… unresponsive. Let me call his assistant.  
+“Hey, I need to do a search of the restaurant. Can you clear it for examination?” – Falcone
+“Sure thing!” – assistant
+You are now in the restaurant. It’s very chic and fancy. The place is clean and smells good. They also have some nice soothing jazz playing in the background.
+
+“NOOOOO! He got to Ramsay.
+
+This room contains the following: 
+body 5 
+spatula 
+stove 
+sandwich 
+
+Where to go?  
+Choice a: City Hall 
+Choice b: Public Square 
+Choice c: Jazz Club 
+Choice prev body: Nightfall Bridge 
+Pick: a b c prev body 
+
+> go c
+Jazz Club: 
+“We didn’t have to travel far for this one as it’s in this same rich part of the city.”
+ The Jazz Club is packed with men in suits and women in dresses. Everyone seems to be having a sophisticated conversation while drinking coffee as they wait for the Louis Armstrong performance in 15 minutes. You look around for hints of green blood as you walk through the club. You notice a small circular burn mark on the drum set on stage. You look closer and see a splash of green by the drum. 
+“I should check out the instrument storage room. There it is. This victim has been stabbed in the chest repeatedly and, clearly, also contaminated with whatever is causing these transformations.”
+
+This room contains the following: 
+trumpet 
+saxophone 
+drums 
+body 6 
+
+Where to go?  
+Choice a: K’s Coffee Shop 
+Choice b: Po’s Coffee Shop 
+Choice c: No’s Coffee Shop 
+Choice d: Ho’s Coffee Shop 
+Choice prev body: Ramsay’s Restaurant 
+Pick: a b c d prev body 
+
+> go b
+Po’s Coffee Shop: 
+The body is clearly visible through the tinted windows. However, the coffee shop is closed due to the death of the owner – Highest. You broke into the shop and can now see the body more clearly.
+This room contains the following: 
+tv 
+mugs 
+body 7 
+coffee machine 
+
+Where to go?  
+Choice a: Ancient Library 
+Choice b: Planet Fitness 
+Choice c: Yoga Studio 
+Choice prev body: Jazz Club 
+Pick: a b c prev body 
+
+> go b
+Planet Fitness: 
+“Man, idk what the hell you’re doin’ here! I’ve never seen no one as fit in my life!” – CaseOh
+“Have you seen suspicious activity anywhere” – Falcone
+“Nothin’ other than the massive dookie I left on that toilet. Them steakhouse burritos from Taco Bell were fire, had 20 of the thangs!” - CaseOh
+
+Case caused an earthquake as he walked away from you (-10 HP)
+
+There are no items in this room. 
+ 
+
+Where to go?  
+You're not supposed to be here, Go back
+
+> status
+Here is your current status: 
+  - Current Health: 90
+  - Current Score: 680
+  - Turns used so far: 54
+  - Description of your current location: “Man, idk what the hell you’re doin’ here! I’ve never seen no one as fit in my life!” – CaseOh
+“Have you seen suspicious activity anywhere” – Falcone
+“Nothin’ other than the massive dookie I left on that toilet. Them steakhouse burritos from Taco Bell were fire, had 20 of the thangs!” - CaseOh
+
+Case caused an earthquake as he walked away from you (-10 HP)
+
+> back
+Po’s Coffee Shop: 
+The body is clearly visible through the tinted windows. However, the coffee shop is closed due to the death of the owner – Highest. You broke into the shop and can now see the body more clearly.
+This room contains the following: 
+tv 
+mugs 
+body 7 
+coffee machine 
+
+Where to go?  
+Choice a: Ancient Library 
+Choice b: Planet Fitness 
+Choice c: Yoga Studio 
+Choice prev body: Jazz Club 
+Pick: a b c prev body 
+
+> go a
+Ancient Library: 
+You get a call from your assistant: “Mr. Falcone, I noticed a delayed output from the scanner. Just out of curiosity, sir, I did some digging on the final clue. I’m sure by now you’ve already figured out the location of the last body, but this information may help. There’s this very ancient book called “Odd One Out” written by an old mathematician about his theory of prime numbers. The book is located in the library’s 21st floor. Hopefully this book helps with whatever this lunatic has planned next” – Assistant
+
+“That’s very helpful Alfred, I’ll head to the 21st floor now” – Falcone
+
+After searching the 21st floor for 15 minutes, you found the book. After pulling out the book, the entire shelf flipped around revealing the body. The body is disgustingly stoned to the wall and next to it are five unit vector component notations. These are likely addresses to the next step. The Audi can convert this cryptic notation into an address and take you there, you just have to pick the correct address.
+
+This room contains the following: 
+body 8 
+
+Where to go?  
+Choice a: 143.21 i-hat, 265.34 j-hat 
+Choice b: 21.21 i-hat, - 2121.21 j-hat 
+Choice c: - 433.94 i-hat, 109.76 j-hat 
+Choice d: - 843.91 i-hat, - 665.74 j-hat 
+Choice e: what is going on! 
+Choice prev body: Po’s Coffee Shop 
+Pick: a b c d e prev body 
+
+> scan
+The scanner just shows: Quadrant 3
+> go e
+what is going on!: 
+Focus on the signs and the scanner hint
+There are no items in this room. 
+ 
+
+Where to go?  
+You're not supposed to be here, Go back
+
+> back
+Ancient Library: 
+You get a call from your assistant: “Mr. Falcone, I noticed a delayed output from the scanner. Just out of curiosity, sir, I did some digging on the final clue. I’m sure by now you’ve already figured out the location of the last body, but this information may help. There’s this very ancient book called “Odd One Out” written by an old mathematician about his theory of prime numbers. The book is located in the library’s 21st floor. Hopefully this book helps with whatever this lunatic has planned next” – Assistant
+
+“That’s very helpful Alfred, I’ll head to the 21st floor now” – Falcone
+
+After searching the 21st floor for 15 minutes, you found the book. After pulling out the book, the entire shelf flipped around revealing the body. The body is disgustingly stoned to the wall and next to it are five unit vector component notations. These are likely addresses to the next step. The Audi can convert this cryptic notation into an address and take you there, you just have to pick the correct address.
+
+This room contains the following: 
+body 8 
+
+Where to go?  
+Choice a: 143.21 i-hat, 265.34 j-hat 
+Choice b: 21.21 i-hat, - 2121.21 j-hat 
+Choice c: - 433.94 i-hat, 109.76 j-hat 
+Choice d: - 843.91 i-hat, - 665.74 j-hat 
+Choice e: what is going on! 
+Choice prev body: Po’s Coffee Shop 
+Pick: a b c d e prev body 
+
+> go d
+- 843.91 i-hat, - 665.74 j-hat: 
+This looks like an abandoned building. It’s nighttime and there are no lights on. You enter the building and see nothing due to the darkness, but before you can move, a giant cage falls from the room and traps you inside. The cage is electrically powered. The electricity allows for a force field that prevents anything from passing through it. 
+From the darkness, a glowing green object approaches you, as it gets closer, things start to clear up and you see a man in a lab coat holding a syringe gun with glowing, bubbly green fluid in it.
+“Falcone…what took you so long? It’s rude to keep your toughest challenge waiting. HAHA. I’m glad that you finally get to put a face to the man who’s been terrorizing your small brain this whole time since the clock tower incident. Now let me introduce myself… I am the Riddler, master of clues. Riddle me this: do you recognize this old man?” - Riddler
+The green lights of the warehouse turn on and a group of 10 goons wearing grey jackets bring a body in front of you.
+“NOOOOOO! You’re an absolute lunatic! I HATEE YOUUU! Why would you do this? Officer Bob Marshall has done nothing but provide justice and safety for this city!” – Falcone
+“HAHAHAAAA this is GREAT! I’ve never seen you get so rowdy and uncontrollable. Don’t worry Falcone, I didn’t have anything against him, he was just in the way. Everyone in this city will be gifted this opportunity. A new life! They’ll transform into a being much more powerful than humans. You see, this radioactive syringe that I hold in my hand has been responsible for all the people you found unconscious. That’s right, they’re not dead. They will get back up ready to enjoy their new body. But of course, a syringe isn’t that effective. How about we go booom! HAHAHAHA” – Riddler
+The riddler and his goons leave the room and you are stuck in this cage. 
+
+“While the Riddler was busy laughing, I was able to observe the jackets the goons were wearing. They all had grey jackets with the same logo. The logo said Uptown Mall. This is the only lead I have since they took Bob Marshall’s body with them. First I have to get out of this cage.” – Falcone
+*Try the escape command
+
+There are no items in this room. 
+ 
+
+Where to go?  
+mall parking 
+
+
+> go mall parking
+The door to that location is locked. Get the appropriate key to unlock it
+> escape
+What do you think would be helpful to escape this electric cage? Enter the name of an item in your inventory. Make sure you first unpack any items in containers if you think they are helpful.
+flash grenade
+That won't help. Try another item. Remember the cage is electric so something electric would be helpful.
+> unpack weapon case
+What item do you want to unpack from weapon case
+escrima sticks
+escrima sticks was successfully added to your inventory!
+> escape
+What do you think would be helpful to escape this electric cage? Enter the name of an item in your inventory. Make sure you first unpack any items in containers if you think they are helpful.
+escrima sticks
+You slammed the escrima sticks into the ground which created an electrical blast that entered the power box of the cage and disabled the electricity allowing you to escape the cage. Look for the key to this abandoned building to go to the mall.
+> look
+- 843.91 i-hat, - 665.74 j-hat: 
+This looks like an abandoned building. It’s nighttime and there are no lights on. You enter the building and see nothing due to the darkness, but before you can move, a giant cage falls from the room and traps you inside. The cage is electrically powered. The electricity allows for a force field that prevents anything from passing through it. 
+From the darkness, a glowing green object approaches you, as it gets closer, things start to clear up and you see a man in a lab coat holding a syringe gun with glowing, bubbly green fluid in it.
+“Falcone…what took you so long? It’s rude to keep your toughest challenge waiting. HAHA. I’m glad that you finally get to put a face to the man who’s been terrorizing your small brain this whole time since the clock tower incident. Now let me introduce myself… I am the Riddler, master of clues. Riddle me this: do you recognize this old man?” - Riddler
+The green lights of the warehouse turn on and a group of 10 goons wearing grey jackets bring a body in front of you.
+“NOOOOOO! You’re an absolute lunatic! I HATEE YOUUU! Why would you do this? Officer Bob Marshall has done nothing but provide justice and safety for this city!” – Falcone
+“HAHAHAAAA this is GREAT! I’ve never seen you get so rowdy and uncontrollable. Don’t worry Falcone, I didn’t have anything against him, he was just in the way. Everyone in this city will be gifted this opportunity. A new life! They’ll transform into a being much more powerful than humans. You see, this radioactive syringe that I hold in my hand has been responsible for all the people you found unconscious. That’s right, they’re not dead. They will get back up ready to enjoy their new body. But of course, a syringe isn’t that effective. How about we go booom! HAHAHAHA” – Riddler
+The riddler and his goons leave the room and you are stuck in this cage. 
+
+“While the Riddler was busy laughing, I was able to observe the jackets the goons were wearing. They all had grey jackets with the same logo. The logo said Uptown Mall. This is the only lead I have since they took Bob Marshall’s body with them. First I have to get out of this cage.” – Falcone
+*Try the escape command
+
+This room contains the following: 
+abandoned key 
+
+Where to go?  
+mall parking 
+
+
+> take abandoned key
+abandoned key was successfully added to your inventory!
+> unlock mall parking
+Enter the key name
+abandoned key
+The door has been unlocked. You may now enter.
+> go mall parking
+mall parking: 
+It’s 4 AM as you’re in your Audi R8 driving toward the mall’s parking. You notice that two jacked goons are guarding the mall’s entrance with machine guns. You didn’t approach sneakily so they noticed your trademark car first and fired some shots at it. Luckily, you turned around quickly and didn’t take any damage.
+“Their weapons outpower mine, I must find a sneaky approach to killing them and entering the mall. There’s a hill bordering the parking lot and there are many trees for cover. I should drive to the bottom and walk all the way up” - Falcone
+You are now at the top of the hill and the goons have no idea. Shoot them with one of your guns. 
+
+There are no items in this room. 
+ 
+
+Where to go?  
+mall 
+
+
+> go mall
+The door to that location is locked. Get the appropriate key to unlock it
+> flash
+You shouldn't use a flash grenade here.
+> attack
+Attack isn't an appropriate command for this room
+> shoot
+Who do you need to shoot?
+> shoot him
+We need to shoot the guards idiot. Enter shoot guards or shoot goons
+*him*
+> shoot guards
+Whith what weapon?
+escrima
+You don't have that weapon in your inventory. Maybe you have it packed?
+> shoot guards
+Whith what weapon?
+escrima sticks
+That's not a long-ranged weapon?
+> shoot goons
+Whith what weapon?
+falcones daily
+You don't have that weapon in your inventory. Maybe you have it packed?
+> unpack weapon case
+What item do you want to unpack from weapon case
+falcones daily
+falcones daily was successfully added to your inventory!
+> unpack weapon case
+What item do you want to unpack from weapon case
+flash grenade
+flash grenade was successfully added to your inventory!
+> inveentory
+That's not a valid command. Try again.
+> inventory
+These are the items in your inventory: 
+weapon case 
+abandoned key 
+phone 
+flash grenade 
+escrima sticks 
+scanner 
+protective gear 
+armory key 
+falcones daily 
+
+you are carrying 28.02lbs
+> drop weapon case
+You have successfully dropped the weapon case from your inventory. The item is now in the room.
+> drop armory key
+You have successfully dropped the armory key from your inventory. The item is now in the room.
+> drop protective gear
+You have successfully dropped the protective gear from your inventory. The item is now in the room.
+> inventoory
+That's not a valid command. Try again.
+> inventory
+These are the items in your inventory: 
+abandoned key 
+phone 
+flash grenade 
+escrima sticks 
+scanner 
+falcones daily 
+
+you are carrying 14.009999999999998lbs
+> cweight weapon case
+the total weight of this container is 10.0
+> look
+mall parking: 
+It’s 4 AM as you’re in your Audi R8 driving toward the mall’s parking. You notice that two jacked goons are guarding the mall’s entrance with machine guns. You didn’t approach sneakily so they noticed your trademark car first and fired some shots at it. Luckily, you turned around quickly and didn’t take any damage.
+“Their weapons outpower mine, I must find a sneaky approach to killing them and entering the mall. There’s a hill bordering the parking lot and there are many trees for cover. I should drive to the bottom and walk all the way up” - Falcone
+You are now at the top of the hill and the goons have no idea. Shoot them with one of your guns. 
+
+This room contains the following: 
+weapon case 
+protective gear 
+armory key 
+
+Where to go?  
+mall 
+
+
+> shoot goons
+Whith what weapon?
+falcones daily
+You killed guard 1 and guard 2 was confused as to where he got shot from since falcones daily is a silenced pistol.By the time he could react, you killed him too. Go get the key to the mall from their clothes and enter the mall.
+> look
+mall parking: 
+It’s 4 AM as you’re in your Audi R8 driving toward the mall’s parking. You notice that two jacked goons are guarding the mall’s entrance with machine guns. You didn’t approach sneakily so they noticed your trademark car first and fired some shots at it. Luckily, you turned around quickly and didn’t take any damage.
+“Their weapons outpower mine, I must find a sneaky approach to killing them and entering the mall. There’s a hill bordering the parking lot and there are many trees for cover. I should drive to the bottom and walk all the way up” - Falcone
+You are now at the top of the hill and the goons have no idea. Shoot them with one of your guns. 
+
+This room contains the following: 
+weapon case 
+mall key 
+protective gear 
+armory key 
+
+Where to go?  
+mall 
+
+
+> take mall key
+mall key was successfully added to your inventory!
+> unlock mall
+Enter the key name
+mall key
+The door has been unlocked. You may now enter.
+> go mall
+mall: 
+You are now in this empty mall. Based on the fact that goons were guarding this mall, it’s certain that you’re in the right place. Sneaking and searching this ginormous mall was tedious, but eventually, you heard a group of 10 armed goons cracking jokes as they were guarding a room. Whatever that room is must be important, but you must kill all goons before you can enter. 
+“I must be smart with the way I choose to attack. I need to pick a weapon or combination of weapons that allows me to kill them all at once or one-by-one without interference from the others.” – Falcone
+Use help command if you need a refresher of all available commands. 
+
+There are no items in this room. 
+ 
+
+Where to go?  
+secret room 
+
+
+> go secret room
+The door to that location is locked. Get the appropriate key to unlock it
+> unlock secret room
+Enter the key name
+secret key
+You don't have the key.
+> attack
+with what?
+rpg
+You don't have that weapon in your inventory. Maybe you have it packed?
+> flash
+You have successfully blinded the group of goons. Take advantage of this and follow up with an attack using another weapon.
+> inventory
+These are the items in your inventory: 
+abandoned key 
+phone 
+escrima sticks 
+scanner 
+mall key 
+falcones daily 
+
+you are carrying 12.019999999999998lbs
+> attack
+with what?
+escrima sticks
+While the goons were struggling to see, you acrobatically jumped towards them. You used 10 different martial arts techniques to disarm them while smacking the hell out of them with the escrima sticks. Grab the key from them and unlock the door.
+> look
+mall: 
+You are now in this empty mall. Based on the fact that goons were guarding this mall, it’s certain that you’re in the right place. Sneaking and searching this ginormous mall was tedious, but eventually, you heard a group of 10 armed goons cracking jokes as they were guarding a room. Whatever that room is must be important, but you must kill all goons before you can enter. 
+“I must be smart with the way I choose to attack. I need to pick a weapon or combination of weapons that allows me to kill them all at once or one-by-one without interference from the others.” – Falcone
+Use help command if you need a refresher of all available commands. 
+
+This room contains the following: 
+secret key 
+
+Where to go?  
+secret room 
+
+
+> take secret key
+secret key was successfully added to your inventory!
+> unlock secret room
+Enter the key name
+secret key
+The door has been unlocked. You may now enter.
+> go secret room
+Passcode Room: 
+This room is completely empty, except there is a door and a chest.
+This room contains the following: 
+card 
+
+Where to go?  
+door 
+
+
+> examine card
+card: 
+Item description: passcode = 24080369717
+Weight: 1.0lbs
+> take card
+card was successfully added to your inventory!
+> go door
+Radioactive Warehouse in Mall: 
+You have opened the door and see a stairway going down into a warehouse. You hear a maniacal laugh as you walk down the stairs. The riddler is dancing with joy as the countdown on the bomb keeps going down but doesn’t see you. It’s at 59 seconds.
+“Riddle me this dumbass” – Falcone
+“How did you - ” – Riddler
+You knocked out the riddler and killed him with your bare hands. Deactivate the bomb. You have 10 seconds. 
+
+There are no items in this room. 
+ 
+
+Where to go?  
+
+
+> deeactivate
+That's not a valid command. Try again.
+> deactivate
+Enter the passcode: 
+13532
+INCORRECT. Try Again.  Enter the passcode: 
+Enter the passcode: 
+352
+INCORRECT. Try Again.  Enter the passcode: 
+Enter the passcode: 
+24080369717
+You win! Congratulations detective. This becomes case #10,001 comleted. You have saved the city from this lunatic!
+Thank you for playing! I hope you enjoyed the game.
+You have earned 1186 points in 108 turns
+The max amount of points you could've gotten was 1200 points.
