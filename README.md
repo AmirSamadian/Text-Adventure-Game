@@ -47,27 +47,27 @@ Some rooms serve as story progression points, while others contain decoy clues l
 
 #### Weapons & Tools
 
-Scanner (2 lbs, required) – Detects hidden clues
+- Scanner (2 lbs, required) – Detects hidden clues
 
-Silenced 9mm Pistol (3 lbs, recommended)
+- Silenced 9mm Pistol (3 lbs, recommended)
 
-Escrima Sticks (Electrified) (6 lbs, recommended)
+- Escrima Sticks (Electrified) (6 lbs, recommended)
 
-Flash Grenade (2 lbs, recommended)
+- Flash Grenade (2 lbs, recommended)
 
-RPG (35 lbs, heavy weapon, not recommended for agility-based combat)
+- RPG (35 lbs, heavy weapon, not recommended for agility-based combat)
 
-CR-56 Amax Assault Rifle (25 lbs, high power but heavy)
+- CR-56 Amax Assault Rifle (25 lbs, high power but heavy)
 
-Weapon Case (10 lbs, allows carrying extra equipment)
+- Weapon Case (10 lbs, allows carrying extra equipment)
 
 #### Usable Items
 
-Phone (1 lb, can be used to make calls for information)
+- Phone (1 lb, can be used to make calls for information)
 
-Armory Key (0.05 lbs, unlocks weapon storage)
+- Armory Key (0.05 lbs, unlocks weapon storage)
 
-Health Items (Various weights, restores HP)
+- Health Items (Various weights, restores HP)
 
 ## Installation & Running the Game
 
