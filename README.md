@@ -1,8 +1,10 @@
-Gameplay
+# Detective Ryder Falcone: Riddler's Transformation
+
+## Gameplay
 
 This is a text-based adventure game where you must explore various locations, gather clues, make crucial decisions, and engage in strategic combat. The game is structured around different rooms, each offering choices that can lead you closer to solving the case—or facing severe consequences.
 
-Key Features:
+### Key Features:
 
 Decision-based exploration: Navigate through different parts of the city by selecting locations based on gathered clues.
 
@@ -14,9 +16,9 @@ Scoring system: Earn points by making the correct choices and solving the myster
 
 Multiple locations: Travel across an expansive city, including a mansion, police station, clock tower, casino, abandoned mall, and more.
 
-Gameplay Mechanics
+## Gameplay Mechanics
 
-Weight & Health System
+### Weight & Health System
 
 Max carry weight: 50 lbs (Exceeding this results in death in battle)
 
@@ -24,7 +26,7 @@ Combat weight limit: 15 lbs (Carrying more reduces battle effectiveness)
 
 Health points: 100 HP (Game over if reduced to 0)
 
-Scoring System
+### Scoring System
 
 Correct choices: +100 points
 
@@ -32,7 +34,7 @@ Wrong choices: -10 to -20 points (sometimes results in health loss)
 
 Final Score: Displayed at the end, showing total possible points vs. achieved points
 
-Exploration & Rooms
+### Exploration & Rooms
 
 The game world spans an entire city, where each location (room) represents a part of the investigation.
 
@@ -40,9 +42,10 @@ Players teleport between locations based on decisions rather than direct physica
 
 Some rooms serve as story progression points, while others contain decoy clues leading to penalties.
 
-Inventory & Items
 
-Weapons & Tools
+### Inventory & Items
+
+#### Weapons & Tools
 
 Scanner (2 lbs, required) – Detects hidden clues
 
@@ -58,7 +61,7 @@ CR-56 Amax Assault Rifle (25 lbs, high power but heavy)
 
 Weapon Case (10 lbs, allows carrying extra equipment)
 
-Usable Items
+#### Usable Items
 
 Phone (1 lb, can be used to make calls for information)
 
@@ -66,25 +69,25 @@ Armory Key (0.05 lbs, unlocks weapon storage)
 
 Health Items (Various weights, restores HP)
 
-Installation & Running the Game
+## Installation & Running the Game
 
-Requirements:
+### Requirements:
 
 Java Development Kit (JDK) installed
 
 Compatible with Eclipse IDE or any Java-supported platform
 
-How to Play:
+### How to Play:
 
-Clone the repository or download the game files.
+1. Clone the repository or download the game files.
 
-Open in Eclipse (or any Java IDE).
+2. Open in Eclipse (or any Java IDE).
 
-Run the main class to start the game.
+3. Run the main class to start the game.
 
-Follow on-screen text prompts to navigate the world, make decisions, and solve the mystery.
+4. Follow on-screen text prompts to navigate the world, make decisions, and solve the mystery.
 
-Credits
+## Credits
 
 Developer: Amir Samadian
 
